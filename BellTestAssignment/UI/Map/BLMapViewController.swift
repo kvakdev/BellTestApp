@@ -14,6 +14,8 @@ import CoreLocation
 protocol PMapViewModel: PViewModel {
     var tweets: PublishSubject<[BLTweet]> { get }
     var location: PublishSubject<CLLocation> { get }
+    
+    func didTapDetails(tweet: BLTweet)
 }
 
 class BLMapViewController: BLBaseVC {
@@ -61,18 +63,33 @@ extension BLMapViewController: MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView!.canShowCallout = true
-            annotationView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         } else {
             annotationView!.annotation = annotation
         }
         
+        annotationView?.canShowCallout = true
+        annotationView?.calloutOffset = CGPoint(x: -5, y: 5)
+        annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        
         return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        
+        if let note = view.annotation as? BLTweetAnnotation {
+            debugPrint("tapped \(note.tweet.author.screenName)")
+            
+        }
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         debugPrint("tapped \(view.tag)")
+        
+        if let tweetAnnotation = view.annotation as? BLTweetAnnotation {
+            let tweet = tweetAnnotation.tweet
+            viewModel.didTapDetails(tweet: tweet)
+        }
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

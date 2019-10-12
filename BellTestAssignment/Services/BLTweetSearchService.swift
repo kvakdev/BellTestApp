@@ -49,7 +49,12 @@ class BLSearchMetaData: Codable {
     }
 }
 
-class BLTweetSearchService: NSObject {
+protocol PTweetSearchService {
+    func searchTweets(radius: Int, location: CLLocation, count: Int, completion: @escaping (AsyncResult<[BLTweet]>) -> Void, filter: ((BLTweet) -> Bool)?)
+    func fetchTweet(id: String, completion: @escaping (AsyncResult<TWTRTweet>) -> Void)
+}
+
+class BLTweetSearchService: NSObject, PTweetSearchService {
     let _client = TWTRAPIClient()
     
     
@@ -65,13 +70,13 @@ class BLTweetSearchService: NSObject {
         
         let req = _client.urlRequest(withMethod: HTTPMethod.get.rawValue, urlString: Endpoints.search.string, parameters: params, error: nil)
         
-        _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
+        _client.sendTwitterRequest(req) { (resp, data, error) in
             if let error = error {
                 completion(.failure(error))
                 return
             }
             guard let data = data else {
-                completion(.failure(self?.noData()))
+                completion(.failure(NSError.noData()))
                 return
             }
             debugPrint(data.responseString)
@@ -87,13 +92,22 @@ class BLTweetSearchService: NSObject {
             } catch {
                 completion(.failure(error))
             }
-            
-            
         }
-        
     }
     
-    func noData() -> NSError {
+    func fetchTweet(id: String, completion: @escaping (AsyncResult<TWTRTweet>) -> Void) {
+        _client.loadTweet(withID: id) { (tweet, error) in
+            guard let tweet = tweet else {
+                completion(.failure(NSError.noData()))
+                return
+            }
+            completion(.success(tweet))
+        }
+    }
+}
+
+extension NSError {
+    static func noData() -> NSError {
         return NSError(domain: "local", code: -1, userInfo: [NSLocalizedDescriptionKey: "Missing data"])
     }
 }

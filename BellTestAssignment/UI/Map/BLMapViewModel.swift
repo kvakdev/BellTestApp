@@ -35,4 +35,8 @@ class BLMapViewModel: PMapViewModel {
         
         _model.start()
     }
+    
+    func didTapDetails(tweet: BLTweet) {
+        self._coordinator.didSelect(tweet)
+    }
 }

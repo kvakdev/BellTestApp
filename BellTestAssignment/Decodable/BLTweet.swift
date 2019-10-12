@@ -9,14 +9,14 @@
 import Foundation
 
 class BLTweet: NSObject, Decodable {
-    let id: Int = 0
-    let text: String?
+    let id: String
+    let text: String
     let author: BLAuthor
     let profileImageUrlHttps: String?
     let place: BLPlace?
 
     enum CodingKeys: String, CodingKey {
-        case id
+        case id = "id_str"
         case text
         case author = "user"
         case profileImageUrlHttps = "profile_image_url_https"

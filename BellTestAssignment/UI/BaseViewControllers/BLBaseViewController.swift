@@ -10,6 +10,7 @@ import UIKit
 import RxSwift
 
 protocol PCoordinator {
+    func didSelect(_ tweet: BLTweet)
     func handle(error: Error)
     func start()
 }

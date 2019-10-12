@@ -11,7 +11,7 @@ import MapKit
 extension MKMapView {
     func makePins(for tweets: [BLTweet]) {
         let annotations = tweets.compactMap { BLTweetAnnotation(tweet: $0) }
-//        addAnnotations(annotations)
+        addAnnotations(annotations)
         showAnnotations(annotations, animated: true)
     }
 }
@@ -25,7 +25,7 @@ class BLTweetAnnotation: MKPointAnnotation {
             let lon = tweet.place?.boundingBox.coordinates.first?.first?.first
             else { return nil }
         super.init()
-        self.title = tweet.author.screenName
+        self.title = "\(tweet.text)"
         self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
     

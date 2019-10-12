@@ -42,4 +42,14 @@ class BLMainCoordinator: PCoordinator {
         
         currentViewController?.present(alert, animated: true, completion: nil)
     }
+    
+    func didSelect(_ tweet: BLTweet) {
+        let vc = BLDetailViewController()
+        let service = BLTweetSearchService()
+        let model = BLDetailModel(tweetId: tweet.id, searchService: service)
+        let viewModel = BLDetailViewModel(model, coordinator: self)
+        vc.set(vModel: viewModel)
+        
+        navigationController.pushViewController(vc, animated: true)
+    }
 }
