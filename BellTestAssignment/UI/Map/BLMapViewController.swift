@@ -39,9 +39,6 @@ class BLMapViewController: BLBaseVC {
         }).disposed(by: self.disposeBag)
         
         self.viewModel.location.subscribe(onNext: { location in
-//            let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
-//                                                      latitudinalMeters: self._radiusMeters * 2,
-//                                                      longitudinalMeters: self._radiusMeters * 2)
             let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
                                                 longitude: location.coordinate.longitude)
             let coordinateRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1,

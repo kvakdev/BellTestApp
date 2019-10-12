@@ -17,7 +17,6 @@ extension MKMapView {
 }
 
 class BLTweetAnnotation: MKPointAnnotation {
-//    var coordinate: CLLocationCoordinate2D
     let tweet: BLTweet
     
     init?(tweet: BLTweet) {
@@ -26,7 +25,7 @@ class BLTweetAnnotation: MKPointAnnotation {
             let lon = tweet.place?.boundingBox.coordinates.first?.first?.first
             else { return nil }
         super.init()
-        
+        self.title = tweet.author.screenName
         self.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
     }
     
