@@ -75,6 +75,7 @@ class BLMapViewController: BLBaseVC {
     private func setupCallbacks() {
         self.viewModel.tweets.subscribe(onNext: { [weak self] tweets in
             DispatchQueue.main.async {
+                self?._mapView.removeOldPins()
                 self?._mapView.makePins(for: tweets)
             }
         }).disposed(by: self.disposeBag)

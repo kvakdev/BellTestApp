@@ -42,12 +42,14 @@ class BLSearchDataSource: NSObject, PSearchDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as! TWTRTweetTableViewCell
         
         cell.configure(with: tweet)
+        cell.tweetView.delegate = self
         
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let tweet = self.tweets[indexPath.row]
+}
+
+extension BLSearchDataSource: TWTRTweetViewDelegate {
+    func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
         self.selectedTweet.onNext(tweet)
     }
 }

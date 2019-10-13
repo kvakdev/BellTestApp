@@ -100,7 +100,7 @@ class BLTweetSearchService: NSObject, PTweetAPIService {
                 completion(.failure(NSError.noData()))
                 return
             }
-            debugPrint(data.responseString)
+//            debugPrint(data.responseString)
             
             do {
                 let result = try JSONDecoder().decode(BLTweetSearchResponse.self, from: data)
@@ -154,7 +154,7 @@ class BLTweetSearchService: NSObject, PTweetAPIService {
         let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue, urlString: Endpoints.like.string, parameters: params, error: nil)
         _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
             guard self?.isValid(error: error, data: data, completion: completion) ?? false else { return }
-            debugPrint(data!.responseString)
+//            debugPrint(data!.responseString)
             completion?(.success(true))
         }
     }
@@ -167,7 +167,7 @@ class BLTweetSearchService: NSObject, PTweetAPIService {
         let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue, urlString: Endpoints.postedTweet.string, parameters: params, error: nil)
         _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
             guard self?.isValid(error: error, data: data, completion: completion) ?? false else { return }
-            debugPrint(data!.responseString)
+//            debugPrint(data!.responseString)
         }
     }
     

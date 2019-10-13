@@ -28,7 +28,7 @@ class BLMapViewModel: PMapViewModel {
     }
     
     func viewDidLoad() {
-        _model.tweets.subscribe(onNext: { [weak self] tweets in
+        _model.tweets.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { [weak self] tweets in
             self?.tweets.onNext(tweets)
         }, onError: { [weak self] error in
             self?._coordinator.handle(error: error)

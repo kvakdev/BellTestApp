@@ -11,6 +11,7 @@
             <connections>
                 <outlet property="_loader" destination="6Te-gI-261" id="giF-HV-RRf"/>
                 <outlet property="_searchField" destination="wVb-fv-PUP" id="vHB-PY-0Qy"/>
+                <outlet property="_segmentedControl" destination="Fo7-18-ias" id="UNI-Py-PYs"/>
                 <outlet property="_tableView" destination="kgD-Zi-fgc" id="enl-9d-e5B"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -22,6 +23,7 @@
             <subviews>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Twitter Search" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wVb-fv-PUP">
                     <rect key="frame" x="16" y="60" width="382" height="60"/>
+                    <color key="backgroundColor" white="0.89333920187793425" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="6wX-f1-YDI"/>
                     </constraints>
@@ -29,26 +31,36 @@
                     <textInputTraits key="textInputTraits"/>
                 </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-Zi-fgc">
-                    <rect key="frame" x="0.0" y="120" width="414" height="742"/>
+                    <rect key="frame" x="0.0" y="159" width="414" height="703"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                 </tableView>
                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="6Te-gI-261">
                     <rect key="frame" x="197" y="438" width="20" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </activityIndicatorView>
+                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Fo7-18-ias">
+                    <rect key="frame" x="16" y="128" width="382" height="32"/>
+                    <segments>
+                        <segment title="First"/>
+                        <segment title="Second"/>
+                    </segments>
+                </segmentedControl>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="wVb-fv-PUP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="1wx-N9-rkN"/>
+                <constraint firstItem="Fo7-18-ias" firstAttribute="trailing" secondItem="wVb-fv-PUP" secondAttribute="trailing" id="5np-Y3-Gfo"/>
                 <constraint firstItem="kgD-Zi-fgc" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="7Tn-pa-Cqe"/>
+                <constraint firstItem="Fo7-18-ias" firstAttribute="leading" secondItem="wVb-fv-PUP" secondAttribute="leading" id="8i5-UG-NhP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kgD-Zi-fgc" secondAttribute="bottom" id="AOy-yE-Mja"/>
-                <constraint firstItem="kgD-Zi-fgc" firstAttribute="top" secondItem="wVb-fv-PUP" secondAttribute="bottom" id="Dhj-BG-LYY"/>
+                <constraint firstItem="kgD-Zi-fgc" firstAttribute="top" secondItem="Fo7-18-ias" secondAttribute="bottom" id="Dhj-BG-LYY"/>
                 <constraint firstItem="wVb-fv-PUP" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="Yrz-M7-Zru"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wVb-fv-PUP" secondAttribute="trailing" constant="16" id="ahi-b0-6bx"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="kgD-Zi-fgc" secondAttribute="trailing" id="qDX-em-W0g"/>
+                <constraint firstItem="Fo7-18-ias" firstAttribute="top" secondItem="wVb-fv-PUP" secondAttribute="bottom" constant="8" id="xDJ-wy-WGO"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <point key="canvasLocation" x="139" y="109"/>
+            <point key="canvasLocation" x="137.68115942028987" y="108.48214285714285"/>
         </view>
     </objects>
 </document>

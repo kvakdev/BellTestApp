@@ -55,7 +55,7 @@ class BLMapModel: PMapModel {
         self._searchService.searchTweets(radius: self.currentRadius, location: location, completion: { [weak self] result in
             switch result {
             case .success(let tweets):
-                print(tweets)
+                print("got \(tweets.count) filteredTweets")
                 self?.tweets.onNext(tweets)
             case .failure(let error):
                 print(error as Any)

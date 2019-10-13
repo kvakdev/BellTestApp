@@ -14,6 +14,11 @@ extension MKMapView {
         addAnnotations(annotations)
         showAnnotations(annotations, animated: true)
     }
+    
+    func removeOldPins() {
+        removeAnnotations(annotations)
+//        removeOverlays(overlays)
+    }
 }
 
 class BLTweetAnnotation: MKPointAnnotation {
