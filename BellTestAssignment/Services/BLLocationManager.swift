@@ -32,9 +32,11 @@ class BLLocationManager: NSObject, PLocationManager {
     }
     
     private func requestAuthorizationIfNeeded() {
-//        let status = CLLocationManager.authorizationStatus()
-
-        locationManager.requestWhenInUseAuthorization()
+        let status = CLLocationManager.authorizationStatus()
+        
+        if status == .notDetermined || status == .denied {
+            locationManager.requestWhenInUseAuthorization()
+        }
     }
     
     private func set(_ location: CLLocation) {
