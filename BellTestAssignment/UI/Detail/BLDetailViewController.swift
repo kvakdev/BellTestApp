@@ -7,30 +7,50 @@
 //
 
 import UIKit
+import TwitterKit
 
 class BLDetailViewController: BLBaseVC {
     private var viewModel: PDetailViewModel {
         return self.vModel as! PDetailViewModel
     }
     
-    @IBOutlet private weak var _profileImageView: UIImageView!
-    @IBOutlet private weak var _handleLabel: UILabel!
-    @IBOutlet private weak var _textLabel: UILabel!
-    @IBOutlet private weak var _timestampLabel: UILabel!
-    @IBOutlet private weak var _nameLabel: UILabel!
+    @IBOutlet private weak var _likeButton: UIButton!
+    @IBOutlet private weak var _retweetButton: UIButton!
+    @IBOutlet private weak var _btnsContainer: UIStackView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupBtns()
         
         self.viewModel.tweet.subscribe(onNext: { [weak self] tweet in
-            self?._handleLabel.text = tweet.author.screenName
-            self?._textLabel.text = tweet.text
-            self?._profileImageView.load(urlString: tweet.author.profileImageLargeURL)
-        }).disposed(by: disposeBag)
-        
-        self.viewModel.timestamp.subscribe(onNext: { [weak self] timestamp in
-            self?._timestampLabel.text = timestamp
+            self?.addTweetView(tweet)
         }).disposed(by: disposeBag)
     }
-
+    
+    func addTweetView(_ tweet: TWTRTweet) {
+        let twitterView = TWTRTweetView(tweet: tweet, style: TWTRTweetViewStyle.compact)
+        twitterView.backgroundColor = .clear
+        view.addSubview(twitterView)
+        
+        twitterView.translatesAutoresizingMaskIntoConstraints = false
+        twitterView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        twitterView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        twitterView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        twitterView.bottomAnchor.constraint(lessThanOrEqualTo: _btnsContainer.topAnchor).isActive = true
+    }
+    
+    private func setupBtns() {
+        [_likeButton, _retweetButton].forEach { $0?.addTarget(self, action: #selector(handleBtnAction(_:)), for: .touchUpInside) }
+    }
+    
+    @objc func handleBtnAction(_ sender: UIButton) {
+        switch sender {
+        case _retweetButton:
+            viewModel.retweetTapped()
+        case _likeButton:
+            viewModel.likeTapped()
+        default:
+            assertionFailure()
+        }
+    }
 }

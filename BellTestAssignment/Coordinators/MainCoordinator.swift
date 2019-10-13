@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import TwitterKit
 
 class BLMainCoordinator: PCoordinator {
     
@@ -47,7 +48,8 @@ class BLMainCoordinator: PCoordinator {
         let vc = BLDetailViewController()
         let service = BLTweetSearchService()
         let model = BLDetailModel(tweetId: tweet.id, searchService: service)
-        let viewModel = BLDetailViewModel(model, coordinator: self)
+        let viewModel = BLDetailViewModel(model, coordinator: self, twitter: TWTRTwitter.sharedInstance())
+        
         vc.set(vModel: viewModel)
         
         navigationController.pushViewController(vc, animated: true)

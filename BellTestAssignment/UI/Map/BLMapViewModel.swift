@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import CoreLocation
+import TwitterKit
 
 class BLMapViewModel: PMapViewModel {
     var tweets: PublishSubject<[BLTweet]> = .init()
@@ -34,9 +35,18 @@ class BLMapViewModel: PMapViewModel {
         }).disposed(by: _disposeBag)
         
         _model.start()
+        logIn()
     }
     
     func didTapDetails(tweet: BLTweet) {
         self._coordinator.didSelect(tweet)
+    }
+    
+    private func logIn() {
+        TWTRTwitter.sharedInstance().logIn { (sessio, error) in
+            if let error = error {
+                self._coordinator.handle(error: error)
+            }
+        }
     }
 }

@@ -7,7 +7,6 @@ target 'BellTestAssignment' do
 
   # Pods for BellTestAssignment
   pod 'TwitterKit'
-  pod 'Alamofire', '~> 4.8.0'
   pod 'RxSwift', '~> 4.4.0'
 
   target 'BellTestAssignmentTests' do

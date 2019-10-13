@@ -9,11 +9,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BLDetailViewController" customModule="BellTestAssignment" customModuleProvider="target">
             <connections>
-                <outlet property="_handleLabel" destination="FoE-9q-ThB" id="HLT-Fd-Fn9"/>
-                <outlet property="_nameLabel" destination="Z8k-QW-0ZS" id="ce4-qO-4fX"/>
-                <outlet property="_profileImageView" destination="ctt-U4-k1v" id="tMR-DT-Jo9"/>
-                <outlet property="_textLabel" destination="c6x-lg-D8q" id="Rpq-uC-2iB"/>
-                <outlet property="_timestampLabel" destination="SD8-lw-zB4" id="7st-4S-5CW"/>
+                <outlet property="_btnsContainer" destination="8F1-o6-mmO" id="mz5-EB-qzI"/>
+                <outlet property="_likeButton" destination="zgh-V5-DFq" id="zg0-fR-CvB"/>
+                <outlet property="_retweetButton" destination="hp6-Ju-gUS" id="Za9-d8-IKX"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -22,50 +20,29 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ctt-U4-k1v">
-                    <rect key="frame" x="157" y="127" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="DHe-9x-Seg"/>
-                        <constraint firstAttribute="height" constant="100" id="K6V-M5-R5a"/>
-                    </constraints>
-                </imageView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="UZo-GO-o5R">
-                    <rect key="frame" x="16" y="251" width="382" height="130"/>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="8F1-o6-mmO">
+                    <rect key="frame" x="16" y="816" width="382" height="30"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoE-9q-ThB">
-                            <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8k-QW-0ZS">
-                            <rect key="frame" x="0.0" y="36.5" width="382" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SD8-lw-zB4">
-                            <rect key="frame" x="0.0" y="73" width="382" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c6x-lg-D8q">
-                            <rect key="frame" x="0.0" y="109.5" width="382" height="20.5"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgh-V5-DFq">
+                            <rect key="frame" x="0.0" y="0.0" width="183" height="30"/>
+                            <state key="normal" title="Like">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hp6-Ju-gUS">
+                            <rect key="frame" x="199" y="0.0" width="183" height="30"/>
+                            <state key="normal" title="Retweet">
+                                <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
                     </subviews>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="UZo-GO-o5R" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="B5g-Vk-cjw"/>
-                <constraint firstItem="UZo-GO-o5R" firstAttribute="top" secondItem="ctt-U4-k1v" secondAttribute="bottom" constant="24" id="FT6-Xc-qPU"/>
-                <constraint firstItem="ctt-U4-k1v" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="83" id="Ncf-FE-vla"/>
-                <constraint firstItem="ctt-U4-k1v" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dRW-92-rBM"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UZo-GO-o5R" secondAttribute="trailing" constant="16" id="oxC-n9-JHJ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8F1-o6-mmO" secondAttribute="bottom" constant="16" id="DNl-e1-SyY"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="8F1-o6-mmO" secondAttribute="trailing" constant="16" id="c1w-TW-QLz"/>
+                <constraint firstItem="8F1-o6-mmO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="f01-cq-Qke"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="139" y="137"/>

@@ -29,6 +29,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         mainCoordinator = coordinator
     }
-
+    
 }
 

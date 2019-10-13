@@ -17,6 +17,7 @@ enum AsyncResult<T> {
 
 enum HTTPMethod: String {
     case get = "GET"
+    case post = "POST"
 }
 
 class BLTweetSearchResponse: Decodable {
@@ -49,14 +50,20 @@ class BLSearchMetaData: Codable {
     }
 }
 
-protocol PTweetSearchService {
+protocol PTweetAPIService {
     func searchTweets(radius: Int, location: CLLocation, count: Int, completion: @escaping (AsyncResult<[BLTweet]>) -> Void, filter: ((BLTweet) -> Bool)?)
     func fetchTweet(id: String, completion: @escaping (AsyncResult<TWTRTweet>) -> Void)
+    func retweet(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?)
+    func like(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?)
+    func isLoggedIn() -> Bool
 }
 
-class BLTweetSearchService: NSObject, PTweetSearchService {
+class BLTweetSearchService: NSObject, PTweetAPIService {
     let _client = TWTRAPIClient()
     
+    func isLoggedIn() -> Bool {
+        return TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers()
+    }
     
     func searchTweets(radius: Int, location: CLLocation, count: Int = 1000, completion: @escaping (AsyncResult<[BLTweet]>) -> Void, filter: ((BLTweet) -> Bool)?) {
         let geocode = "\(location.coordinate.latitude),\(location.coordinate.longitude),\(radius)km"
@@ -104,6 +111,42 @@ class BLTweetSearchService: NSObject, PTweetSearchService {
             completion(.success(tweet))
         }
     }
+    func like(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?) {
+        let params = [
+            "id" : tweetId
+        ]
+        
+        let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue, urlString: Endpoints.like.string, parameters: params, error: nil)
+        _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
+            guard self?.isValid(error: error, data: data, completion: completion) ?? false else { return }
+            debugPrint(data!.responseString)
+            completion?(.success(true))
+        }
+    }
+    
+    func retweet(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?) {
+        let params = [
+            "tweet_id" : tweetId
+        ]
+        
+        let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue, urlString: Endpoints.postedTweet.string, parameters: params, error: nil)
+        _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
+            guard self?.isValid(error: error, data: data, completion: completion) ?? false else { return }
+            debugPrint(data!.responseString)
+        }
+    }
+    
+    func isValid<T>(error: Error?, data: Data?, completion: ((AsyncResult<T>) -> Void)?) -> Bool {
+        if let error = error {
+            completion?(.failure(error))
+            return false
+        }
+        guard let _ = data else {
+            completion?(.failure(NSError.noData()))
+            return false
+        }
+        return true
+    }
 }
 
 extension NSError {
@@ -115,6 +158,8 @@ extension NSError {
 private extension BLTweetSearchService {
     enum Endpoints: String {
         case search = "search/tweets.json"
+        case postedTweet
+        case like = "favorites/create.json"
         
         var string: String {
             return Constants.Url.base.appending(rawValue)

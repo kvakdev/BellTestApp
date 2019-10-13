@@ -15,6 +15,9 @@ protocol PDetailViewModel: PViewModel {
     var tweet: PublishSubject<TWTRTweet> { get }
     
     var timestamp: PublishSubject<String> { get }
+    
+    func retweetTapped()
+    func likeTapped()
 }
 
 class BLDetailViewModel: PDetailViewModel {
@@ -25,6 +28,7 @@ class BLDetailViewModel: PDetailViewModel {
     
     private let _model: PDetailModel
     private let _coordinator: PCoordinator
+    private let _twitter: TWTRTwitter
     private let _disposeBag = DisposeBag()
     
     private let formatter: DateFormatter = {
@@ -34,9 +38,10 @@ class BLDetailViewModel: PDetailViewModel {
         return f
     }()
     
-    init(_ model: PDetailModel, coordinator: PCoordinator) {
+    init(_ model: PDetailModel, coordinator: PCoordinator, twitter: TWTRTwitter) {
         _model = model
         _coordinator = coordinator
+        _twitter = twitter
     }
     
     func viewDidLoad() {
@@ -51,5 +56,29 @@ class BLDetailViewModel: PDetailViewModel {
         }).disposed(by: _disposeBag)
         
         _model.loadDetails()
+    }
+    
+    func retweetTapped() {
+        ensureIsLoggedIn { [weak self] in
+            self?._model.retweet()
+        }
+    }
+    func likeTapped() {
+        
+    }
+    
+    private func ensureIsLoggedIn(completion: @escaping () -> Void) {
+        if _twitter.sessionStore.hasLoggedInUsers() {
+            completion()
+            return
+        } else {
+            TWTRTwitter.sharedInstance().logIn { [weak self] (session, error) in
+                if let error = error {
+                    self?._coordinator.handle(error: error)
+                    return
+                }
+                completion()
+            }
+        }
     }
 }
