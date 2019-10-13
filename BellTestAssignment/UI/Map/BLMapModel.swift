@@ -24,8 +24,15 @@ class BLMapModel: PMapModel {
     
     private let _locationManager: PLocationManager
     private let _searchService: BLTweetSearchService
+    private var _lastLocation: CLLocation?
     
-    var currentRadius: Int = 5
+    var currentRadius: Int = 5 {
+        didSet {
+            if let location = _lastLocation {
+                load(with: location, radius: self.currentRadius)
+            }
+        }
+    }
     
     private let _disposeBag = DisposeBag()
     
@@ -37,20 +44,24 @@ class BLMapModel: PMapModel {
     func start() {
         _locationManager.currentLocation.subscribe(onNext: { [weak self] location in
             guard let _self = self else { return }
-            
+            _self._lastLocation = location
             _self.location.onNext(location)
+            _self.load(with: location, radius: _self.currentRadius)
             
-            _self._searchService.searchTweets(radius: _self.currentRadius, location: location, completion: { result in
-                switch result {
-                case .success(let tweets):
-                    print(tweets)
-                    self?.tweets.onNext(tweets)
-                case .failure(let error):
-                    print(error as Any)
-                }
-            }) { tweet -> Bool in
-                return tweet.place != nil
-            }
         }).disposed(by: _disposeBag)
+    }
+    
+    private func load(with location: CLLocation, radius: Int) {
+        self._searchService.searchTweets(radius: self.currentRadius, location: location, completion: { [weak self] result in
+            switch result {
+            case .success(let tweets):
+                print(tweets)
+                self?.tweets.onNext(tweets)
+            case .failure(let error):
+                print(error as Any)
+            }
+        }) { tweet -> Bool in
+            return tweet.place != nil
+        }
     }
 }

@@ -16,6 +16,7 @@ protocol PDetailModel {
     func loadDetails()
     func isLoggedIn() -> Bool
     func retweet()
+    func like()
 }
 
 class BLDetailModel: PDetailModel {
@@ -52,7 +53,7 @@ class BLDetailModel: PDetailModel {
         }
     }
     
-    func retweet() {
+    func like() {
         _service.like(tweetId: _tweetId) { result in
             debugPrint(result)
         }

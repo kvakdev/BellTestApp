@@ -8,10 +8,14 @@
 
 import UIKit
 import RxSwift
+import TwitterKit
 
 protocol PCoordinator {
+    func didSelect(_ tweet: TWTRTweet)
     func didSelect(_ tweet: BLTweet)
-    func handle(error: Error)
+    func didTapSearch()
+    
+    func handle(error: Error?)
     func start()
 }
 

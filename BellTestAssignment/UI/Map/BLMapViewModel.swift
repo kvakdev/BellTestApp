@@ -17,7 +17,7 @@ class BLMapViewModel: PMapViewModel {
         return _model.location
     }
     
-    private let _model: PMapModel
+    private var _model: PMapModel
     private let _coordinator: PCoordinator
     
     private let _disposeBag = DisposeBag()
@@ -35,18 +35,18 @@ class BLMapViewModel: PMapViewModel {
         }).disposed(by: _disposeBag)
         
         _model.start()
-        logIn()
     }
     
     func didTapDetails(tweet: BLTweet) {
         self._coordinator.didSelect(tweet)
     }
     
-    private func logIn() {
-        TWTRTwitter.sharedInstance().logIn { (sessio, error) in
-            if let error = error {
-                self._coordinator.handle(error: error)
-            }
-        }
+    func didChangeRadius(_ radius: Int) {
+        _model.currentRadius = radius
     }
+    
+    func didTapSearch() {
+        _coordinator.didTapSearch()
+    }
+
 }

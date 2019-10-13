@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9301B95B235329A400E4FE93 /* BLSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B959235329A400E4FE93 /* BLSearchViewController.swift */; };
+		9301B95C235329A400E4FE93 /* BLSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B95A235329A400E4FE93 /* BLSearchViewController.xib */; };
+		9301B95E2353331D00E4FE93 /* BLSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B95D2353331D00E4FE93 /* BLSearchViewModel.swift */; };
+		9301B9602353338400E4FE93 /* BLSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B95F2353338400E4FE93 /* BLSearchModel.swift */; };
+		9301B96323534D7A00E4FE93 /* BLSearchTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96223534D7A00E4FE93 /* BLSearchTableDataSource.swift */; };
+		9301B967235350F100E4FE93 /* BLTweetwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B965235350F100E4FE93 /* BLTweetwCell.swift */; };
+		9301B968235350F100E4FE93 /* BLTweetwCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B966235350F100E4FE93 /* BLTweetwCell.xib */; };
+		9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */; };
+		9301B96C2353673B00E4FE93 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96B2353673B00E4FE93 /* String+Ext.swift */; };
 		93CE75AD2351CA0B00BDF877 /* BLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AC2351CA0B00BDF877 /* BLBaseViewController.swift */; };
 		93CE75B02351CB9A00BDF877 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */; };
 		93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75B22351D0FF00BDF877 /* Constants.swift */; };
@@ -72,6 +81,15 @@
 		179B874BEAC86B40DB759BB3 /* Pods-BellTestAssignmentTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BellTestAssignmentTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BellTestAssignmentTests/Pods-BellTestAssignmentTests.debug.xcconfig"; sourceTree = "<group>"; };
 		50BEAE057B4E7FE391B45A01 /* Pods-BellTestAssignmentTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BellTestAssignmentTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BellTestAssignmentTests/Pods-BellTestAssignmentTests.release.xcconfig"; sourceTree = "<group>"; };
 		68C9D41FAEF4F9E9A9FC3F3D /* Pods-BellTestAssignmentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BellTestAssignmentUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BellTestAssignmentUITests/Pods-BellTestAssignmentUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		9301B959235329A400E4FE93 /* BLSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSearchViewController.swift; sourceTree = "<group>"; };
+		9301B95A235329A400E4FE93 /* BLSearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BLSearchViewController.xib; sourceTree = "<group>"; };
+		9301B95D2353331D00E4FE93 /* BLSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSearchViewModel.swift; sourceTree = "<group>"; };
+		9301B95F2353338400E4FE93 /* BLSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSearchModel.swift; sourceTree = "<group>"; };
+		9301B96223534D7A00E4FE93 /* BLSearchTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSearchTableDataSource.swift; sourceTree = "<group>"; };
+		9301B965235350F100E4FE93 /* BLTweetwCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLTweetwCell.swift; sourceTree = "<group>"; };
+		9301B966235350F100E4FE93 /* BLTweetwCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BLTweetwCell.xib; sourceTree = "<group>"; };
+		9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseId.swift"; sourceTree = "<group>"; };
+		9301B96B2353673B00E4FE93 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		93CE75AC2351CA0B00BDF877 /* BLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBaseViewController.swift; sourceTree = "<group>"; };
 		93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		93CE75B22351D0FF00BDF877 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -159,6 +177,36 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		9301B9582353298800E4FE93 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				9301B964235350D100E4FE93 /* Cell */,
+				9301B96123534D5E00E4FE93 /* DataSource */,
+				9301B959235329A400E4FE93 /* BLSearchViewController.swift */,
+				9301B95A235329A400E4FE93 /* BLSearchViewController.xib */,
+				9301B95D2353331D00E4FE93 /* BLSearchViewModel.swift */,
+				9301B95F2353338400E4FE93 /* BLSearchModel.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		9301B96123534D5E00E4FE93 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				9301B96223534D7A00E4FE93 /* BLSearchTableDataSource.swift */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		9301B964235350D100E4FE93 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				9301B965235350F100E4FE93 /* BLTweetwCell.swift */,
+				9301B966235350F100E4FE93 /* BLTweetwCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		93CE75AB2351C9EF00BDF877 /* BaseViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +254,8 @@
 			children = (
 				93CE75C62352266B00BDF877 /* MapView+Tweet.swift */,
 				93CE75D12352733700BDF877 /* UIImageView+URL.swift */,
+				9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */,
+				9301B96B2353673B00E4FE93 /* String+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -306,6 +356,7 @@
 		93FED1BE2351BDA20022D610 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9301B9582353298800E4FE93 /* Search */,
 				93CE75AB2351C9EF00BDF877 /* BaseViewControllers */,
 				93FED1C02351BDC00022D610 /* Map */,
 				93CE75C82352608C00BDF877 /* Detail */,
@@ -435,9 +486,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				93FED1982351B3AE0022D610 /* LaunchScreen.storyboard in Resources */,
+				9301B95C235329A400E4FE93 /* BLSearchViewController.xib in Resources */,
 				93FED1952351B3AE0022D610 /* Assets.xcassets in Resources */,
 				93FED1C42351BDF30022D610 /* BLMapViewController.xib in Resources */,
 				93CE75CC235260AC00BDF877 /* BLDetailViewController.xib in Resources */,
+				9301B968235350F100E4FE93 /* BLTweetwCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,22 +634,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9301B95E2353331D00E4FE93 /* BLSearchViewModel.swift in Sources */,
+				9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */,
 				93CE75D02352623C00BDF877 /* BLDetailModel.swift in Sources */,
 				93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */,
 				93CE75B02351CB9A00BDF877 /* MainCoordinator.swift in Sources */,
 				93FED1C82351BF1F0022D610 /* BLMapModel.swift in Sources */,
+				9301B96C2353673B00E4FE93 /* String+Ext.swift in Sources */,
 				93CE75D22352733700BDF877 /* UIImageView+URL.swift in Sources */,
 				93CE75CB235260AC00BDF877 /* BLDetailViewController.swift in Sources */,
 				93FED18E2351B3AC0022D610 /* SceneDelegate.swift in Sources */,
 				93CE75CE235261E000BDF877 /* BLDetailViewModel.swift in Sources */,
+				9301B967235350F100E4FE93 /* BLTweetwCell.swift in Sources */,
 				93CE75AD2351CA0B00BDF877 /* BLBaseViewController.swift in Sources */,
 				93CE75BD235203AF00BDF877 /* BLLocationManager.swift in Sources */,
+				9301B9602353338400E4FE93 /* BLSearchModel.swift in Sources */,
 				93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */,
 				93FED1C32351BDF30022D610 /* BLMapViewController.swift in Sources */,
+				9301B96323534D7A00E4FE93 /* BLSearchTableDataSource.swift in Sources */,
 				93FED1C62351BF110022D610 /* BLMapViewModel.swift in Sources */,
 				93CE75C223521D6300BDF877 /* BLPlace.swift in Sources */,
 				93CE75BF235207D900BDF877 /* BLTweetSearchService.swift in Sources */,
 				93CE75C423521F1400BDF877 /* BLTweet.swift in Sources */,
+				9301B95B235329A400E4FE93 /* BLSearchViewController.swift in Sources */,
 				93CE75C72352266B00BDF877 /* MapView+Tweet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

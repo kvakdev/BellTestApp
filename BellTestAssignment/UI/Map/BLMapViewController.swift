@@ -16,6 +16,8 @@ protocol PMapViewModel: PViewModel {
     var location: PublishSubject<CLLocation> { get }
     
     func didTapDetails(tweet: BLTweet)
+    func didChangeRadius(_ radius: Int)
+    func didTapSearch()
 }
 
 class BLMapViewController: BLBaseVC {
@@ -24,16 +26,51 @@ class BLMapViewController: BLBaseVC {
     }
     
     @IBOutlet private weak var _mapView: MKMapView!
+    @IBOutlet private weak var _radiusSlider: UISlider!
+    
     private let identifier = "reuseId"
-    private var _radiusKm: Double = 5
-    private var _radiusMeters: Double { return self._radiusKm * 1000 }
+    private var _radiusKm: Int = 5
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupMapView()
+        setupSlider()
+        setupCallbacks()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchBtn))
+        updateTitle()
+        _radiusSlider.setValue(Float(_radiusKm), animated: false)
+    }
+    
+    deinit {
+        print("deinit")
+    }
+    
+    // MARK: - Private funcs
+    @objc private func handleSearchBtn() {
+        viewModel.didTapSearch()
+    }
+    
+    @objc private func handleValueChanged(_ sender: UISlider) {
+        _radiusKm = Int(sender.value)
+        updateTitle()
+        viewModel.didChangeRadius(_radiusKm)
+    }
+    private func updateTitle() {
+        navigationItem.title = "Radius search: \(_radiusKm) km"
+    }
+    
+    private func setupMapView() {
         _mapView.delegate = self
         _mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: identifier)
-        
+    }
+    
+    private func setupSlider() {
+        _radiusSlider.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
+        _radiusSlider.isContinuous = false
+    }
+    
+    private func setupCallbacks() {
         self.viewModel.tweets.subscribe(onNext: { [weak self] tweets in
             DispatchQueue.main.async {
                 self?._mapView.makePins(for: tweets)
@@ -41,16 +78,10 @@ class BLMapViewController: BLBaseVC {
         }).disposed(by: self.disposeBag)
         
         self.viewModel.location.subscribe(onNext: { location in
-            let center = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
-                                                longitude: location.coordinate.longitude)
-            let coordinateRegion = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.1,
-                                                                                   longitudeDelta: 0.1))
+            let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+            let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
             self._mapView.setRegion(coordinateRegion, animated: true)
         }).disposed(by: disposeBag)
-    }
-    
-    deinit {
-        print("deinit")
     }
 }
 
@@ -91,12 +122,4 @@ extension BLMapViewController: MKMapViewDelegate {
             viewModel.didTapDetails(tweet: tweet)
         }
     }
-    
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-          let circle = MKCircleRenderer(overlay: overlay)
-          circle.strokeColor = .red
-          circle.fillColor = UIColor(red: 255, green: 0, blue: 0, alpha: 0.1)
-          circle.lineWidth = 1
-          return circle
-      }
 }

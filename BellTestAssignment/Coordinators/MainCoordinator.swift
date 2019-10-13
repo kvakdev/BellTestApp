@@ -37,7 +37,9 @@ class BLMainCoordinator: PCoordinator {
         return vc
     }
     
-    func handle(error: Error) {
+    func handle(error: Error?) {
+        guard let error = error else { return }
+        
         let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         
@@ -45,11 +47,29 @@ class BLMainCoordinator: PCoordinator {
     }
     
     func didSelect(_ tweet: BLTweet) {
+        pushDetailViewController(tweetId: tweet.id)
+    }
+    
+    func didSelect(_ tweet: TWTRTweet) {
+        pushDetailViewController(tweetId: tweet.tweetID)
+    }
+    
+    private func pushDetailViewController(tweetId: String) {
         let vc = BLDetailViewController()
         let service = BLTweetSearchService()
-        let model = BLDetailModel(tweetId: tweet.id, searchService: service)
+        let model = BLDetailModel(tweetId: tweetId, searchService: service)
         let viewModel = BLDetailViewModel(model, coordinator: self, twitter: TWTRTwitter.sharedInstance())
         
+        vc.set(vModel: viewModel)
+        
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func didTapSearch() {
+        let vc = BLSearchViewController()
+        let model = BLSearchModel(BLTweetSearchService())
+        let viewModel = BLSearchViewModel(model, coordinator: self)
+        vc.navigationItem.title = "Search"
         vc.set(vModel: viewModel)
         
         navigationController.pushViewController(vc, animated: true)

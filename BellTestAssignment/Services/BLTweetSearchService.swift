@@ -30,6 +30,14 @@ class BLTweetSearchResponse: Decodable {
     }
 }
 
+class BLQueryTweetResponse {
+    var tweets: [TWTRTweet] = []
+    
+    enum CodingKeys: String, CodingKey {
+        case tweets = "statuses"
+    }
+}
+
 class BLSearchMetaData: Codable {
     let maxID: Double
     let sinceID: Int
@@ -52,6 +60,7 @@ class BLSearchMetaData: Codable {
 
 protocol PTweetAPIService {
     func searchTweets(radius: Int, location: CLLocation, count: Int, completion: @escaping (AsyncResult<[BLTweet]>) -> Void, filter: ((BLTweet) -> Bool)?)
+    func querySearchTweets(query: String, count: Int, completion: @escaping (AsyncResult<[TWTRTweet]>) -> Void)
     func fetchTweet(id: String, completion: @escaping (AsyncResult<TWTRTweet>) -> Void)
     func retweet(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?)
     func like(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?)
@@ -99,6 +108,27 @@ class BLTweetSearchService: NSObject, PTweetAPIService {
             } catch {
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func querySearchTweets(query: String, count: Int, completion: @escaping (AsyncResult<[TWTRTweet]>) -> Void) {
+        
+        let params: [String: String] = [
+            "q" : query.urlEncoded,
+            "count" : "\(count)"
+        ]
+        
+        let req = _client.urlRequest(withMethod: HTTPMethod.get.rawValue, urlString: Endpoints.search.string, parameters: params, error: nil)
+        
+        _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
+            guard self?.isValid(error: error, data: data, completion: completion) ?? false else { return }
+            
+            if let tweets = TWTRTweet.tweetArrayWith(data: data!) {
+                completion(.success(tweets))
+            } else {
+                completion(.failure(error))
+            }
+
         }
     }
     
@@ -175,5 +205,31 @@ extension Data {
             let string = NSString(data: data, encoding: String.Encoding.utf8.rawValue) else { return nil }
             
             return string
+    }
+}
+
+extension String {
+    var urlEncoded: String {
+        addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+    }
+}
+
+extension Data {
+    var dictionary: Dictionary<String, Any>? {
+        let result = try? JSONSerialization.jsonObject(with: self, options:[])
+        
+        return result as? Dictionary<String, Any>
+    }
+}
+
+extension TWTRTweet {
+    static func tweetArrayWith(data: Data) -> [TWTRTweet]? {
+        guard
+            let dict = data.dictionary,
+            let tweetsArray = dict["statuses"] as? [[AnyHashable : Any]],
+            let tweets = TWTRTweet.tweets(withJSONArray: tweetsArray) as? [TWTRTweet] else {
+                return nil
+        }
+        return tweets
     }
 }
