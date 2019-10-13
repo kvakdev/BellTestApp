@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import TwitterKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var mainCoordinator: PCoordinator?
+    var mainCoordinator: BaseCoordinator?
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 
@@ -19,16 +20,24 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.apiKey, consumerSecret: Constants.apiSecret)
+        
         let nav = UINavigationController()
         let coordinator = BLMainCoordinator(nav)
-        coordinator.start()
+        mainCoordinator = coordinator
+        
+        if !TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() {
+            let loginCoordinator = BLLoginCoordinator(parent: coordinator, navigationController: nav)
+            coordinator.addChild(loginCoordinator)
+            loginCoordinator.start()
+        } else {
+            coordinator.start()
+        }
         
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
         window?.windowScene = windowScene
-        
-        mainCoordinator = coordinator
     }
-    
+
 }
 

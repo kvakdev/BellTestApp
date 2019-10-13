@@ -21,7 +21,9 @@ class BLSearchDataSource: NSObject, PSearchDataSource {
     private var tweets: [TWTRTweet] = []
     private weak var _tableView: UITableView!
     private let reuseId = "reuseId"
+    
     func setup(tableView: UITableView) {
+        tableView.tableFooterView = UIView()
         tableView.register(TWTRTweetTableViewCell.self, forCellReuseIdentifier: reuseId)
         _tableView = tableView
     }
@@ -33,15 +35,17 @@ class BLSearchDataSource: NSObject, PSearchDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return tweets.count
-     }
+    }
      
-     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let tweet = self.tweets[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as! TWTRTweetTableViewCell
-         let tweet = self.tweets[indexPath.row]
+        
         cell.configure(with: tweet)
-         
-         return cell
-     }
+        
+        return cell
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let tweet = self.tweets[indexPath.row]
         self.selectedTweet.onNext(tweet)

@@ -16,6 +16,9 @@
 		9301B968235350F100E4FE93 /* BLTweetwCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B966235350F100E4FE93 /* BLTweetwCell.xib */; };
 		9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */; };
 		9301B96C2353673B00E4FE93 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96B2353673B00E4FE93 /* String+Ext.swift */; };
+		9301B96E235398C700E4FE93 /* BLLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96D235398C700E4FE93 /* BLLoginCoordinator.swift */; };
+		9301B9722353994600E4FE93 /* BLLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B9702353994600E4FE93 /* BLLoginViewController.swift */; };
+		9301B9732353994600E4FE93 /* BLLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B9712353994600E4FE93 /* BLLoginViewController.xib */; };
 		93CE75AD2351CA0B00BDF877 /* BLBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AC2351CA0B00BDF877 /* BLBaseViewController.swift */; };
 		93CE75B02351CB9A00BDF877 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */; };
 		93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75B22351D0FF00BDF877 /* Constants.swift */; };
@@ -90,6 +93,9 @@
 		9301B966235350F100E4FE93 /* BLTweetwCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BLTweetwCell.xib; sourceTree = "<group>"; };
 		9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseId.swift"; sourceTree = "<group>"; };
 		9301B96B2353673B00E4FE93 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		9301B96D235398C700E4FE93 /* BLLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLoginCoordinator.swift; sourceTree = "<group>"; };
+		9301B9702353994600E4FE93 /* BLLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLoginViewController.swift; sourceTree = "<group>"; };
+		9301B9712353994600E4FE93 /* BLLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BLLoginViewController.xib; sourceTree = "<group>"; };
 		93CE75AC2351CA0B00BDF877 /* BLBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLBaseViewController.swift; sourceTree = "<group>"; };
 		93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		93CE75B22351D0FF00BDF877 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -207,6 +213,15 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		9301B96F2353992C00E4FE93 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				9301B9702353994600E4FE93 /* BLLoginViewController.swift */,
+				9301B9712353994600E4FE93 /* BLLoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		93CE75AB2351C9EF00BDF877 /* BaseViewControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -219,16 +234,17 @@
 			isa = PBXGroup;
 			children = (
 				93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */,
+				9301B96D235398C700E4FE93 /* BLLoginCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		93CE75B12351D0F400BDF877 /* Config */ = {
+		93CE75B12351D0F400BDF877 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
 				93CE75B22351D0FF00BDF877 /* Constants.swift */,
 			);
-			path = Config;
+			path = Constants;
 			sourceTree = "<group>";
 		};
 		93CE75B42351D6AE00BDF877 /* Services */ = {
@@ -304,7 +320,7 @@
 				93FED1992351B3AE0022D610 /* Info.plist */,
 				93FED1BB2351BD520022D610 /* SupportFiles */,
 				93FED1BD2351BD900022D610 /* AppDelegate */,
-				93CE75B12351D0F400BDF877 /* Config */,
+				93CE75B12351D0F400BDF877 /* Constants */,
 				93FED1BC2351BD670022D610 /* SceneDelegate */,
 			);
 			path = BellTestAssignment;
@@ -356,6 +372,7 @@
 		93FED1BE2351BDA20022D610 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9301B96F2353992C00E4FE93 /* Login */,
 				9301B9582353298800E4FE93 /* Search */,
 				93CE75AB2351C9EF00BDF877 /* BaseViewControllers */,
 				93FED1C02351BDC00022D610 /* Map */,
@@ -490,6 +507,7 @@
 				93FED1952351B3AE0022D610 /* Assets.xcassets in Resources */,
 				93FED1C42351BDF30022D610 /* BLMapViewController.xib in Resources */,
 				93CE75CC235260AC00BDF877 /* BLDetailViewController.xib in Resources */,
+				9301B9732353994600E4FE93 /* BLLoginViewController.xib in Resources */,
 				9301B968235350F100E4FE93 /* BLTweetwCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -644,10 +662,12 @@
 				93CE75D22352733700BDF877 /* UIImageView+URL.swift in Sources */,
 				93CE75CB235260AC00BDF877 /* BLDetailViewController.swift in Sources */,
 				93FED18E2351B3AC0022D610 /* SceneDelegate.swift in Sources */,
+				9301B9722353994600E4FE93 /* BLLoginViewController.swift in Sources */,
 				93CE75CE235261E000BDF877 /* BLDetailViewModel.swift in Sources */,
 				9301B967235350F100E4FE93 /* BLTweetwCell.swift in Sources */,
 				93CE75AD2351CA0B00BDF877 /* BLBaseViewController.swift in Sources */,
 				93CE75BD235203AF00BDF877 /* BLLocationManager.swift in Sources */,
+				9301B96E235398C700E4FE93 /* BLLoginCoordinator.swift in Sources */,
 				9301B9602353338400E4FE93 /* BLSearchModel.swift in Sources */,
 				93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */,
 				93FED1C32351BDF30022D610 /* BLMapViewController.swift in Sources */,

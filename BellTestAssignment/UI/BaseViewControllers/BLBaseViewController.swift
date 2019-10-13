@@ -10,13 +10,19 @@ import UIKit
 import RxSwift
 import TwitterKit
 
-protocol PCoordinator {
+protocol BaseCoordinator {
+    func start()
+    func finish()
+    func coordinatorIsDone(_ child: BaseCoordinatorClass)
+    func addChild(_ child: BaseCoordinatorClass)
+}
+
+protocol PCoordinator: BaseCoordinator {
     func didSelect(_ tweet: TWTRTweet)
     func didSelect(_ tweet: BLTweet)
     func didTapSearch()
     
     func handle(error: Error?)
-    func start()
 }
 
 protocol PViewModel {

@@ -72,12 +72,13 @@ class BLDetailViewModel: PDetailViewModel {
             completion()
             return
         } else {
-            TWTRTwitter.sharedInstance().logIn { [weak self] (session, error) in
+            _twitter.logIn { [weak self] (session, error) in
+                if session != nil {
+                    completion()
+                }
                 if let error = error {
                     self?._coordinator.handle(error: error)
-                    return
                 }
-                completion()
             }
         }
     }

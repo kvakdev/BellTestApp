@@ -68,13 +68,18 @@ protocol PTweetAPIService {
 }
 
 class BLTweetSearchService: NSObject, PTweetAPIService {
-    let _client = TWTRAPIClient()
+    let _client: TWTRAPIClient
+    
+    init(client: TWTRAPIClient) {
+        _client = client
+    }
     
     func isLoggedIn() -> Bool {
         return TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers()
     }
     
     func searchTweets(radius: Int, location: CLLocation, count: Int = 1000, completion: @escaping (AsyncResult<[BLTweet]>) -> Void, filter: ((BLTweet) -> Bool)?) {
+        
         let geocode = "\(location.coordinate.latitude),\(location.coordinate.longitude),\(radius)km"
         
         let params: [String: String] = [
