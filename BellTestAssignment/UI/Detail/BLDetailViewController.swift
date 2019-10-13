@@ -20,6 +20,7 @@ class BLDetailViewController: BLBaseVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Details"
         setupBtns()
         
         self.viewModel.tweet.subscribe(onNext: { [weak self] tweet in
@@ -33,10 +34,11 @@ class BLDetailViewController: BLBaseVC {
         view.addSubview(twitterView)
         
         twitterView.translatesAutoresizingMaskIntoConstraints = false
-        twitterView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        twitterView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         twitterView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         twitterView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         twitterView.bottomAnchor.constraint(lessThanOrEqualTo: _btnsContainer.topAnchor).isActive = true
+        twitterView.delegate = self
     }
     
     private func setupBtns() {
@@ -52,5 +54,11 @@ class BLDetailViewController: BLBaseVC {
         default:
             assertionFailure()
         }
+    }
+}
+
+extension BLDetailViewController: TWTRTweetViewDelegate {
+    func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
+        print("Tweet tapped doign nothing")
     }
 }

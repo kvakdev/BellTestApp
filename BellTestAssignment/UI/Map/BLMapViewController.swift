@@ -63,6 +63,7 @@ class BLMapViewController: BLBaseVC {
     }
     
     private func setupMapView() {
+        _mapView.showsScale = true
         _mapView.delegate = self
         _mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: identifier)
     }
