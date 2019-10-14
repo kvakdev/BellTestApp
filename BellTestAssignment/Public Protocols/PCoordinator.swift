@@ -23,6 +23,7 @@ public protocol PCoordinator: BaseCoordinator {
     func didTapSearch()
     func didTapLogout(completion: @escaping (Bool) -> Void)
     func didTapLogin(completion: @escaping (Bool) -> Void)
+    func didMoveSlider()
     
     func handleSuccess(message: String)
     func handle(error: Error?)

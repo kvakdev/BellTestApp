@@ -56,6 +56,7 @@
 		93EBDB942354E9B700CDEE65 /* PCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */; };
 		93EBDB972354E9E400CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
 		93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
+		93EBDB9A2355118600CDEE65 /* PLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */; };
 		93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED18B2351B3AC0022D610 /* AppDelegate.swift */; };
 		93FED1952351B3AE0022D610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1942351B3AE0022D610 /* Assets.xcassets */; };
 		93FED1982351B3AE0022D610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1962351B3AE0022D610 /* LaunchScreen.storyboard */; };
@@ -142,6 +143,7 @@
 		93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PViewModel.swift; sourceTree = "<group>"; };
 		93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCoordinator.swift; sourceTree = "<group>"; };
 		93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLoginCoordinator.swift; sourceTree = "<group>"; };
 		93FED1882351B3AC0022D610 /* Bell Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FED18B2351B3AC0022D610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93FED1942351B3AE0022D610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -378,6 +380,7 @@
 			children = (
 				93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */,
 				93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */,
+				93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */,
 			);
 			path = "Public Protocols";
 			sourceTree = "<group>";
@@ -428,7 +431,6 @@
 				93FED1BB2351BD520022D610 /* SupportFiles */,
 				93FED1BD2351BD900022D610 /* AppDelegate */,
 				93CE75B12351D0F400BDF877 /* Constants */,
-				93FED1BC2351BD670022D610 /* SceneDelegate */,
 			);
 			path = BellTestAssignment;
 			sourceTree = "<group>";
@@ -458,13 +460,6 @@
 				93FED1962351B3AE0022D610 /* LaunchScreen.storyboard */,
 			);
 			path = SupportFiles;
-			sourceTree = "<group>";
-		};
-		93FED1BC2351BD670022D610 /* SceneDelegate */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SceneDelegate;
 			sourceTree = "<group>";
 		};
 		93FED1BD2351BD900022D610 /* AppDelegate */ = {
@@ -787,6 +782,7 @@
 				93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */,
 				9301B97923546CF400E4FE93 /* TWTRTweet+Parsing.swift in Sources */,
 				93FED1C32351BDF30022D610 /* MapViewController.swift in Sources */,
+				93EBDB9A2355118600CDEE65 /* PLoginCoordinator.swift in Sources */,
 				93EBDB972354E9E400CDEE65 /* BaseCoordinator.swift in Sources */,
 				9301B96323534D7A00E4FE93 /* SearchTableDataSource.swift in Sources */,
 				93FED1C62351BF110022D610 /* MapViewModel.swift in Sources */,

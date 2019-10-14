@@ -8,6 +8,35 @@
 
 import UIKit
 import TwitterKit
+import CoreLocation
+
+class APIClientWrapper: PTwitterClient {
+    private var client: PTwitterClient
+    
+    init(client: PTwitterClient) {
+        self.client = client
+    }
+    
+    func refresh() {
+        self.client = TWTRAPIClient.withCurrentUser()
+    }
+    
+    func urlRequest(with method: HTTPMethod, endpoint: Endpoints, params: [String : Any]) -> URLRequest {
+        return client.urlRequest(with: method, endpoint: endpoint, params: params)
+    }
+    
+    func urlRequest(with method: HTTPMethod, urlString: String, params: [String : Any]) -> URLRequest {
+        return client.urlRequest(with: method, urlString: urlString, params: params)
+    }
+    
+    func sendRequest(_ request: URLRequest, completion: @escaping (URLResponse?, Data?, Error?) -> Void) {
+        client.sendRequest(request, completion: completion)
+    }
+    
+    func loadOneTweet(withID id: String, completion: @escaping (TWTRTweet?, Error?) -> Void) {
+        client.loadOneTweet(withID: id, completion: completion)
+    }
+}
 
 class AppCoordinator: BaseCoordinatorClass, PCoordinator {
     var isLoggedIn: Bool {
@@ -19,7 +48,7 @@ class AppCoordinator: BaseCoordinatorClass, PCoordinator {
     }
     private var _children: [BaseCoordinatorClass] = []
     private let navigationController: UINavigationController
-    private var client = TWTRAPIClient.withCurrentUser()
+    private var client = APIClientWrapper(client: TWTRAPIClient.withCurrentUser())
     private let twitter = TWTRTwitter.sharedInstance()
     
     init(_ navigationController: UINavigationController) {
@@ -122,8 +151,31 @@ class AppCoordinator: BaseCoordinatorClass, PCoordinator {
     
     func didTapLogin(completion: @escaping (Bool) -> Void) {
         twitter.logIn { session, error in
+            self.client.refresh()
             self.handle(error: error)
             completion(session != nil)
         }
+    }
+    
+    func didMoveSlider() {
+        if CLLocationManager.authorizationStatus() != .authorizedWhenInUse {
+            showSettingsAlert()
+        }
+    }
+    
+    private func showSettingsAlert() {
+        let alert = UIAlertController(title: nil, message: "Allow the app to access your location?", preferredStyle: .alert)
+        let allowAction = UIAlertAction(title: "Allow", style: .default) { _ in
+            guard let url = URL(string: UIApplication.openSettingsURLString) else { return }
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+        }
+        let laterAction = UIAlertAction(title: "Later", style: .cancel, handler: nil)
+        
+        alert.addAction(allowAction)
+        alert.addAction(laterAction)
+        
+        currentViewController?.present(alert, animated: true, completion: nil)
     }
 }

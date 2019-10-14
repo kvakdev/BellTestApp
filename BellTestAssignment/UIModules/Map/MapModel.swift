@@ -54,7 +54,7 @@ class MapModel: PMapModel {
         self.searchService.searchTweets(query: query) { [weak self] result in
             switch result {
             case .success(let tweets):
-                print("Timer got \(tweets.count) filteredTweets")
+//                debugPrint("Timer got \(tweets.count) filteredTweets")
                 self?.accumulatableTweets.onNext(tweets)
             case .failure(let error):
                 if let error = error {
@@ -72,7 +72,7 @@ class MapModel: PMapModel {
         self.searchService.searchTweets(query: query) { [weak self] result in
             switch result {
             case .success(let tweets):
-                print("got \(tweets.count) filteredTweets")
+//                debugPrint("got \(tweets.count) filteredTweets")
                 self?.tweets.onNext(tweets)
             case .failure(let error):
                 if let error = error {

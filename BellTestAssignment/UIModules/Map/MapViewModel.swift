@@ -74,6 +74,7 @@ public class MapViewModel: PMapViewModel {
     }
     
     func didChangeRadius(_ radius: Int) {
+        coordinator.didMoveSlider()
         model.currentRadius = radius
     }
     

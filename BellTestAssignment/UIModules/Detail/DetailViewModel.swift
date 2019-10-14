@@ -89,14 +89,20 @@ class DetailViewModel: PDetailViewModel {
             completion()
             return
         } else {
-            twitter.logIn { [unowned self] (session, error) in
-                if session != nil {
+            coordinator.didTapLogin { loggedIn in
+                if loggedIn {
                     completion()
                 }
-                if let error = error {
-                    self.coordinator.handle(error: error)
-                }
             }
+            
+//            twitter.logIn { [unowned self] (session, error) in
+//                if session != nil {
+//                    completion()
+//                }
+//                if let error = error {
+//                    self.coordinator.handle(error: error)
+//                }
+//            }
         }
     }
 }

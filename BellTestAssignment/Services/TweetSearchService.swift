@@ -131,7 +131,7 @@ class TweetSearchService: NSObject, PTweetAPIService {
         
         _client.sendRequest(req) { (resp, data, error) in
             guard Response.isValid(error: error, data: data, completion: completion) else { return }
-//            debugPrint(data!.responseString)
+            debugPrint(data!.responseString)
             completion?(.success(true))
         }
     }
@@ -144,7 +144,7 @@ class TweetSearchService: NSObject, PTweetAPIService {
         
         _client.sendRequest(req) { (resp, data, error) in
             guard Response.isValid(error: error, data: data, completion: completion) else { return }
-//            debugPrint(data!.responseString)
+            debugPrint(data!.responseString)
             completion?(.success(true))
         }
     }

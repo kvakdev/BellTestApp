@@ -8,12 +8,6 @@
 
 import UIKit
 
-protocol PLoginCoordinator: BaseCoordinator {
-    func didLogin()
-    func failed(with error: Error?)
-    func didTapSkip()
-}
-
 class LoginCoordinator: BaseCoordinatorClass, PLoginCoordinator {
     private let _parent: PCoordinator
     private let _navigationVC: UINavigationController
