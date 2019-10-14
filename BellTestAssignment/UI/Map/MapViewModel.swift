@@ -13,13 +13,13 @@ import TwitterKit
 
 class MapViewModel: PMapViewModel {
     var tweets: PublishSubject<[Tweet]> = .init()
+    var isLoggedIn: PublishSubject<Bool> = .init()
     var location: PublishSubject<CLLocation> {
         return model.location
     }
     
     private var model: PMapModel
     private let coordinator: PCoordinator
-    
     private let disposeBag = DisposeBag()
     
     init(_ model: PMapModel, coordinator: PCoordinator) {
@@ -30,11 +30,19 @@ class MapViewModel: PMapViewModel {
     func viewDidLoad() {
         model.tweets.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { [weak self] tweets in
             self?.tweets.onNext(tweets)
-        }, onError: { [weak self] error in
+        }).disposed(by: disposeBag)
+        
+        model.presentableError.subscribe(onNext: { [weak self] error in
             self?.coordinator.handle(error: error)
         }).disposed(by: disposeBag)
         
+        isLoggedIn.onNext(coordinator.isLoggedIn)
+        
         model.start()
+    }
+    
+    func viewWillAppear() {
+        isLoggedIn.onNext(coordinator.isLoggedIn)
     }
     
     func didTapDetails(tweet: Tweet) {
@@ -48,5 +56,16 @@ class MapViewModel: PMapViewModel {
     func didTapSearch() {
         coordinator.didTapSearch()
     }
-
+    
+    func didTapLogout() {
+        coordinator.didTapLogout { [unowned self] isLoggedOut in
+            self.isLoggedIn.onNext(!isLoggedOut)
+        }
+    }
+    
+    func didTapLogin() {
+        coordinator.didTapLogin { [unowned self] isLoggedIn in
+            self.isLoggedIn.onNext(isLoggedIn)
+        }
+    }
 }

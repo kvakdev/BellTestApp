@@ -23,8 +23,15 @@ class LoginViewController: UIViewController {
         
         setup()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        loginButton.layer.cornerRadius = 8
+        loginButton.layer.masksToBounds = true
+    }
 }
-
+//0 171 227
 private extension LoginViewController {
     func setup() {
         self.navigationController?.setNavigationBarHidden(true, animated: false)

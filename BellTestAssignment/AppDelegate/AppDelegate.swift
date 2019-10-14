@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window = UIWindow(frame: UIScreen.main.bounds)
 
         let nav = UINavigationController()
-        let coordinator = MainCoordinator(nav)
+        let coordinator = AppCoordinator(nav)
         mainCoordinator = coordinator
 
         if !TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() {

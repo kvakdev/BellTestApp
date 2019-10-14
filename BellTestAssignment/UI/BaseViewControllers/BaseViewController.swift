@@ -18,9 +18,13 @@ protocol BaseCoordinator {
 }
 
 protocol PCoordinator: BaseCoordinator {
+    var isLoggedIn: Bool { get }
+    
     func didSelect(_ tweet: TWTRTweet)
     func didSelect(_ tweet: Tweet)
     func didTapSearch()
+    func didTapLogout(completion: @escaping (Bool) -> Void)
+    func didTapLogin(completion: @escaping (Bool) -> Void)
     
     func handleSuccess(message: String)
     func handle(error: Error?)
@@ -28,6 +32,12 @@ protocol PCoordinator: BaseCoordinator {
 
 protocol PViewModel {
     func viewDidLoad()
+    func viewWillAppear()
+}
+
+extension PViewModel {
+    func viewDidLoad() {}
+    func viewWillAppear() {}
 }
 
 class BaseVC: UIViewController {
@@ -44,6 +54,12 @@ class BaseVC: UIViewController {
         
         guard let vm = vModel else { fatalError("view model must be set") }
         vm.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        vModel.viewWillAppear()
     }
 }
 

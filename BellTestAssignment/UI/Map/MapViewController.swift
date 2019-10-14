@@ -14,10 +14,13 @@ import CoreLocation
 protocol PMapViewModel: PViewModel {
     var tweets: PublishSubject<[Tweet]> { get }
     var location: PublishSubject<CLLocation> { get }
+    var isLoggedIn: PublishSubject<Bool> { get }
     
     func didTapDetails(tweet: Tweet)
     func didChangeRadius(_ radius: Int)
     func didTapSearch()
+    func didTapLogout()
+    func didTapLogin()
 }
 
 class MapViewController: BaseVC {
@@ -32,13 +35,12 @@ class MapViewController: BaseVC {
     private var _radiusKm: Int = 5
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        
         setupNavigationBar()
         setupMapView()
         setupSlider()
         setupCallbacks()
+        
+        super.viewDidLoad()
     }
     
     deinit {
@@ -50,6 +52,21 @@ class MapViewController: BaseVC {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchBtn))
         updateTitle()
+    }
+    
+    private func makeLeftBarButton(_ isLoggedIn: Bool) {
+        let title = isLoggedIn ? "Logout" : "Login"
+        let selector: Selector = isLoggedIn ? #selector(handleLogoutBtn) : #selector(handleLoginBtn)
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
+    }
+    
+    @objc private func handleLoginBtn() {
+        viewModel.didTapLogin()
+    }
+    
+    @objc private func handleLogoutBtn() {
+        viewModel.didTapLogout()
     }
     
     @objc private func handleSearchBtn() {
@@ -89,6 +106,10 @@ class MapViewController: BaseVC {
             let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
             let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
             self._mapView.setRegion(coordinateRegion, animated: true)
+        }).disposed(by: disposeBag)
+        
+        self.viewModel.isLoggedIn.subscribe(onNext: { isLoggedIn in
+            self.makeLeftBarButton(isLoggedIn)
         }).disposed(by: disposeBag)
     }
 }

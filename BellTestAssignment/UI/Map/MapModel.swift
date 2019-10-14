@@ -14,6 +14,7 @@ protocol PMapModel {
     var currentRadius: Int { get set }
     var tweets: PublishSubject<[Tweet]> { get }
     var location: PublishSubject<CLLocation> { get }
+    var presentableError: PublishSubject<Error> { get }
 
     func start()
 }
@@ -21,6 +22,7 @@ protocol PMapModel {
 class MapModel: PMapModel {
     var tweets: PublishSubject<[Tweet]> = .init()
     var location: PublishSubject<CLLocation> = .init()
+    var presentableError: PublishSubject<Error> = .init()
     
     private let locationManager: PLocationManager
     private let searchService: PTweetAPIService
@@ -53,9 +55,9 @@ class MapModel: PMapModel {
     }
     
     private func load(with location: CLLocation, radius: Int) {
-        let query = RadiusQuery(radius: radius, location: location, count: 1000) { tweet in
+        let query = RadiusQuery(radius: radius, location: location, count: 1000, filter: { tweet in
              return tweet.place != nil
-        }
+        })
         
         self.searchService.searchTweets(query: query) { [weak self] result in
             switch result {
@@ -64,7 +66,7 @@ class MapModel: PMapModel {
                 self?.tweets.onNext(tweets)
             case .failure(let error):
                 if let error = error {
-                    self?.tweets.onError(error)
+                    self?.presentableError.onNext(error)
                 }
             }
         }

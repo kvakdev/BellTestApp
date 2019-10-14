@@ -29,7 +29,7 @@
 		9301B97D23546D5100E4FE93 /* SearchMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97C23546D5100E4FE93 /* SearchMetaData.swift */; };
 		9301B97F23546DC600E4FE93 /* RadiusSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97E23546DC600E4FE93 /* RadiusSearchResponse.swift */; };
 		93CE75AD2351CA0B00BDF877 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AC2351CA0B00BDF877 /* BaseViewController.swift */; };
-		93CE75B02351CB9A00BDF877 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */; };
+		93CE75B02351CB9A00BDF877 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AF2351CB9A00BDF877 /* AppCoordinator.swift */; };
 		93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75B22351D0FF00BDF877 /* Constants.swift */; };
 		93CE75BA2352011100BDF877 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		93CE75BD235203AF00BDF877 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75BC235203AF00BDF877 /* LocationManager.swift */; };
@@ -111,7 +111,7 @@
 		9301B97C23546D5100E4FE93 /* SearchMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetaData.swift; sourceTree = "<group>"; };
 		9301B97E23546DC600E4FE93 /* RadiusSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSearchResponse.swift; sourceTree = "<group>"; };
 		93CE75AC2351CA0B00BDF877 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		93CE75AF2351CB9A00BDF877 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		93CE75B22351D0FF00BDF877 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		93CE75BC235203AF00BDF877 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		93CE75BE235207D900BDF877 /* TweetSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetSearchService.swift; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		93CE75D12352733700BDF877 /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
 		93EBDB7E235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TWTRAPIClient+PTwitterClient.swift"; sourceTree = "<group>"; };
 		93EBDB812354779000CDEE65 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
-		93FED1882351B3AC0022D610 /* BellTestAssignment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BellTestAssignment.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		93FED1882351B3AC0022D610 /* Bell Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FED18B2351B3AC0022D610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93FED1942351B3AE0022D610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		93FED1972351B3AE0022D610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -247,7 +247,7 @@
 		93CE75AE2351CB8B00BDF877 /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
-				93CE75AF2351CB9A00BDF877 /* MainCoordinator.swift */,
+				93CE75AF2351CB9A00BDF877 /* AppCoordinator.swift */,
 				9301B96D235398C700E4FE93 /* BLLoginCoordinator.swift */,
 			);
 			path = Coordinators;
@@ -355,7 +355,7 @@
 		93FED1892351B3AC0022D610 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				93FED1882351B3AC0022D610 /* BellTestAssignment.app */,
+				93FED1882351B3AC0022D610 /* Bell Test App.app */,
 				93FED19E2351B3AE0022D610 /* BellTestAssignmentTests.xctest */,
 				93FED1A92351B3AE0022D610 /* BellTestAssignmentUITests.xctest */,
 			);
@@ -466,7 +466,7 @@
 			);
 			name = BellTestAssignment;
 			productName = BellTestAssignment;
-			productReference = 93FED1882351B3AC0022D610 /* BellTestAssignment.app */;
+			productReference = 93FED1882351B3AC0022D610 /* Bell Test App.app */;
 			productType = "com.apple.product-type.application";
 		};
 		93FED19D2351B3AE0022D610 /* BellTestAssignmentTests */ = {
@@ -713,7 +713,7 @@
 				93CE75D02352623C00BDF877 /* DetailModel.swift in Sources */,
 				93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */,
 				93EBDB822354779000CDEE65 /* Response.swift in Sources */,
-				93CE75B02351CB9A00BDF877 /* MainCoordinator.swift in Sources */,
+				93CE75B02351CB9A00BDF877 /* AppCoordinator.swift in Sources */,
 				93FED1C82351BF1F0022D610 /* MapModel.swift in Sources */,
 				9301B96C2353673B00E4FE93 /* String+Ext.swift in Sources */,
 				93CE75D22352733700BDF877 /* UIImageView+URL.swift in Sources */,
@@ -834,7 +834,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -888,7 +888,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -905,7 +905,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 685A9976ZB;
+				DEVELOPMENT_TEAM = K9U45N8FBN;
 				INFOPLIST_FILE = BellTestAssignment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -913,7 +913,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kvakTest.BellTestAssignmentp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Bell Test App";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -934,7 +934,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = kvakTest.BellTestAssignment;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Bell Test App";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

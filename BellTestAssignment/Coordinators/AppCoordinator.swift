@@ -11,13 +11,18 @@ import TwitterKit
 
 class BaseCoordinatorClass: NSObject {}
 
-class MainCoordinator: BaseCoordinatorClass, PCoordinator {
+class AppCoordinator: BaseCoordinatorClass, PCoordinator {
+    var isLoggedIn: Bool {
+        return twitter.sessionStore.session() != nil
+    }
+    
     var currentViewController: UIViewController? {
         return navigationController.viewControllers.last
     }
     private var _children: [BaseCoordinatorClass] = []
     private let navigationController: UINavigationController
     private var client = TWTRAPIClient.withCurrentUser()
+    private let twitter = TWTRTwitter.sharedInstance()
     
     init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -101,5 +106,26 @@ class MainCoordinator: BaseCoordinatorClass, PCoordinator {
         vc.set(vModel: viewModel)
         
         navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func didTapLogout(completion: @escaping (Bool) -> Void) {
+        let alert = UIAlertController(title: nil, message: "Please confirm?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Logout", style: .cancel, handler: { _ in
+            if let userId = self.twitter.sessionStore.session()?.userID {
+                self.twitter.sessionStore.logOutUserID(userId)
+                completion(true)
+            }
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        
+        currentViewController?.present(alert, animated: true, completion: nil)
+    }
+    
+    func didTapLogin(completion: @escaping (Bool) -> Void) {
+        twitter.logIn { session, error in
+            self.handle(error: error)
+            completion(session != nil)
+        }
     }
 }
