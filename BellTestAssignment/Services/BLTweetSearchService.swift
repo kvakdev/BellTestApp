@@ -62,7 +62,7 @@ protocol PTweetAPIService {
     func searchTweets(radius: Int, location: CLLocation, count: Int, completion: @escaping (AsyncResult<[BLTweet]>) -> Void, filter: ((BLTweet) -> Bool)?)
     func querySearchTweets(query: String, count: Int, completion: @escaping (AsyncResult<[TWTRTweet]>) -> Void)
     func fetchTweet(id: String, completion: @escaping (AsyncResult<TWTRTweet>) -> Void)
-    func retweet(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?)
+    func retweet(tweetNumId: String, completion: ((AsyncResult<Bool>) -> Void)?)
     func like(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?)
     func isLoggedIn() -> Bool
 }
@@ -146,12 +146,15 @@ class BLTweetSearchService: NSObject, PTweetAPIService {
             completion(.success(tweet))
         }
     }
+    
     func like(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?) {
-        let params = [
-            "id" : tweetId
-        ]
+        let params = ["id" : tweetId]
         
-        let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue, urlString: Endpoints.like.string, parameters: params, error: nil)
+        let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue,
+                                     urlString: Endpoints.like.string,
+                                     parameters: params,
+                                     error: nil)
+        
         _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
             guard self?.isValid(error: error, data: data, completion: completion) ?? false else { return }
 //            debugPrint(data!.responseString)
@@ -159,15 +162,19 @@ class BLTweetSearchService: NSObject, PTweetAPIService {
         }
     }
     
-    func retweet(tweetId: String, completion: ((AsyncResult<Bool>) -> Void)?) {
-        let params = [
-            "tweet_id" : tweetId
-        ]
+    func retweet(tweetNumId: String, completion: ((AsyncResult<Bool>) -> Void)?) {
+        let params = ["id" : tweetNumId]
+        let urlString = String(format: Endpoints.retweet.string, tweetNumId)
         
-        let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue, urlString: Endpoints.postedTweet.string, parameters: params, error: nil)
+        let req = _client.urlRequest(withMethod: HTTPMethod.post.rawValue,
+                                     urlString: urlString,
+                                     parameters: params,
+                                     error: nil)
+        
         _client.sendTwitterRequest(req) { [weak self] (resp, data, error) in
             guard self?.isValid(error: error, data: data, completion: completion) ?? false else { return }
 //            debugPrint(data!.responseString)
+            completion?(.success(true))
         }
     }
     
@@ -193,7 +200,7 @@ extension NSError {
 private extension BLTweetSearchService {
     enum Endpoints: String {
         case search = "search/tweets.json"
-        case postedTweet
+        case retweet = "statuses/retweet/%@.json"
         case like = "favorites/create.json"
         
         var string: String {

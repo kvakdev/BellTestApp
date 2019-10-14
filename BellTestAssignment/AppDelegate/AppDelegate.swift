@@ -12,29 +12,39 @@ import TwitterKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
+    var mainCoordinator: BaseCoordinator?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+        TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.apiKey, consumerSecret: Constants.apiSecret)
+
+            window = UIWindow(frame: UIScreen.main.bounds)
+
+        let nav = UINavigationController()
+        let coordinator = BLMainCoordinator(nav)
+        mainCoordinator = coordinator
+
+        if !TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() {
+            let loginCoordinator = BLLoginCoordinator(parent: coordinator, navigationController: nav)
+            coordinator.addChild(loginCoordinator)
+            loginCoordinator.start()
+        } else {
+            coordinator.start()
+        }
+
+        window?.rootViewController = nav
+        window?.makeKeyAndVisible()
+
         return true
-    }
-
-    // MARK: UISceneSession Lifecycle
-
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
-    }
+         return TWTRTwitter.sharedInstance().application(app, open: url, options: options)
+     }
+     
     
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         return TWTRTwitter.sharedInstance().application(application, open: url)
     }
-    
 }
 

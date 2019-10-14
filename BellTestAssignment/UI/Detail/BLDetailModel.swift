@@ -15,8 +15,8 @@ protocol PDetailModel {
     
     func loadDetails()
     func isLoggedIn() -> Bool
-    func retweet()
-    func like()
+    func retweet(completion: ((AsyncResult<Bool>) -> Void)?)
+    func like(completion: ((AsyncResult<Bool>) -> Void)?)
 }
 
 class BLDetailModel: PDetailModel {
@@ -47,15 +47,15 @@ class BLDetailModel: PDetailModel {
         return _service.isLoggedIn()
     }
     
-    func retweet() {
-        _service.retweet(tweetId: _tweetId) { result in
-            debugPrint(result)
+    func retweet(completion: ((AsyncResult<Bool>) -> Void)?) {
+        _service.retweet(tweetNumId: _tweetId) { result in
+            completion?(result)
         }
     }
     
-    func like() {
+    func like(completion: ((AsyncResult<Bool>) -> Void)?) {
         _service.like(tweetId: _tweetId) { result in
-            debugPrint(result)
+            completion?(result)
         }
     }
 }

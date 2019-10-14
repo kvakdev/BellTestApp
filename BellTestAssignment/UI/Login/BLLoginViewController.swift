@@ -45,7 +45,7 @@ class BLLoginViewController: UIViewController {
     }
     
     private func login() {
-        TWTRTwitter.sharedInstance().logIn { [unowned self] (session, error) in
+        TWTRTwitter.sharedInstance().logIn { (session, error) in
             if session != nil {
                 self._coordinator?.didLogin()
             } else {

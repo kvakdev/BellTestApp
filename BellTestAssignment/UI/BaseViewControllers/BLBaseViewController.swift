@@ -22,6 +22,7 @@ protocol PCoordinator: BaseCoordinator {
     func didSelect(_ tweet: BLTweet)
     func didTapSearch()
     
+    func handleSuccess(message: String)
     func handle(error: Error?)
 }
 
@@ -29,7 +30,7 @@ protocol PViewModel {
     func viewDidLoad()
 }
 
-class BLBaseVC: UIViewController, RootViewModel {
+class BLBaseVC: UIViewController {
     var vModel: PViewModel!
     
     let disposeBag = DisposeBag()
@@ -52,11 +53,9 @@ protocol RootViewModel: class {
     
     var vModel: ViewModelType! { get }
 }
-//
-//extension RootViewModel where Self: BLBaseVC {
-//
-//    var vModel: ViewModelType {
-//        return self.vModel
-//    }
-//
-//}
+
+extension RootViewModel where Self: BLBaseVC {
+    var vModel: ViewModelType {
+        return self.vModel as! ViewModelType
+    }
+}

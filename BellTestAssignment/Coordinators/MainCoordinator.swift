@@ -67,6 +67,13 @@ class BLMainCoordinator: BaseCoordinatorClass, PCoordinator {
         currentViewController?.present(alert, animated: true, completion: nil)
     }
     
+    func handleSuccess(message: String) {
+        let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        currentViewController?.present(alert, animated: true, completion: nil)
+    }
+    
     func didSelect(_ tweet: BLTweet) {
         pushDetailViewController(tweetId: tweet.id)
     }

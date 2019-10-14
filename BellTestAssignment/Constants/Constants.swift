@@ -10,8 +10,8 @@ import Foundation
 
 enum Constants {
     //keys
-    static let apiKey       = "oBEDOXNkyPWrzMEURyQ2ZhghF"
-    static let apiSecret    = "wPnPE6dtIKCquZU2GZO0mlWb0Mwoj85efokdoZrmOOAv1HxDtD"
+    static let apiKey       = "B3hResxcYQcUQJTPCTCIp59Xh"
+    static let apiSecret    = "9ybXIuLVMZfI56LSMMB5xQhJwXY47N3NykXLuIt21CFKFCn3JZ"
     
     enum Url {
         static let base = "https://api.twitter.com/1.1/"

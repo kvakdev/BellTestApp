@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -9,9 +10,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BLDetailViewController" customModule="BellTestAssignment" customModuleProvider="target">
             <connections>
-                <outlet property="_btnsContainer" destination="8F1-o6-mmO" id="mz5-EB-qzI"/>
-                <outlet property="_likeButton" destination="zgh-V5-DFq" id="zg0-fR-CvB"/>
-                <outlet property="_retweetButton" destination="hp6-Ju-gUS" id="Za9-d8-IKX"/>
+                <outlet property="btnsContainer" destination="8F1-o6-mmO" id="CUD-iL-TjA"/>
+                <outlet property="likeButton" destination="zgh-V5-DFq" id="JDV-ZH-hxN"/>
+                <outlet property="retweetButton" destination="hp6-Ju-gUS" id="OUS-pE-93D"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
