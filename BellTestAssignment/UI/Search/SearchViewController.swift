@@ -1,5 +1,5 @@
 //
-//  BLSearchViewController.swift
+//  SearchViewController.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/13/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BLSearchViewController: BLBaseVC {
+class SearchViewController: BaseVC {
     private enum SearchType: String {
         case keyword = "Keyword"
         case hashtag = "Hashtag"

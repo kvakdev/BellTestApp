@@ -1,5 +1,5 @@
 //
-//  BLDetailModel.swift
+//  DetailModel.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -19,7 +19,7 @@ protocol PDetailModel {
     func like(completion: ((AsyncResult<Bool>) -> Void)?)
 }
 
-class BLDetailModel: PDetailModel {
+class DetailModel: PDetailModel {
     var tweet: PublishSubject<TWTRTweet> = .init()
     
     private let _tweetId: String

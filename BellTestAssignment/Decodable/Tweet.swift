@@ -1,5 +1,5 @@
 //
-//  BLTweet.swift
+//  Tweet.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -8,12 +8,12 @@
 
 import Foundation
 
-class BLTweet: NSObject, Decodable {
+class Tweet: NSObject, Decodable {
     let id: String
     let text: String
-    let author: BLAuthor
+    let author: Author
     let profileImageUrlHttps: String?
-    let place: BLPlace?
+    let place: Place?
 
     enum CodingKeys: String, CodingKey {
         case id = "id_str"
@@ -24,7 +24,7 @@ class BLTweet: NSObject, Decodable {
     }
 }
 
-class BLAuthor: NSObject, Decodable {
+class Author: NSObject, Decodable {
     let screenName: String
     
     enum CodingKeys: String, CodingKey {

@@ -1,5 +1,5 @@
 //
-//  BLSearchViewModel.swift
+//  SearchViewModel.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/13/19.
@@ -17,7 +17,7 @@ protocol PSearchViewModel: PViewModel {
     func didChangeQuery(_ query: String)
 }
 
-class BLSearchViewModel: PSearchViewModel {
+class SearchViewModel: PSearchViewModel {
     var isLoaderVisible: PublishSubject<Bool> = .init()
     
     private var _model: PSearchModel
@@ -27,7 +27,7 @@ class BLSearchViewModel: PSearchViewModel {
     var dataSource: PSearchDataSource {
         return _dataSource
     }
-    private var _dataSource: BLSearchDataSource = BLSearchDataSource()
+    private var _dataSource: SearchDataSource = SearchDataSource()
     
     init(_ model: PSearchModel, coordinator: PCoordinator) {
         _model = model

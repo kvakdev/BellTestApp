@@ -1,5 +1,5 @@
 //
-//  BLMapViewController.swift
+//  MapViewController.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -12,15 +12,15 @@ import RxSwift
 import CoreLocation
 
 protocol PMapViewModel: PViewModel {
-    var tweets: PublishSubject<[BLTweet]> { get }
+    var tweets: PublishSubject<[Tweet]> { get }
     var location: PublishSubject<CLLocation> { get }
     
-    func didTapDetails(tweet: BLTweet)
+    func didTapDetails(tweet: Tweet)
     func didChangeRadius(_ radius: Int)
     func didTapSearch()
 }
 
-class BLMapViewController: BLBaseVC {
+class MapViewController: BaseVC {
     private var viewModel: PMapViewModel {
         return self.vModel as! PMapViewModel
     }
@@ -34,14 +34,11 @@ class BLMapViewController: BLBaseVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
         
+        setupNavigationBar()
         setupMapView()
         setupSlider()
         setupCallbacks()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchBtn))
-        updateTitle()
-        _radiusSlider.setValue(Float(_radiusKm), animated: false)
     }
     
     deinit {
@@ -49,6 +46,12 @@ class BLMapViewController: BLBaseVC {
     }
     
     // MARK: - Private funcs
+    private func setupNavigationBar() {
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchBtn))
+        updateTitle()
+    }
+    
     @objc private func handleSearchBtn() {
         viewModel.didTapSearch()
     }
@@ -71,6 +74,7 @@ class BLMapViewController: BLBaseVC {
     private func setupSlider() {
         _radiusSlider.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
         _radiusSlider.isContinuous = false
+        _radiusSlider.setValue(Float(_radiusKm), animated: false)
     }
     
     private func setupCallbacks() {
@@ -89,10 +93,10 @@ class BLMapViewController: BLBaseVC {
     }
 }
 
-extension BLMapViewController: MKMapViewDelegate {
+extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        guard let annotation = annotation as? BLTweetAnnotation else { return nil }
+        guard let annotation = annotation as? TweetAnnotation else { return nil }
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
         
@@ -111,7 +115,7 @@ extension BLMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        if let note = view.annotation as? BLTweetAnnotation {
+        if let note = view.annotation as? TweetAnnotation {
             debugPrint("tapped \(note.tweet.author.screenName)")
             
         }
@@ -119,9 +123,7 @@ extension BLMapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        debugPrint("tapped \(view.tag)")
-        
-        if let tweetAnnotation = view.annotation as? BLTweetAnnotation {
+        if let tweetAnnotation = view.annotation as? TweetAnnotation {
             let tweet = tweetAnnotation.tweet
             viewModel.didTapDetails(tweet: tweet)
         }

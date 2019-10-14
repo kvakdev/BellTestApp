@@ -1,5 +1,5 @@
 //
-//  BLDetailViewController.swift
+//  DetailViewController.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -9,7 +9,7 @@
 import UIKit
 import TwitterKit
 
-class BLDetailViewController: BLBaseVC {
+class DetailViewController: BaseVC {
     private var viewModel: PDetailViewModel {
         return self.vModel as! PDetailViewModel
     }
@@ -83,7 +83,7 @@ class BLDetailViewController: BLBaseVC {
     }
 }
 
-extension BLDetailViewController: TWTRTweetViewDelegate {
+extension DetailViewController: TWTRTweetViewDelegate {
     func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
         print("Tweet tapped doign nothing")
     }

@@ -1,5 +1,5 @@
 //
-//  BLLoginCoordinator.swift
+//  LoginCoordinator.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/13/19.
@@ -14,7 +14,7 @@ protocol PLoginCoordinator: BaseCoordinator {
     func didTapSkip()
 }
 
-class BLLoginCoordinator: BaseCoordinatorClass, PLoginCoordinator {
+class LoginCoordinator: BaseCoordinatorClass, PLoginCoordinator {
     private let _parent: PCoordinator
     private let _navigationVC: UINavigationController
     
@@ -26,7 +26,7 @@ class BLLoginCoordinator: BaseCoordinatorClass, PLoginCoordinator {
     }
     
     func start() {
-        let vc = BLLoginViewController()
+        let vc = LoginViewController()
         vc.set(coordinator: self)
         _navigationVC.setViewControllers([vc], animated: false)
         loginVC = vc

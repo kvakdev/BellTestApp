@@ -1,5 +1,5 @@
 //
-//  BLMapModel.swift
+//  MapModel.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -12,18 +12,18 @@ import CoreLocation
 
 protocol PMapModel {
     var currentRadius: Int { get set }
-    var tweets: PublishSubject<[BLTweet]> { get }
+    var tweets: PublishSubject<[Tweet]> { get }
     var location: PublishSubject<CLLocation> { get }
 
     func start()
 }
 
-class BLMapModel: PMapModel {
-    var tweets: PublishSubject<[BLTweet]> = .init()
+class MapModel: PMapModel {
+    var tweets: PublishSubject<[Tweet]> = .init()
     var location: PublishSubject<CLLocation> = .init()
     
     private let _locationManager: PLocationManager
-    private let _searchService: BLTweetSearchService
+    private let _searchService: TweetSearchService
     private var _lastLocation: CLLocation?
     
     var currentRadius: Int = 5 {
@@ -36,7 +36,7 @@ class BLMapModel: PMapModel {
     
     private let _disposeBag = DisposeBag()
     
-    init(locationManager: PLocationManager, searchService: BLTweetSearchService) {
+    init(locationManager: PLocationManager, searchService: TweetSearchService) {
         _locationManager = locationManager
         _searchService = searchService
     }

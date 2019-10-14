@@ -1,5 +1,5 @@
 //
-//  BLPlace.swift
+//  Place.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -10,9 +10,9 @@ import Foundation
 
 import Foundation
 
-// MARK: - BLPlace
-struct BLPlace: Decodable {
-    let boundingBox: BLBoundingBox
+// MARK: - Place
+struct Place: Decodable {
+    let boundingBox: BoundingBox
     let country, countryCode, fullName, id: String
     let name, placeType: String
     let url: String
@@ -29,7 +29,7 @@ struct BLPlace: Decodable {
 }
 
 // MARK: - BoundingBox
-struct BLBoundingBox: Codable {
+struct BoundingBox: Codable {
     let coordinates: [[[Double]]]
     let type: String
 }

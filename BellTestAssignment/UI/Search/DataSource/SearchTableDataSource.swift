@@ -1,5 +1,5 @@
 //
-//  BLSearchTableDataSource.swift
+//  SearchTableDataSource.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/13/19.
@@ -15,7 +15,7 @@ protocol PSearchDataSource: UITableViewDataSource, UITableViewDelegate {
     func set(tweets: [TWTRTweet])
 }
 
-class BLSearchDataSource: NSObject, PSearchDataSource {
+class SearchDataSource: NSObject, PSearchDataSource {
     var selectedTweet: PublishSubject<TWTRTweet> = .init()
     
     private var tweets: [TWTRTweet] = []
@@ -48,7 +48,7 @@ class BLSearchDataSource: NSObject, PSearchDataSource {
     }
 }
 
-extension BLSearchDataSource: TWTRTweetViewDelegate {
+extension SearchDataSource: TWTRTweetViewDelegate {
     func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
         self.selectedTweet.onNext(tweet)
     }

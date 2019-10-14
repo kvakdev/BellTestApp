@@ -1,5 +1,5 @@
 //
-//  BLDetailViewModel.swift
+//  DetailViewModel.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -18,7 +18,7 @@ protocol PDetailViewModel: PViewModel {
     func likeTapped()
 }
 
-class BLDetailViewModel: PDetailViewModel {
+class DetailViewModel: PDetailViewModel {
     var isLoaderVisible: PublishSubject<Bool> = .init()
     var tweet: PublishSubject<TWTRTweet> = .init()
     

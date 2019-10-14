@@ -1,5 +1,5 @@
 //
-//  BLSearchModel.swift
+//  SearchModel.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/13/19.
@@ -13,7 +13,7 @@ protocol PSearchModel {
     func search(query: String, completion: ((AsyncResult<[TWTRTweet]>) -> Void)?)
 }
 
-class BLSearchModel: PSearchModel {
+class SearchModel: PSearchModel {
     private let _searchService: PTweetAPIService
     private var _currentQuery: String = ""
     

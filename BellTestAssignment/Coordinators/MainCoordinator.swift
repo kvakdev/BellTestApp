@@ -11,7 +11,7 @@ import TwitterKit
 
 class BaseCoordinatorClass: NSObject {}
 
-class BLMainCoordinator: BaseCoordinatorClass, PCoordinator {
+class MainCoordinator: BaseCoordinatorClass, PCoordinator {
     var currentViewController: UIViewController? {
         return navigationController.viewControllers.last
     }
@@ -47,12 +47,12 @@ class BLMainCoordinator: BaseCoordinatorClass, PCoordinator {
     }
     
     private func makeMapView() -> UIViewController {
-        let vc = BLMapViewController()
-        let location = BLLocationManager.shared
-        let search = BLTweetSearchService(client: client)
-        let model = BLMapModel(locationManager: location, searchService: search)
+        let vc = MapViewController()
+        let location = LocationManager.shared
+        let search = TweetSearchService(client: client)
+        let model = MapModel(locationManager: location, searchService: search)
         
-        let viewModel = BLMapViewModel(model, coordinator: self)
+        let viewModel = MapViewModel(model, coordinator: self)
         vc.set(vModel: viewModel)
         
         return vc
@@ -74,7 +74,7 @@ class BLMainCoordinator: BaseCoordinatorClass, PCoordinator {
         currentViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func didSelect(_ tweet: BLTweet) {
+    func didSelect(_ tweet: Tweet) {
         pushDetailViewController(tweetId: tweet.id)
     }
     
@@ -83,10 +83,10 @@ class BLMainCoordinator: BaseCoordinatorClass, PCoordinator {
     }
     
     private func pushDetailViewController(tweetId: String) {
-        let vc = BLDetailViewController()
-        let service = BLTweetSearchService(client: client)
-        let model = BLDetailModel(tweetId: tweetId, searchService: service)
-        let viewModel = BLDetailViewModel(model, coordinator: self, twitter: TWTRTwitter.sharedInstance())
+        let vc = DetailViewController()
+        let service = TweetSearchService(client: client)
+        let model = DetailModel(tweetId: tweetId, searchService: service)
+        let viewModel = DetailViewModel(model, coordinator: self, twitter: TWTRTwitter.sharedInstance())
         
         vc.set(vModel: viewModel)
         
@@ -94,9 +94,9 @@ class BLMainCoordinator: BaseCoordinatorClass, PCoordinator {
     }
     
     func didTapSearch() {
-        let vc = BLSearchViewController()
-        let model = BLSearchModel(BLTweetSearchService(client: client))
-        let viewModel = BLSearchViewModel(model, coordinator: self)
+        let vc = SearchViewController()
+        let model = SearchModel(TweetSearchService(client: client))
+        let viewModel = SearchViewModel(model, coordinator: self)
         vc.navigationItem.title = "Search"
         vc.set(vModel: viewModel)
         

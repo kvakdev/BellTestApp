@@ -1,5 +1,5 @@
 //
-//  BLBaseViewController.swift
+//  BaseViewController.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -19,7 +19,7 @@ protocol BaseCoordinator {
 
 protocol PCoordinator: BaseCoordinator {
     func didSelect(_ tweet: TWTRTweet)
-    func didSelect(_ tweet: BLTweet)
+    func didSelect(_ tweet: Tweet)
     func didTapSearch()
     
     func handleSuccess(message: String)
@@ -30,7 +30,7 @@ protocol PViewModel {
     func viewDidLoad()
 }
 
-class BLBaseVC: UIViewController {
+class BaseVC: UIViewController {
     var vModel: PViewModel!
     
     let disposeBag = DisposeBag()
@@ -54,7 +54,7 @@ protocol RootViewModel: class {
     var vModel: ViewModelType! { get }
 }
 
-extension RootViewModel where Self: BLBaseVC {
+extension RootViewModel where Self: BaseVC {
     var vModel: ViewModelType {
         return self.vModel as! ViewModelType
     }

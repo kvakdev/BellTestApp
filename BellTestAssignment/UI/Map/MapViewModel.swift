@@ -1,5 +1,5 @@
 //
-//  BLMapViewModel.swift
+//  MapViewModel.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -11,8 +11,8 @@ import RxSwift
 import CoreLocation
 import TwitterKit
 
-class BLMapViewModel: PMapViewModel {
-    var tweets: PublishSubject<[BLTweet]> = .init()
+class MapViewModel: PMapViewModel {
+    var tweets: PublishSubject<[Tweet]> = .init()
     var location: PublishSubject<CLLocation> {
         return _model.location
     }
@@ -37,7 +37,7 @@ class BLMapViewModel: PMapViewModel {
         _model.start()
     }
     
-    func didTapDetails(tweet: BLTweet) {
+    func didTapDetails(tweet: Tweet) {
         self._coordinator.didSelect(tweet)
     }
     

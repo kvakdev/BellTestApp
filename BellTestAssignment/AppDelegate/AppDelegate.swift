@@ -21,11 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window = UIWindow(frame: UIScreen.main.bounds)
 
         let nav = UINavigationController()
-        let coordinator = BLMainCoordinator(nav)
+        let coordinator = MainCoordinator(nav)
         mainCoordinator = coordinator
 
         if !TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() {
-            let loginCoordinator = BLLoginCoordinator(parent: coordinator, navigationController: nav)
+            let loginCoordinator = LoginCoordinator(parent: coordinator, navigationController: nav)
             coordinator.addChild(loginCoordinator)
             loginCoordinator.start()
         } else {

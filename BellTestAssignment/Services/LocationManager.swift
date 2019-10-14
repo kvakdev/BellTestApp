@@ -1,5 +1,5 @@
 //
-//  BLLocationManager.swift
+//  LocationManager.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/12/19.
@@ -14,8 +14,8 @@ protocol PLocationManager {
     var currentLocation: PublishSubject<CLLocation> { get }
 }
 
-class BLLocationManager: NSObject, PLocationManager {
-    static let shared = BLLocationManager()
+class LocationManager: NSObject, PLocationManager {
+    static let shared = LocationManager()
     
     var currentLocation: PublishSubject<CLLocation> = .init()
     
@@ -46,7 +46,7 @@ class BLLocationManager: NSObject, PLocationManager {
     }
 }
 
-extension BLLocationManager: CLLocationManagerDelegate {
+extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let last = locations.last else { return }

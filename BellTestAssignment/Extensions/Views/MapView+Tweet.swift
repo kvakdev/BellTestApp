@@ -9,8 +9,8 @@
 import MapKit
 
 extension MKMapView {
-    func makePins(for tweets: [BLTweet]) {
-        let annotations = tweets.compactMap { BLTweetAnnotation(tweet: $0) }
+    func makePins(for tweets: [Tweet]) {
+        let annotations = tweets.compactMap { TweetAnnotation(tweet: $0) }
         addAnnotations(annotations)
         showAnnotations(annotations, animated: true)
     }
@@ -21,10 +21,10 @@ extension MKMapView {
     }
 }
 
-class BLTweetAnnotation: MKPointAnnotation {
-    let tweet: BLTweet
+class TweetAnnotation: MKPointAnnotation {
+    let tweet: Tweet
     
-    init?(tweet: BLTweet) {
+    init?(tweet: Tweet) {
         self.tweet = tweet
         guard let lat = tweet.place?.boundingBox.coordinates.first?.first?.last,
             let lon = tweet.place?.boundingBox.coordinates.first?.first?.first
