@@ -7,7 +7,6 @@
 //
 
 import XCTest
-//@testable import BellTestAssignment
 
 class BellTestAssignmentTests: XCTestCase {
 

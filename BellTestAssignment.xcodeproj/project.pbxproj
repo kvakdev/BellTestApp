@@ -19,7 +19,7 @@
 		9301B968235350F100E4FE93 /* TweetwCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B966235350F100E4FE93 /* TweetwCell.xib */; };
 		9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */; };
 		9301B96C2353673B00E4FE93 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96B2353673B00E4FE93 /* String+Ext.swift */; };
-		9301B96E235398C700E4FE93 /* BLLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96D235398C700E4FE93 /* BLLoginCoordinator.swift */; };
+		9301B96E235398C700E4FE93 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96D235398C700E4FE93 /* LoginCoordinator.swift */; };
 		9301B9722353994600E4FE93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B9702353994600E4FE93 /* LoginViewController.swift */; };
 		9301B9732353994600E4FE93 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B9712353994600E4FE93 /* LoginViewController.xib */; };
 		9301B97523546AD600E4FE93 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97423546AD600E4FE93 /* NSObject+ClassName.swift */; };
@@ -101,7 +101,7 @@
 		9301B966235350F100E4FE93 /* TweetwCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetwCell.xib; sourceTree = "<group>"; };
 		9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseId.swift"; sourceTree = "<group>"; };
 		9301B96B2353673B00E4FE93 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
-		9301B96D235398C700E4FE93 /* BLLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLLoginCoordinator.swift; sourceTree = "<group>"; };
+		9301B96D235398C700E4FE93 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		9301B9702353994600E4FE93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9301B9712353994600E4FE93 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		9301B97423546AD600E4FE93 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 			isa = PBXGroup;
 			children = (
 				93CE75AF2351CB9A00BDF877 /* AppCoordinator.swift */,
-				9301B96D235398C700E4FE93 /* BLLoginCoordinator.swift */,
+				9301B96D235398C700E4FE93 /* LoginCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -341,6 +341,14 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		93EBDB842354DE1700CDEE65 /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				93CE75AB2351C9EF00BDF877 /* BaseViewControllers */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
 		93FED17F2351B3AC0022D610 = {
 			isa = PBXGroup;
 			children = (
@@ -371,8 +379,9 @@
 				93CE75C023521D5100BDF877 /* Decodable */,
 				93CE75B42351D6AE00BDF877 /* Services */,
 				93CE75C52352265600BDF877 /* Extensions */,
+				93EBDB842354DE1700CDEE65 /* BaseClasses */,
 				93CE75AE2351CB8B00BDF877 /* Coordinators */,
-				93FED1BE2351BDA20022D610 /* UI */,
+				93FED1BE2351BDA20022D610 /* UIModules */,
 				93FED1992351B3AE0022D610 /* Info.plist */,
 				93FED1BB2351BD520022D610 /* SupportFiles */,
 				93FED1BD2351BD900022D610 /* AppDelegate */,
@@ -424,16 +433,15 @@
 			path = AppDelegate;
 			sourceTree = "<group>";
 		};
-		93FED1BE2351BDA20022D610 /* UI */ = {
+		93FED1BE2351BDA20022D610 /* UIModules */ = {
 			isa = PBXGroup;
 			children = (
 				9301B96F2353992C00E4FE93 /* Login */,
 				9301B9582353298800E4FE93 /* Search */,
-				93CE75AB2351C9EF00BDF877 /* BaseViewControllers */,
 				93FED1C02351BDC00022D610 /* Map */,
 				93CE75C82352608C00BDF877 /* Detail */,
 			);
-			path = UI;
+			path = UIModules;
 			sourceTree = "<group>";
 		};
 		93FED1C02351BDC00022D610 /* Map */ = {
@@ -728,7 +736,7 @@
 				93CE75AD2351CA0B00BDF877 /* BaseViewController.swift in Sources */,
 				93CE75BD235203AF00BDF877 /* LocationManager.swift in Sources */,
 				9301B97B23546D1F00E4FE93 /* NSError+CustomErrors.swift in Sources */,
-				9301B96E235398C700E4FE93 /* BLLoginCoordinator.swift in Sources */,
+				9301B96E235398C700E4FE93 /* LoginCoordinator.swift in Sources */,
 				9301B9602353338400E4FE93 /* SearchModel.swift in Sources */,
 				93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */,
 				9301B97923546CF400E4FE93 /* TWTRTweet+Parsing.swift in Sources */,
