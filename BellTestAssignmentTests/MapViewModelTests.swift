@@ -10,7 +10,6 @@ import XCTest
 import RxSwift
 import CoreLocation
 
-
 class MapViewModelTests: XCTestCase {
     private let disposeBag = DisposeBag()
     
@@ -35,14 +34,15 @@ class MapViewModelTests: XCTestCase {
         }).disposed(by: disposeBag)
         
         sut.viewDidLoad()
-        let firstPack = (1...11).compactMap { Tweet.anyTweet(with: $0) }
-        let secondPack = (12...lastId).compactMap { Tweet.anyTweet(with: $0) }
+
+        let firstPack = Tweet.tweets(with: (1...11))
+        let secondPack = Tweet.tweets(with: (12...lastId))
         
-        modelSpy.send(tweets: tweetsSent)
+        modelSpy.sendAcc(tweets: tweetsSent)
         tweetsSent.append(contentsOf: firstPack)
-        modelSpy.send(tweets: firstPack)
+        modelSpy.sendAcc(tweets: firstPack)
         tweetsSent.append(contentsOf: secondPack)
-        modelSpy.send(tweets: secondPack)
+        modelSpy.sendAcc(tweets: secondPack)
         
         wait(for: [exp], timeout: 5)
     }
@@ -52,18 +52,42 @@ class MapViewModelTests: XCTestCase {
         let (sut, modelSpy) = makeSUT()
         let exp = expectation(description: "waiting for load to complete")
         let capacity = sut.tweetCapacity
+        let maxCount = capacity * 2
         
         sut.tweets.subscribe(onNext: { tweets in
             //then
             XCTAssertTrue(tweets.count <= capacity)
             exp.fulfill()
         }).disposed(by: disposeBag)
+        
         //when
         sut.viewDidLoad()
+        modelSpy.sendAcc(tweets: Tweet.withCount(maxCount))
+        wait(for: [exp], timeout: 5)
+    }
+    
+    func test_timer_tiggersLoadWithIncrementedIds() {
+        //given
+        let (sut, modelSpy) = makeSUT()
+        sut.timerInterval = 0.5
         
-        let thirdPack = (1...300).compactMap { Tweet.anyTweet(with: $0) }
-        modelSpy.send(tweets: thirdPack)
+        let exp = expectation(description: "waiting for load to complete")
+        var lastTweet: Tweet = Tweet.anyTweet(with: 0)
+        var clicks = 0
+        sut.tweets.subscribe(onNext: { tweets in
+            let oldLastId = Int(lastTweet.id)!
+            let newLastId = Int(tweets.last!.id)!
+            lastTweet = tweets.last!
+            clicks += 1
+            //then
+            debugPrint("Click \(clicks) lastId = \(oldLastId) newFirst = \(newLastId)")
+            XCTAssertTrue(oldLastId < newLastId)
+            if clicks >= 5 { exp.fulfill() }
+        }).disposed(by: disposeBag)
         
+        //when
+        sut.viewDidLoad()
+        modelSpy.sendRegular(tweets: [Tweet.anyTweet(with: 1)])
         wait(for: [exp], timeout: 5)
     }
     
@@ -89,10 +113,22 @@ extension MapViewModelTests {
             startIsCalled = true
         }
         
-        func fetchAfter(id: String) {}
+        func fetchAfter(id: String) {
+            guard let intValue = Int(id) else { return }
+            
+            let start = intValue + 1
+            let finish = start + 10
+            
+            let tweets = Tweet.tweets(with: (start...finish))
+            self.accumulatableTweets.onNext(tweets)
+        }
         
-        func send(tweets: [Tweet]) {
+        func sendAcc(tweets: [Tweet]) {
             accumulatableTweets.onNext(tweets)
+        }
+        
+        func sendRegular(tweets: [Tweet]) {
+            self.tweets.onNext(tweets)
         }
     }
     
@@ -113,11 +149,19 @@ extension MapViewModelTests {
     }
 }
 
-extension Tweet {
+private extension Tweet {
     static func anyTweet(with id: Int) -> Tweet {
         let stringId = "\(id)"
         let author = Author(name: "any name")
         
         return Tweet(id: stringId, text: "anyText", author: author)
+    }
+    
+    static func tweets(with ids: ClosedRange<Int>) -> [Tweet] {
+        return ids.compactMap { anyTweet(with: $0) }
+    }
+    
+    static func withCount(_ count: Int) -> [Tweet] {
+        return tweets(with: 0...count)
     }
 }

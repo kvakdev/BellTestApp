@@ -31,6 +31,7 @@ public class MapViewModel: PMapViewModel {
         return model.location
     }
     public var tweetCapacity: Int = 100
+    public var timerInterval: TimeInterval = 60
     
     private var model: PMapModel
     private let coordinator: PCoordinator
@@ -46,8 +47,9 @@ public class MapViewModel: PMapViewModel {
     
     public func viewDidLoad() {
         model.tweets.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { [weak self] tweets in
-            self?.tweetAccumulator.append(contentsOf: tweets)
+            self?.tweetAccumulator = tweets
             self?.tweets.onNext(tweets)
+            self?.restartTimer()
         }).disposed(by: disposeBag)
         
         model.presentableError.subscribe(onNext: { [weak self] error in
@@ -95,8 +97,20 @@ public class MapViewModel: PMapViewModel {
         guard !tweets.isEmpty else { return }
         
         tweetAccumulator.append(contentsOf: tweets)
-        let result: Array = tweetAccumulator.suffix(tweetCapacity)
+        let result: Array = tweetAccumulator
+            .suffix(tweetCapacity)
+            .sorted { $0.sortIndex < $1.sortIndex }
+        
         self.tweetAccumulator = result
         self.tweets.onNext(result)
+    }
+    
+    private func restartTimer() {
+        timer?.invalidate()
+        
+        timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true, block: { timer in
+            guard let last = self.tweetAccumulator.last else { return }
+            self.model.fetchAfter(id: last.id)
+        })
     }
 }

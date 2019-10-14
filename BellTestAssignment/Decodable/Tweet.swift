@@ -14,7 +14,8 @@ public class Tweet: NSObject, Decodable {
     let author: Author
     let profileImageUrlHttps: String?
     let place: Place?
-
+    var sortIndex: Int { return Int(id) ?? 0 }
+    
     enum CodingKeys: String, CodingKey {
         case id = "id_str"
         case text

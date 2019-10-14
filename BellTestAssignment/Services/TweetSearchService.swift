@@ -24,6 +24,7 @@ struct RadiusQuery {
     let radius: Int
     let location: CLLocation
     let count: Int
+    let sinceId: String?
     let filter: ((Tweet) -> Bool)?
     
     func toParams() -> [String: String] {
@@ -35,6 +36,7 @@ struct RadiusQuery {
             "q" : "",
             "count" : "\(count)",
             "geocode" : geocode,
+            "since_id" : sinceId ?? "0",
             "result_type" : "recent"
         ]
     }

@@ -46,11 +46,26 @@ class MapModel: PMapModel {
     }
     
     func fetchAfter(id: String) {
+        guard let location = lastLocation else { return }
+        let query = RadiusQuery(radius: currentRadius, location: location, count: 100, sinceId: id, filter: { tweet in
+             return tweet.place != nil
+        })
         
+        self.searchService.searchTweets(query: query) { [weak self] result in
+            switch result {
+            case .success(let tweets):
+                print("Timer got \(tweets.count) filteredTweets")
+                self?.accumulatableTweets.onNext(tweets)
+            case .failure(let error):
+                if let error = error {
+                    self?.presentableError.onNext(error)
+                }
+            }
+        }
     }
     // MARK: Private methods
     private func load(with location: CLLocation, radius: Int) {
-        let query = RadiusQuery(radius: radius, location: location, count: 1000, filter: { tweet in
+        let query = RadiusQuery(radius: radius, location: location, count: 1000, sinceId: nil, filter: { tweet in
              return tweet.place != nil
         })
         

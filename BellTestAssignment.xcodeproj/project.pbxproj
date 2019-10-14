@@ -59,7 +59,6 @@
 		93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED18B2351B3AC0022D610 /* AppDelegate.swift */; };
 		93FED1952351B3AE0022D610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1942351B3AE0022D610 /* Assets.xcassets */; };
 		93FED1982351B3AE0022D610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1962351B3AE0022D610 /* LaunchScreen.storyboard */; };
-		93FED1A32351B3AE0022D610 /* BellTestAssignmentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1A22351B3AE0022D610 /* BellTestAssignmentTests.swift */; };
 		93FED1AE2351B3AE0022D610 /* BellTestAssignmentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1AD2351B3AE0022D610 /* BellTestAssignmentUITests.swift */; };
 		93FED1C32351BDF30022D610 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C12351BDF30022D610 /* MapViewController.swift */; };
 		93FED1C42351BDF30022D610 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1C22351BDF30022D610 /* MapViewController.xib */; };
@@ -149,7 +148,6 @@
 		93FED1972351B3AE0022D610 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		93FED1992351B3AE0022D610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93FED19E2351B3AE0022D610 /* BellTestAssignmentTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BellTestAssignmentTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		93FED1A22351B3AE0022D610 /* BellTestAssignmentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellTestAssignmentTests.swift; sourceTree = "<group>"; };
 		93FED1A42351B3AE0022D610 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93FED1A92351B3AE0022D610 /* BellTestAssignmentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BellTestAssignmentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FED1AD2351B3AE0022D610 /* BellTestAssignmentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BellTestAssignmentUITests.swift; sourceTree = "<group>"; };
@@ -438,7 +436,6 @@
 		93FED1A12351B3AE0022D610 /* BellTestAssignmentTests */ = {
 			isa = PBXGroup;
 			children = (
-				93FED1A22351B3AE0022D610 /* BellTestAssignmentTests.swift */,
 				93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */,
 				93FED1A42351B3AE0022D610 /* Info.plist */,
 			);
@@ -808,7 +805,6 @@
 				93EBDB8A2354E47300CDEE65 /* PMapModel.swift in Sources */,
 				93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */,
 				93EBDB942354E9B700CDEE65 /* PCoordinator.swift in Sources */,
-				93FED1A32351B3AE0022D610 /* BellTestAssignmentTests.swift in Sources */,
 				93EBDB862354E37500CDEE65 /* MapViewModelTests.swift in Sources */,
 				93EBDB8B2354E48B00CDEE65 /* Tweet.swift in Sources */,
 				93EBDB8C2354E49F00CDEE65 /* Place.swift in Sources */,
