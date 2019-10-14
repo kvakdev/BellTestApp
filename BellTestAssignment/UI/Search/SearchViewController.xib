@@ -10,10 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="BellTestAssignment" customModuleProvider="target">
             <connections>
-                <outlet property="_loader" destination="6Te-gI-261" id="giF-HV-RRf"/>
-                <outlet property="_searchField" destination="wVb-fv-PUP" id="vHB-PY-0Qy"/>
-                <outlet property="_segmentedControl" destination="Fo7-18-ias" id="UNI-Py-PYs"/>
-                <outlet property="_tableView" destination="kgD-Zi-fgc" id="enl-9d-e5B"/>
+                <outlet property="loader" destination="6Te-gI-261" id="ph8-8z-Dho"/>
+                <outlet property="searchField" destination="wVb-fv-PUP" id="qjQ-kF-mos"/>
+                <outlet property="segmentedControl" destination="Fo7-18-ias" id="TM7-oe-1RJ"/>
+                <outlet property="tableView" destination="kgD-Zi-fgc" id="veU-FV-D44"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

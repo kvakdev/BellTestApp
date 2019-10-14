@@ -3,4 +3,70 @@
    uuid = "21F48338-7671-4419-9B98-CD6308219760"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F2B4BB4C-9999-4936-AD6C-984A1121C295"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BellTestAssignment/UI/Map/MapModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "load(with:radius:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F2B4BB4C-9999-4936-AD6C-984A1121C295 - 9605bfa3ddf3ffb1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BellTestAssignment.MapModel.(load in _A8AE30BA8301374468907A074C9740BB)(with: __C.CLLocation, radius: Swift.Int) -&gt; ()"
+                  moduleName = "BellTestAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrekvashuk/Downloads/BellTestAssignment/BellTestAssignment/UI/Map/MapModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "122">
+               </Location>
+               <Location
+                  uuid = "F2B4BB4C-9999-4936-AD6C-984A1121C295 - 1aa29f0f7da87fb2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (BellTestAssignment.AsyncResult&lt;Swift.Array&lt;BellTestAssignment.Tweet&gt;&gt;) -&gt; () in BellTestAssignment.MapModel.(load in _A8AE30BA8301374468907A074C9740BB)(with: __C.CLLocation, radius: Swift.Int) -&gt; ()"
+                  moduleName = "BellTestAssignment"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/andrekvashuk/Downloads/BellTestAssignment/BellTestAssignment/UI/Map/MapModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "60"
+                  endingLineNumber = "60"
+                  offsetFromSymbolStart = "224">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CA5FC94-0D32-43CA-AECF-F0A1018EBBAF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BellTestAssignment/UI/Map/MapModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "64"
+            endingLineNumber = "64"
+            landmarkName = "load(with:radius:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

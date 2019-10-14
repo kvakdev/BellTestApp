@@ -14,39 +14,39 @@ import TwitterKit
 class MapViewModel: PMapViewModel {
     var tweets: PublishSubject<[Tweet]> = .init()
     var location: PublishSubject<CLLocation> {
-        return _model.location
+        return model.location
     }
     
-    private var _model: PMapModel
-    private let _coordinator: PCoordinator
+    private var model: PMapModel
+    private let coordinator: PCoordinator
     
-    private let _disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
     init(_ model: PMapModel, coordinator: PCoordinator) {
-        _model = model
-        _coordinator = coordinator
+        self.model = model
+        self.coordinator = coordinator
     }
     
     func viewDidLoad() {
-        _model.tweets.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { [weak self] tweets in
+        model.tweets.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { [weak self] tweets in
             self?.tweets.onNext(tweets)
         }, onError: { [weak self] error in
-            self?._coordinator.handle(error: error)
-        }).disposed(by: _disposeBag)
+            self?.coordinator.handle(error: error)
+        }).disposed(by: disposeBag)
         
-        _model.start()
+        model.start()
     }
     
     func didTapDetails(tweet: Tweet) {
-        self._coordinator.didSelect(tweet)
+        self.coordinator.didSelect(tweet)
     }
     
     func didChangeRadius(_ radius: Int) {
-        _model.currentRadius = radius
+        model.currentRadius = radius
     }
     
     func didTapSearch() {
-        _coordinator.didTapSearch()
+        coordinator.didTapSearch()
     }
 
 }

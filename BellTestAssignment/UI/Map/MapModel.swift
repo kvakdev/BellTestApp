@@ -22,46 +22,51 @@ class MapModel: PMapModel {
     var tweets: PublishSubject<[Tweet]> = .init()
     var location: PublishSubject<CLLocation> = .init()
     
-    private let _locationManager: PLocationManager
-    private let _searchService: TweetSearchService
-    private var _lastLocation: CLLocation?
+    private let locationManager: PLocationManager
+    private let searchService: PTweetAPIService
+    
+    private var lastLocation: CLLocation?
     
     var currentRadius: Int = 5 {
         didSet {
-            if let location = _lastLocation {
+            if let location = lastLocation {
                 load(with: location, radius: self.currentRadius)
             }
         }
     }
     
-    private let _disposeBag = DisposeBag()
+    private let disposeBag = DisposeBag()
     
-    init(locationManager: PLocationManager, searchService: TweetSearchService) {
-        _locationManager = locationManager
-        _searchService = searchService
+    init(locationManager: PLocationManager, searchService: PTweetAPIService) {
+        self.locationManager = locationManager
+        self.searchService = searchService
     }
     
     func start() {
-        _locationManager.currentLocation.subscribe(onNext: { [weak self] location in
-            guard let _self = self else { return }
-            _self._lastLocation = location
-            _self.location.onNext(location)
-            _self.load(with: location, radius: _self.currentRadius)
+        locationManager.currentLocation.subscribe(onNext: { [weak self] location in
+            guard let self = self else { return }
+            self.lastLocation = location
+            self.location.onNext(location)
+            self.load(with: location, radius: self.currentRadius)
             
-        }).disposed(by: _disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     private func load(with location: CLLocation, radius: Int) {
-        self._searchService.searchTweets(radius: self.currentRadius, location: location, completion: { [weak self] result in
+        let query = RadiusQuery(radius: radius, location: location, count: 1000) { tweet in
+             return tweet.place != nil
+        }
+        
+        self.searchService.searchTweets(query: query) { [weak self] result in
             switch result {
             case .success(let tweets):
                 print("got \(tweets.count) filteredTweets")
                 self?.tweets.onNext(tweets)
             case .failure(let error):
-                print(error as Any)
+                if let error = error {
+                    self?.tweets.onError(error)
+                }
             }
-        }) { tweet -> Bool in
-            return tweet.place != nil
         }
     }
 }

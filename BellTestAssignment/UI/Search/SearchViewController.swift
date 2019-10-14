@@ -17,41 +17,41 @@ class SearchViewController: BaseVC {
         return self.vModel as! PSearchViewModel
     }
     
-    @IBOutlet weak var _searchField: UITextField!
-    @IBOutlet weak var _tableView: UITableView!
-    @IBOutlet weak var _loader: UIActivityIndicatorView!
-    @IBOutlet weak var _segmentedControl: UISegmentedControl!
+    @IBOutlet weak var searchField: UITextField!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var loader: UIActivityIndicatorView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    private var _searchTypes: [SearchType] = [.keyword, .hashtag]
+    private var searchTypes: [SearchType] = [.keyword, .hashtag]
     private var currentType: SearchType {
-        return _searchTypes[_segmentedControl.selectedSegmentIndex]
+        return searchTypes[segmentedControl.selectedSegmentIndex]
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        _searchTypes.enumerated().forEach {
-            _segmentedControl.setTitle($0.element.rawValue, forSegmentAt: $0.offset)
+        searchTypes.enumerated().forEach {
+            segmentedControl.setTitle($0.element.rawValue, forSegmentAt: $0.offset)
         }
-        _segmentedControl.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
         
-        _searchField.addTarget(self, action: #selector(queryDidChange), for: .editingChanged)
-        _searchField.layer.cornerRadius = 8
-        _searchField.layer.masksToBounds = true
+        searchField.addTarget(self, action: #selector(queryDidChange), for: .editingChanged)
+        searchField.layer.cornerRadius = 8
+        searchField.layer.masksToBounds = true
         
         let dataSource = viewModel.dataSource
-        dataSource.setup(tableView: _tableView)
-        _tableView.dataSource = dataSource
-        _tableView.delegate = dataSource
+        dataSource.setup(tableView: tableView)
+        tableView.dataSource = dataSource
+        tableView.delegate = dataSource
         
-        _loader.hidesWhenStopped = true
-        _loader.stopAnimating()
+        loader.hidesWhenStopped = true
+        loader.stopAnimating()
         
         viewModel.isLoaderVisible.subscribe(onNext: { [unowned self] visible in
             if visible {
-                self._loader.startAnimating()
+                self.loader.startAnimating()
             } else {
-                self._loader.stopAnimating()
+                self.loader.stopAnimating()
             }
         }).disposed(by: disposeBag)
     }
@@ -61,7 +61,7 @@ class SearchViewController: BaseVC {
     }
     
     @objc private func queryDidChange() {
-        var query = _searchField.text ?? ""
+        var query = searchField.text ?? ""
         
         if currentType == .hashtag && !query.trimmed.isEmpty {
             query = "#".appending(query)

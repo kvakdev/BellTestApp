@@ -20,8 +20,28 @@ enum HTTPMethod: String {
     case post = "POST"
 }
 
+struct RadiusQuery {
+    let radius: Int
+    let location: CLLocation
+    let count: Int
+    let filter: ((Tweet) -> Bool)?
+    
+    func toParams() -> [String: String] {
+        let lat = "\(location.coordinate.latitude)"
+        let lon = "\(location.coordinate.longitude)"
+        let geocode = "\(lat),\(lon),\(radius)km"
+        
+        return [
+            "q" : "",
+            "count" : "\(count)",
+            "geocode" : geocode,
+            "result_type" : "recent"
+        ]
+    }
+}
+
 protocol PTweetAPIService {
-    func searchTweets(radius: Int, location: CLLocation, count: Int, completion: @escaping (AsyncResult<[Tweet]>) -> Void, filter: ((Tweet) -> Bool)?)
+    func searchTweets(query: RadiusQuery, completion: @escaping (AsyncResult<[Tweet]>) -> Void) 
     func querySearchTweets(query: String, count: Int, completion: @escaping (AsyncResult<[TWTRTweet]>) -> Void)
     func fetchTweet(id: String, completion: @escaping (AsyncResult<TWTRTweet>) -> Void)
     func retweet(tweetNumId: String, completion: ((AsyncResult<Bool>) -> Void)?)
@@ -51,18 +71,9 @@ class TweetSearchService: NSObject, PTweetAPIService {
         return TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers()
     }
     
-    func searchTweets(radius: Int, location: CLLocation, count: Int = 1000, completion: @escaping (AsyncResult<[Tweet]>) -> Void, filter: ((Tweet) -> Bool)?) {
+    func searchTweets(query: RadiusQuery, completion: @escaping (AsyncResult<[Tweet]>) -> Void) {
         
-        let geocode = "\(location.coordinate.latitude),\(location.coordinate.longitude),\(radius)km"
-        
-        let params: [String: String] = [
-            "q" : "",
-            "count" : "\(count)",
-            "geocode" : geocode,
-            "result_type" : "recent"
-        ]
-        
-        let req = _client.urlRequest(with: HTTPMethod.get, endpoint: Endpoints.search, params: params)
+        let req = _client.urlRequest(with: HTTPMethod.get, endpoint: Endpoints.search, params: query.toParams())
         
         _client.sendRequest(req) { (resp, data, error) in
             guard Response.isValid(error: error, data: data, completion: completion) else { return }
@@ -70,7 +81,7 @@ class TweetSearchService: NSObject, PTweetAPIService {
             do {
                 let result = try JSONDecoder().decode(RadiusSearchResponse.self, from: data!)
                 
-                if let filter = filter {
+                if let filter = query.filter {
                     completion(.success(result.tweets.filter(filter)))
                 } else {
                     completion(.success(result.tweets))

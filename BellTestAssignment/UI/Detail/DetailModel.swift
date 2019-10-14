@@ -22,20 +22,18 @@ protocol PDetailModel {
 class DetailModel: PDetailModel {
     var tweet: PublishSubject<TWTRTweet> = .init()
     
-    private let _tweetId: String
-    private let _service: PTweetAPIService
-    private var _tweet: TWTRTweet?
+    private let tweetId: String
+    private let service: PTweetAPIService
     
     init(tweetId: String, searchService: PTweetAPIService) {
-        self._tweetId = tweetId
-        self._service = searchService
+        self.tweetId = tweetId
+        self.service = searchService
     }
     
     func loadDetails() {
-        _service.fetchTweet(id: _tweetId) { [weak self] result in
+        service.fetchTweet(id: tweetId) { [weak self] result in
             switch result {
             case .success(let tweet):
-                self?._tweet = tweet
                 self?.tweet.onNext(tweet)
             case .failure(let error):
                 self?.tweet.onError(error ?? NSError.noData())
@@ -44,17 +42,17 @@ class DetailModel: PDetailModel {
     }
     
     func isLoggedIn() -> Bool {
-        return _service.isLoggedIn()
+        return service.isLoggedIn()
     }
     
     func retweet(completion: ((AsyncResult<Bool>) -> Void)?) {
-        _service.retweet(tweetNumId: _tweetId) { result in
+        service.retweet(tweetNumId: tweetId) { result in
             completion?(result)
         }
     }
     
     func like(completion: ((AsyncResult<Bool>) -> Void)?) {
-        _service.like(tweetId: _tweetId) { result in
+        service.like(tweetId: tweetId) { result in
             completion?(result)
         }
     }
