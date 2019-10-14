@@ -36,7 +36,7 @@ class SearchViewModel: PSearchViewModel {
 
     func viewDidLoad() {
         _dataSource.selectedTweet.subscribe(onNext: { tweet in
-            self._coordinator.didSelect(tweet)
+            self._coordinator.didSelect(tweet.tweetID)
         }).disposed(by: _disposeBag)
     }
     

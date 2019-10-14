@@ -9,8 +9,6 @@
 import UIKit
 import TwitterKit
 
-class BaseCoordinatorClass: NSObject {}
-
 class AppCoordinator: BaseCoordinatorClass, PCoordinator {
     var isLoggedIn: Bool {
         return twitter.sessionStore.session() != nil
@@ -83,8 +81,8 @@ class AppCoordinator: BaseCoordinatorClass, PCoordinator {
         pushDetailViewController(tweetId: tweet.id)
     }
     
-    func didSelect(_ tweet: TWTRTweet) {
-        pushDetailViewController(tweetId: tweet.tweetID)
+    func didSelect(_ tweetId: String) {
+        pushDetailViewController(tweetId: tweetId)
     }
     
     private func pushDetailViewController(tweetId: String) {

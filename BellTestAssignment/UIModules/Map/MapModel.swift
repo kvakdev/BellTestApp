@@ -10,24 +10,17 @@ import Foundation
 import RxSwift
 import CoreLocation
 
-protocol PMapModel {
-    var currentRadius: Int { get set }
-    var tweets: PublishSubject<[Tweet]> { get }
-    var location: PublishSubject<CLLocation> { get }
-    var presentableError: PublishSubject<Error> { get }
-
-    func start()
-}
-
 class MapModel: PMapModel {
     var tweets: PublishSubject<[Tweet]> = .init()
     var location: PublishSubject<CLLocation> = .init()
     var presentableError: PublishSubject<Error> = .init()
+    var accumulatableTweets: PublishSubject<[Tweet]> = .init()
     
     private let locationManager: PLocationManager
     private let searchService: PTweetAPIService
     
     private var lastLocation: CLLocation?
+    private let disposeBag = DisposeBag()
     
     var currentRadius: Int = 5 {
         didSet {
@@ -36,8 +29,6 @@ class MapModel: PMapModel {
             }
         }
     }
-    
-    private let disposeBag = DisposeBag()
     
     init(locationManager: PLocationManager, searchService: PTweetAPIService) {
         self.locationManager = locationManager
@@ -54,6 +45,10 @@ class MapModel: PMapModel {
         }).disposed(by: disposeBag)
     }
     
+    func fetchAfter(id: String) {
+        
+    }
+    // MARK: Private methods
     private func load(with location: CLLocation, radius: Int) {
         let query = RadiusQuery(radius: radius, location: location, count: 1000, filter: { tweet in
              return tweet.place != nil

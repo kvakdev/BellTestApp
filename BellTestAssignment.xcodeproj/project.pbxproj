@@ -44,6 +44,18 @@
 		93CE75D22352733700BDF877 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75D12352733700BDF877 /* UIImageView+URL.swift */; };
 		93EBDB7F235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB7E235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift */; };
 		93EBDB822354779000CDEE65 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB812354779000CDEE65 /* Response.swift */; };
+		93EBDB862354E37500CDEE65 /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */; };
+		93EBDB892354E44C00CDEE65 /* PMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB882354E44C00CDEE65 /* PMapModel.swift */; };
+		93EBDB8A2354E47300CDEE65 /* PMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB882354E44C00CDEE65 /* PMapModel.swift */; };
+		93EBDB8B2354E48B00CDEE65 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C323521F1400BDF877 /* Tweet.swift */; };
+		93EBDB8C2354E49F00CDEE65 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C123521D6300BDF877 /* Place.swift */; };
+		93EBDB8D2354E91600CDEE65 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C52351BF110022D610 /* MapViewModel.swift */; };
+		93EBDB902354E97A00CDEE65 /* PViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */; };
+		93EBDB912354E98000CDEE65 /* PViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */; };
+		93EBDB932354E9AC00CDEE65 /* PCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */; };
+		93EBDB942354E9B700CDEE65 /* PCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */; };
+		93EBDB972354E9E400CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
+		93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
 		93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED18B2351B3AC0022D610 /* AppDelegate.swift */; };
 		93FED1952351B3AE0022D610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1942351B3AE0022D610 /* Assets.xcassets */; };
 		93FED1982351B3AE0022D610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1962351B3AE0022D610 /* LaunchScreen.storyboard */; };
@@ -126,6 +138,11 @@
 		93EBDB7E235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TWTRAPIClient+PTwitterClient.swift"; sourceTree = "<group>"; };
 		93EBDB812354779000CDEE65 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		93EBDB832354D7A900CDEE65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
+		93EBDB882354E44C00CDEE65 /* PMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMapModel.swift; sourceTree = "<group>"; };
+		93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PViewModel.swift; sourceTree = "<group>"; };
+		93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCoordinator.swift; sourceTree = "<group>"; };
+		93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		93FED1882351B3AC0022D610 /* Bell Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FED18B2351B3AC0022D610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93FED1942351B3AE0022D610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -344,9 +361,35 @@
 		93EBDB842354DE1700CDEE65 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
+				93EBDB952354E9CF00CDEE65 /* BaseCoordinator */,
 				93CE75AB2351C9EF00BDF877 /* BaseViewControllers */,
 			);
 			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		93EBDB872354E43D00CDEE65 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				93EBDB882354E44C00CDEE65 /* PMapModel.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		93EBDB8E2354E94800CDEE65 /* Public Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */,
+				93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */,
+			);
+			path = "Public Protocols";
+			sourceTree = "<group>";
+		};
+		93EBDB952354E9CF00CDEE65 /* BaseCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */,
+			);
+			path = BaseCoordinator;
 			sourceTree = "<group>";
 		};
 		93FED17F2351B3AC0022D610 = {
@@ -375,6 +418,7 @@
 		93FED18A2351B3AC0022D610 /* BellTestAssignment */ = {
 			isa = PBXGroup;
 			children = (
+				93EBDB8E2354E94800CDEE65 /* Public Protocols */,
 				93EBDB802354778300CDEE65 /* Helpers */,
 				93CE75C023521D5100BDF877 /* Decodable */,
 				93CE75B42351D6AE00BDF877 /* Services */,
@@ -395,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				93FED1A22351B3AE0022D610 /* BellTestAssignmentTests.swift */,
+				93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */,
 				93FED1A42351B3AE0022D610 /* Info.plist */,
 			);
 			path = BellTestAssignmentTests;
@@ -447,6 +492,7 @@
 		93FED1C02351BDC00022D610 /* Map */ = {
 			isa = PBXGroup;
 			children = (
+				93EBDB872354E43D00CDEE65 /* Protocols */,
 				93FED1C12351BDF30022D610 /* MapViewController.swift */,
 				93FED1C22351BDF30022D610 /* MapViewController.xib */,
 				93FED1C52351BF110022D610 /* MapViewModel.swift */,
@@ -720,6 +766,7 @@
 				9301B97523546AD600E4FE93 /* NSObject+ClassName.swift in Sources */,
 				9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */,
 				93EBDB7F235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift in Sources */,
+				93EBDB932354E9AC00CDEE65 /* PCoordinator.swift in Sources */,
 				93CE75D02352623C00BDF877 /* DetailModel.swift in Sources */,
 				93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */,
 				93EBDB822354779000CDEE65 /* Response.swift in Sources */,
@@ -732,7 +779,9 @@
 				9301B9722353994600E4FE93 /* LoginViewController.swift in Sources */,
 				93CE75CE235261E000BDF877 /* DetailViewModel.swift in Sources */,
 				9301B967235350F100E4FE93 /* TweetwCell.swift in Sources */,
+				93EBDB892354E44C00CDEE65 /* PMapModel.swift in Sources */,
 				9301B97723546C6300E4FE93 /* Data+Parsing.swift in Sources */,
+				93EBDB902354E97A00CDEE65 /* PViewModel.swift in Sources */,
 				93CE75AD2351CA0B00BDF877 /* BaseViewController.swift in Sources */,
 				93CE75BD235203AF00BDF877 /* LocationManager.swift in Sources */,
 				9301B97B23546D1F00E4FE93 /* NSError+CustomErrors.swift in Sources */,
@@ -741,6 +790,7 @@
 				93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */,
 				9301B97923546CF400E4FE93 /* TWTRTweet+Parsing.swift in Sources */,
 				93FED1C32351BDF30022D610 /* MapViewController.swift in Sources */,
+				93EBDB972354E9E400CDEE65 /* BaseCoordinator.swift in Sources */,
 				9301B96323534D7A00E4FE93 /* SearchTableDataSource.swift in Sources */,
 				93FED1C62351BF110022D610 /* MapViewModel.swift in Sources */,
 				93CE75C223521D6300BDF877 /* Place.swift in Sources */,
@@ -755,7 +805,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93EBDB8A2354E47300CDEE65 /* PMapModel.swift in Sources */,
+				93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */,
+				93EBDB942354E9B700CDEE65 /* PCoordinator.swift in Sources */,
 				93FED1A32351B3AE0022D610 /* BellTestAssignmentTests.swift in Sources */,
+				93EBDB862354E37500CDEE65 /* MapViewModelTests.swift in Sources */,
+				93EBDB8B2354E48B00CDEE65 /* Tweet.swift in Sources */,
+				93EBDB8C2354E49F00CDEE65 /* Place.swift in Sources */,
+				93EBDB912354E98000CDEE65 /* PViewModel.swift in Sources */,
+				93EBDB8D2354E91600CDEE65 /* MapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

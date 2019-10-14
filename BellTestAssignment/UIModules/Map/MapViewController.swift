@@ -11,17 +11,6 @@ import MapKit
 import RxSwift
 import CoreLocation
 
-protocol PMapViewModel: PViewModel {
-    var tweets: PublishSubject<[Tweet]> { get }
-    var location: PublishSubject<CLLocation> { get }
-    var isLoggedIn: PublishSubject<Bool> { get }
-    
-    func didTapDetails(tweet: Tweet)
-    func didChangeRadius(_ radius: Int)
-    func didTapSearch()
-    func didTapLogout()
-    func didTapLogin()
-}
 
 class MapViewController: BaseVC {
     private var viewModel: PMapViewModel {

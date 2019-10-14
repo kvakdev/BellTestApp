@@ -11,24 +11,42 @@ import RxSwift
 import CoreLocation
 import TwitterKit
 
-class MapViewModel: PMapViewModel {
+protocol PMapViewModel: PViewModel {
+    var tweets: PublishSubject<[Tweet]> { get }
+    var location: PublishSubject<CLLocation> { get }
+    var isLoggedIn: PublishSubject<Bool> { get }
+    
+    func didTapDetails(tweet: Tweet)
+    func didChangeRadius(_ radius: Int)
+    func didTapSearch()
+    func didTapLogout()
+    func didTapLogin()
+}
+
+
+public class MapViewModel: PMapViewModel {
     var tweets: PublishSubject<[Tweet]> = .init()
     var isLoggedIn: PublishSubject<Bool> = .init()
     var location: PublishSubject<CLLocation> {
         return model.location
     }
+    public var tweetCapacity: Int = 100
     
     private var model: PMapModel
     private let coordinator: PCoordinator
     private let disposeBag = DisposeBag()
+    private var tweetAccumulator: [Tweet] = []
+    
+    private var timer: Timer?
     
     init(_ model: PMapModel, coordinator: PCoordinator) {
         self.model = model
         self.coordinator = coordinator
     }
     
-    func viewDidLoad() {
+    public func viewDidLoad() {
         model.tweets.observeOn(MainScheduler.asyncInstance).subscribe(onNext: { [weak self] tweets in
+            self?.tweetAccumulator.append(contentsOf: tweets)
             self?.tweets.onNext(tweets)
         }).disposed(by: disposeBag)
         
@@ -38,15 +56,19 @@ class MapViewModel: PMapViewModel {
         
         isLoggedIn.onNext(coordinator.isLoggedIn)
         
+        model.accumulatableTweets.subscribe(onNext: { [weak self] tweets in
+            self?.handleAccumulatable(tweets)
+        }).disposed(by: disposeBag)
+        
         model.start()
     }
     
-    func viewWillAppear() {
+    public func viewWillAppear() {
         isLoggedIn.onNext(coordinator.isLoggedIn)
     }
     
     func didTapDetails(tweet: Tweet) {
-        self.coordinator.didSelect(tweet)
+        self.coordinator.didSelect(tweet.id)
     }
     
     func didChangeRadius(_ radius: Int) {
@@ -67,5 +89,14 @@ class MapViewModel: PMapViewModel {
         coordinator.didTapLogin { [unowned self] isLoggedIn in
             self.isLoggedIn.onNext(isLoggedIn)
         }
+    }
+    
+    private func handleAccumulatable(_ tweets: [Tweet]) {
+        guard !tweets.isEmpty else { return }
+        
+        tweetAccumulator.append(contentsOf: tweets)
+        let result: Array = tweetAccumulator.suffix(tweetCapacity)
+        self.tweetAccumulator = result
+        self.tweets.onNext(result)
     }
 }

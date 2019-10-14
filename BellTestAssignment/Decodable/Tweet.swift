@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Tweet: NSObject, Decodable {
+public class Tweet: NSObject, Decodable {
     let id: String
     let text: String
     let author: Author
@@ -22,12 +22,26 @@ class Tweet: NSObject, Decodable {
         case profileImageUrlHttps = "profile_image_url_https"
         case place
     }
+    
+    public init(id: String, text: String, author: Author) {
+        self.id = id
+        self.text = text
+        self.author = author
+        self.profileImageUrlHttps = nil
+        self.place = nil
+        
+        super.init()
+    }
 }
 
-class Author: NSObject, Decodable {
+public class Author: NSObject, Decodable {
     let screenName: String
     
     enum CodingKeys: String, CodingKey {
         case screenName = "screen_name"
+    }
+    
+    public init(name: String) {
+        self.screenName = name
     }
 }

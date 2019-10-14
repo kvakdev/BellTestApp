@@ -11,7 +11,7 @@ import Foundation
 import Foundation
 
 // MARK: - Place
-struct Place: Decodable {
+public struct Place: Decodable {
     let boundingBox: BoundingBox
     let country, countryCode, fullName, id: String
     let name, placeType: String
@@ -29,7 +29,7 @@ struct Place: Decodable {
 }
 
 // MARK: - BoundingBox
-struct BoundingBox: Codable {
+public struct BoundingBox: Codable {
     let coordinates: [[[Double]]]
     let type: String
 }
