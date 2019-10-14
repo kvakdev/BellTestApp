@@ -132,7 +132,7 @@ extension MapViewModelTests {
         }
     }
     
-    class CoordinatorSpy: PCoordinator {
+    class CoordinatorSpy: PAppCoordinator {
         var isLoggedIn: Bool = false
 
         func didSelect(_ tweetId: String) {}
@@ -146,6 +146,7 @@ extension MapViewModelTests {
         func finish() {}
         func coordinatorIsDone(_ child: BaseCoordinatorClass) {}
         func addChild(_ child: BaseCoordinatorClass) {}
+        func didMoveSlider() {}
     }
 }
 

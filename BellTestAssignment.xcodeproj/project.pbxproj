@@ -52,8 +52,8 @@
 		93EBDB8D2354E91600CDEE65 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C52351BF110022D610 /* MapViewModel.swift */; };
 		93EBDB902354E97A00CDEE65 /* PViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */; };
 		93EBDB912354E98000CDEE65 /* PViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */; };
-		93EBDB932354E9AC00CDEE65 /* PCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */; };
-		93EBDB942354E9B700CDEE65 /* PCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */; };
+		93EBDB932354E9AC00CDEE65 /* PAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */; };
+		93EBDB942354E9B700CDEE65 /* PAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */; };
 		93EBDB972354E9E400CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
 		93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
 		93EBDB9A2355118600CDEE65 /* PLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */; };
@@ -141,7 +141,7 @@
 		93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 		93EBDB882354E44C00CDEE65 /* PMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMapModel.swift; sourceTree = "<group>"; };
 		93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PViewModel.swift; sourceTree = "<group>"; };
-		93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PCoordinator.swift; sourceTree = "<group>"; };
+		93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAppCoordinator.swift; sourceTree = "<group>"; };
 		93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLoginCoordinator.swift; sourceTree = "<group>"; };
 		93FED1882351B3AC0022D610 /* Bell Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -379,7 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */,
-				93EBDB922354E9AC00CDEE65 /* PCoordinator.swift */,
+				93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */,
 				93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */,
 			);
 			path = "Public Protocols";
@@ -758,7 +758,7 @@
 				9301B97523546AD600E4FE93 /* NSObject+ClassName.swift in Sources */,
 				9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */,
 				93EBDB7F235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift in Sources */,
-				93EBDB932354E9AC00CDEE65 /* PCoordinator.swift in Sources */,
+				93EBDB932354E9AC00CDEE65 /* PAppCoordinator.swift in Sources */,
 				93CE75D02352623C00BDF877 /* DetailModel.swift in Sources */,
 				93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */,
 				93EBDB822354779000CDEE65 /* Response.swift in Sources */,
@@ -800,7 +800,7 @@
 			files = (
 				93EBDB8A2354E47300CDEE65 /* PMapModel.swift in Sources */,
 				93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */,
-				93EBDB942354E9B700CDEE65 /* PCoordinator.swift in Sources */,
+				93EBDB942354E9B700CDEE65 /* PAppCoordinator.swift in Sources */,
 				93EBDB862354E37500CDEE65 /* MapViewModelTests.swift in Sources */,
 				93EBDB8B2354E48B00CDEE65 /* Tweet.swift in Sources */,
 				93EBDB8C2354E49F00CDEE65 /* Place.swift in Sources */,

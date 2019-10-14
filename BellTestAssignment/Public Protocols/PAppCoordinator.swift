@@ -1,5 +1,5 @@
 //
-//  PCoordinator.swift
+//  PAppCoordinator.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/14/19.
@@ -16,7 +16,7 @@ public protocol BaseCoordinator {
     func addChild(_ child: BaseCoordinatorClass)
 }
 
-public protocol PCoordinator: BaseCoordinator {
+public protocol PAppCoordinator: BaseCoordinator {
     var isLoggedIn: Bool { get }
     
     func didSelect(_ tweetId: String)

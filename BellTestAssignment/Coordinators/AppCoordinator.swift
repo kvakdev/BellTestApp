@@ -38,7 +38,7 @@ class APIClientWrapper: PTwitterClient {
     }
 }
 
-class AppCoordinator: BaseCoordinatorClass, PCoordinator {
+class AppCoordinator: BaseCoordinatorClass, PAppCoordinator {
     var isLoggedIn: Bool {
         return twitter.sessionStore.session() != nil
     }

@@ -34,13 +34,13 @@ public class MapViewModel: PMapViewModel {
     public var timerInterval: TimeInterval = 60
     
     private var model: PMapModel
-    private let coordinator: PCoordinator
+    private let coordinator: PAppCoordinator
     private let disposeBag = DisposeBag()
     private var tweetAccumulator: [Tweet] = []
     
     private var timer: Timer?
     
-    init(_ model: PMapModel, coordinator: PCoordinator) {
+    init(_ model: PMapModel, coordinator: PAppCoordinator) {
         self.model = model
         self.coordinator = coordinator
     }

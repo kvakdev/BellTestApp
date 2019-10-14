@@ -21,7 +21,7 @@ class SearchViewModel: PSearchViewModel {
     var isLoaderVisible: PublishSubject<Bool> = .init()
     
     private var _model: PSearchModel
-    private let _coordinator: PCoordinator
+    private let _coordinator: PAppCoordinator
     
     private let _disposeBag = DisposeBag()
     var dataSource: PSearchDataSource {
@@ -29,7 +29,7 @@ class SearchViewModel: PSearchViewModel {
     }
     private var _dataSource: SearchDataSource = SearchDataSource()
     
-    init(_ model: PSearchModel, coordinator: PCoordinator) {
+    init(_ model: PSearchModel, coordinator: PAppCoordinator) {
         _model = model
         _coordinator = coordinator
     }

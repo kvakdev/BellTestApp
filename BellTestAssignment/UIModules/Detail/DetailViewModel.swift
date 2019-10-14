@@ -23,7 +23,7 @@ class DetailViewModel: PDetailViewModel {
     var tweet: PublishSubject<TWTRTweet> = .init()
     
     private let model: PDetailModel
-    private let coordinator: PCoordinator
+    private let coordinator: PAppCoordinator
     private let twitter: TWTRTwitter
     private let disposeBag = DisposeBag()
     
@@ -34,7 +34,7 @@ class DetailViewModel: PDetailViewModel {
         return f
     }()
     
-    init(_ model: PDetailModel, coordinator: PCoordinator, twitter: TWTRTwitter) {
+    init(_ model: PDetailModel, coordinator: PAppCoordinator, twitter: TWTRTwitter) {
         self.model = model
         self.coordinator = coordinator
         self.twitter = twitter

@@ -9,12 +9,12 @@
 import UIKit
 
 class LoginCoordinator: BaseCoordinatorClass, PLoginCoordinator {
-    private let _parent: PCoordinator
+    private let _parent: PAppCoordinator
     private let _navigationVC: UINavigationController
     
     private var loginVC: UIViewController?
     
-    init(parent: PCoordinator, navigationController: UINavigationController) {
+    init(parent: PAppCoordinator, navigationController: UINavigationController) {
         _parent = parent
         _navigationVC = navigationController
     }
