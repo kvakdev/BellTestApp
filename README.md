@@ -1,6 +1,20 @@
 #  Bell Test App
 
 This application was created for non-commercial use and its sole purspose is proof of skill for the Bell company.
+For reviewer info: there seems to be a simulator bug when activating a search text field on a simulator, it’s preferable to run it on a device.
+
+# Steps to run the app (Happy path):
+
+## Clone or download the repo using green button in top right corner ## Open .workspace file in the Xcode. Try to run on a simulator or a device
+ ##Steps to run the app (Sad path):
+
+## Clone or download the repo using green button in top right corner ## Open .workspace file in the Xcode. Try to run on a simulator or a device
+## Not working. Navigate to the project folder using Terminal command “cd <folder address>”
+## Run “pod update” command in the terminal
+## Try to run the project
+## If still not working run “pod deintegrate” command and then “pod install” command
+## Try run the project
+## If still not working please contact me for assistance
 
 ## The app has several features: 
 ### tweet search in a given customizable radius around users current location if the permission is provided, otherwise searchwon't work
