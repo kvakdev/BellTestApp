@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,17 +17,43 @@
 		9301B96323534D7A00E4FE93 /* SearchTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96223534D7A00E4FE93 /* SearchTableDataSource.swift */; };
 		9301B967235350F100E4FE93 /* TweetwCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B965235350F100E4FE93 /* TweetwCell.swift */; };
 		9301B968235350F100E4FE93 /* TweetwCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B966235350F100E4FE93 /* TweetwCell.xib */; };
-		9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */; };
-		9301B96C2353673B00E4FE93 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96B2353673B00E4FE93 /* String+Ext.swift */; };
+		9301B96A235357D000E4FE93 /* UITableViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B969235357D000E4FE93 /* UITableViewExtentions.swift */; };
+		9301B96C2353673B00E4FE93 /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96B2353673B00E4FE93 /* StringExtentions.swift */; };
 		9301B96E235398C700E4FE93 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96D235398C700E4FE93 /* LoginCoordinator.swift */; };
 		9301B9722353994600E4FE93 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B9702353994600E4FE93 /* LoginViewController.swift */; };
 		9301B9732353994600E4FE93 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9301B9712353994600E4FE93 /* LoginViewController.xib */; };
-		9301B97523546AD600E4FE93 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97423546AD600E4FE93 /* NSObject+ClassName.swift */; };
-		9301B97723546C6300E4FE93 /* Data+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97623546C6300E4FE93 /* Data+Parsing.swift */; };
-		9301B97923546CF400E4FE93 /* TWTRTweet+Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97823546CF400E4FE93 /* TWTRTweet+Parsing.swift */; };
-		9301B97B23546D1F00E4FE93 /* NSError+CustomErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97A23546D1F00E4FE93 /* NSError+CustomErrors.swift */; };
+		9301B97523546AD600E4FE93 /* NSObjectExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97423546AD600E4FE93 /* NSObjectExtentions.swift */; };
+		9301B97723546C6300E4FE93 /* DataExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97623546C6300E4FE93 /* DataExtentions.swift */; };
+		9301B97923546CF400E4FE93 /* TWTRTweetExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97823546CF400E4FE93 /* TWTRTweetExtentions.swift */; };
+		9301B97B23546D1F00E4FE93 /* NSErrorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97A23546D1F00E4FE93 /* NSErrorExtentions.swift */; };
 		9301B97D23546D5100E4FE93 /* SearchMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97C23546D5100E4FE93 /* SearchMetaData.swift */; };
 		9301B97F23546DC600E4FE93 /* RadiusSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97E23546DC600E4FE93 /* RadiusSearchResponse.swift */; };
+		937066F2235596DA00D7E69D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AF2351CB9A00BDF877 /* AppCoordinator.swift */; };
+		937066F3235597F600D7E69D /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75CD235261E000BDF877 /* DetailViewModel.swift */; };
+		937066F42355998400D7E69D /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C12351BDF30022D610 /* MapViewController.swift */; };
+		937066F52355998900D7E69D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75BC235203AF00BDF877 /* LocationManager.swift */; };
+		937066F62355999400D7E69D /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C72351BF1F0022D610 /* MapModel.swift */; };
+		937066F723559B6800D7E69D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B959235329A400E4FE93 /* SearchViewController.swift */; };
+		937066F823559B7600D7E69D /* SearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B95F2353338400E4FE93 /* SearchModel.swift */; };
+		937066F923559B7E00D7E69D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B95D2353331D00E4FE93 /* SearchViewModel.swift */; };
+		937066FA23559B8900D7E69D /* SearchTableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96223534D7A00E4FE93 /* SearchTableDataSource.swift */; };
+		937066FB23559BC900D7E69D /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75CF2352623C00BDF877 /* DetailModel.swift */; };
+		937066FC23559BFB00D7E69D /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B9702353994600E4FE93 /* LoginViewController.swift */; };
+		937066FD23559CA100D7E69D /* TweetSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75BE235207D900BDF877 /* TweetSearchService.swift */; };
+		937066FE23559CDE00D7E69D /* TWTRAPIClientExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB7E235474B700CDEE65 /* TWTRAPIClientExtentions.swift */; };
+		937066FF23559CF200D7E69D /* NSErrorExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97A23546D1F00E4FE93 /* NSErrorExtentions.swift */; };
+		9370670023559D1200D7E69D /* StringExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96B2353673B00E4FE93 /* StringExtentions.swift */; };
+		9370670123559D2900D7E69D /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AC2351CA0B00BDF877 /* BaseViewController.swift */; };
+		9370670223559D3600D7E69D /* MapViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C62352266B00BDF877 /* MapViewExtentions.swift */; };
+		9370670323559D8900D7E69D /* TWTAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE1D5EC23555DE400E74546 /* TWTAPIWrapper.swift */; };
+		9370670423559E0800D7E69D /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B96D235398C700E4FE93 /* LoginCoordinator.swift */; };
+		9370670523559E2000D7E69D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C9235260AC00BDF877 /* DetailViewController.swift */; };
+		9370670623559E2B00D7E69D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75B22351D0FF00BDF877 /* Constants.swift */; };
+		9370670723559E3300D7E69D /* Premitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE1D5E823555B4C00E74546 /* Premitives.swift */; };
+		9370670823559E3B00D7E69D /* RadiusSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97E23546DC600E4FE93 /* RadiusSearchResponse.swift */; };
+		9370670923559E4B00D7E69D /* TWTRTweetExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97823546CF400E4FE93 /* TWTRTweetExtentions.swift */; };
+		9370670A23559E8D00D7E69D /* SearchMetaData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97C23546D5100E4FE93 /* SearchMetaData.swift */; };
+		9370670B23559EA400D7E69D /* DataExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9301B97623546C6300E4FE93 /* DataExtentions.swift */; };
 		93CE75AD2351CA0B00BDF877 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AC2351CA0B00BDF877 /* BaseViewController.swift */; };
 		93CE75B02351CB9A00BDF877 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75AF2351CB9A00BDF877 /* AppCoordinator.swift */; };
 		93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75B22351D0FF00BDF877 /* Constants.swift */; };
@@ -36,27 +62,21 @@
 		93CE75BF235207D900BDF877 /* TweetSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75BE235207D900BDF877 /* TweetSearchService.swift */; };
 		93CE75C223521D6300BDF877 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C123521D6300BDF877 /* Place.swift */; };
 		93CE75C423521F1400BDF877 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C323521F1400BDF877 /* Tweet.swift */; };
-		93CE75C72352266B00BDF877 /* MapView+Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C62352266B00BDF877 /* MapView+Tweet.swift */; };
+		93CE75C72352266B00BDF877 /* MapViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C62352266B00BDF877 /* MapViewExtentions.swift */; };
 		93CE75CB235260AC00BDF877 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C9235260AC00BDF877 /* DetailViewController.swift */; };
 		93CE75CC235260AC00BDF877 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93CE75CA235260AC00BDF877 /* DetailViewController.xib */; };
 		93CE75CE235261E000BDF877 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75CD235261E000BDF877 /* DetailViewModel.swift */; };
 		93CE75D02352623C00BDF877 /* DetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75CF2352623C00BDF877 /* DetailModel.swift */; };
-		93CE75D22352733700BDF877 /* UIImageView+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75D12352733700BDF877 /* UIImageView+URL.swift */; };
-		93EBDB7F235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB7E235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift */; };
-		93EBDB822354779000CDEE65 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB812354779000CDEE65 /* Response.swift */; };
+		93CE75D22352733700BDF877 /* UIImageViewExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75D12352733700BDF877 /* UIImageViewExtentions.swift */; };
+		93EBDB7F235474B700CDEE65 /* TWTRAPIClientExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB7E235474B700CDEE65 /* TWTRAPIClientExtentions.swift */; };
 		93EBDB862354E37500CDEE65 /* MapViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */; };
 		93EBDB892354E44C00CDEE65 /* PMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB882354E44C00CDEE65 /* PMapModel.swift */; };
 		93EBDB8A2354E47300CDEE65 /* PMapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB882354E44C00CDEE65 /* PMapModel.swift */; };
 		93EBDB8B2354E48B00CDEE65 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C323521F1400BDF877 /* Tweet.swift */; };
 		93EBDB8C2354E49F00CDEE65 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93CE75C123521D6300BDF877 /* Place.swift */; };
 		93EBDB8D2354E91600CDEE65 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C52351BF110022D610 /* MapViewModel.swift */; };
-		93EBDB902354E97A00CDEE65 /* PViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */; };
-		93EBDB912354E98000CDEE65 /* PViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */; };
-		93EBDB932354E9AC00CDEE65 /* PAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */; };
-		93EBDB942354E9B700CDEE65 /* PAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */; };
-		93EBDB972354E9E400CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
-		93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */; };
-		93EBDB9A2355118600CDEE65 /* PLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */; };
+		93EBDB902354E97A00CDEE65 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* ViewModelProtocol.swift */; };
+		93EBDB912354E98000CDEE65 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EBDB8F2354E97A00CDEE65 /* ViewModelProtocol.swift */; };
 		93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED18B2351B3AC0022D610 /* AppDelegate.swift */; };
 		93FED1952351B3AE0022D610 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1942351B3AE0022D610 /* Assets.xcassets */; };
 		93FED1982351B3AE0022D610 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1962351B3AE0022D610 /* LaunchScreen.storyboard */; };
@@ -65,6 +85,9 @@
 		93FED1C42351BDF30022D610 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 93FED1C22351BDF30022D610 /* MapViewController.xib */; };
 		93FED1C62351BF110022D610 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C52351BF110022D610 /* MapViewModel.swift */; };
 		93FED1C82351BF1F0022D610 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FED1C72351BF1F0022D610 /* MapModel.swift */; };
+		FEE1D5E923555B4C00E74546 /* Premitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE1D5E823555B4C00E74546 /* Premitives.swift */; };
+		FEE1D5ED23555DE400E74546 /* TWTAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE1D5EC23555DE400E74546 /* TWTAPIWrapper.swift */; };
+		FEE1D5F223556DE500E74546 /* TWTRTwitterExtentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEE1D5F123556DE500E74546 /* TWTRTwitterExtentions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,15 +134,15 @@
 		9301B96223534D7A00E4FE93 /* SearchTableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableDataSource.swift; sourceTree = "<group>"; };
 		9301B965235350F100E4FE93 /* TweetwCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetwCell.swift; sourceTree = "<group>"; };
 		9301B966235350F100E4FE93 /* TweetwCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TweetwCell.xib; sourceTree = "<group>"; };
-		9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+ReuseId.swift"; sourceTree = "<group>"; };
-		9301B96B2353673B00E4FE93 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		9301B969235357D000E4FE93 /* UITableViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtentions.swift; sourceTree = "<group>"; };
+		9301B96B2353673B00E4FE93 /* StringExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtentions.swift; sourceTree = "<group>"; };
 		9301B96D235398C700E4FE93 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		9301B9702353994600E4FE93 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9301B9712353994600E4FE93 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
-		9301B97423546AD600E4FE93 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
-		9301B97623546C6300E4FE93 /* Data+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Parsing.swift"; sourceTree = "<group>"; };
-		9301B97823546CF400E4FE93 /* TWTRTweet+Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TWTRTweet+Parsing.swift"; sourceTree = "<group>"; };
-		9301B97A23546D1F00E4FE93 /* NSError+CustomErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+CustomErrors.swift"; sourceTree = "<group>"; };
+		9301B97423546AD600E4FE93 /* NSObjectExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtentions.swift; sourceTree = "<group>"; };
+		9301B97623546C6300E4FE93 /* DataExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtentions.swift; sourceTree = "<group>"; };
+		9301B97823546CF400E4FE93 /* TWTRTweetExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWTRTweetExtentions.swift; sourceTree = "<group>"; };
+		9301B97A23546D1F00E4FE93 /* NSErrorExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSErrorExtentions.swift; sourceTree = "<group>"; };
 		9301B97C23546D5100E4FE93 /* SearchMetaData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMetaData.swift; sourceTree = "<group>"; };
 		9301B97E23546DC600E4FE93 /* RadiusSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadiusSearchResponse.swift; sourceTree = "<group>"; };
 		93CE75AC2351CA0B00BDF877 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -129,21 +152,17 @@
 		93CE75BE235207D900BDF877 /* TweetSearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TweetSearchService.swift; sourceTree = "<group>"; };
 		93CE75C123521D6300BDF877 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		93CE75C323521F1400BDF877 /* Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
-		93CE75C62352266B00BDF877 /* MapView+Tweet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MapView+Tweet.swift"; sourceTree = "<group>"; };
+		93CE75C62352266B00BDF877 /* MapViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewExtentions.swift; sourceTree = "<group>"; };
 		93CE75C9235260AC00BDF877 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		93CE75CA235260AC00BDF877 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		93CE75CD235261E000BDF877 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		93CE75CF2352623C00BDF877 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
-		93CE75D12352733700BDF877 /* UIImageView+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+URL.swift"; sourceTree = "<group>"; };
-		93EBDB7E235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TWTRAPIClient+PTwitterClient.swift"; sourceTree = "<group>"; };
-		93EBDB812354779000CDEE65 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		93CE75D12352733700BDF877 /* UIImageViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtentions.swift; sourceTree = "<group>"; };
+		93EBDB7E235474B700CDEE65 /* TWTRAPIClientExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWTRAPIClientExtentions.swift; sourceTree = "<group>"; };
 		93EBDB832354D7A900CDEE65 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 		93EBDB882354E44C00CDEE65 /* PMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMapModel.swift; sourceTree = "<group>"; };
-		93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PViewModel.swift; sourceTree = "<group>"; };
-		93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PAppCoordinator.swift; sourceTree = "<group>"; };
-		93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
-		93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PLoginCoordinator.swift; sourceTree = "<group>"; };
+		93EBDB8F2354E97A00CDEE65 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		93FED1882351B3AC0022D610 /* Bell Test App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bell Test App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93FED18B2351B3AC0022D610 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93FED1942351B3AE0022D610 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -162,6 +181,9 @@
 		B6B50F11FEADCD0710D74D35 /* Pods-BellTestAssignment.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BellTestAssignment.release.xcconfig"; path = "Pods/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment.release.xcconfig"; sourceTree = "<group>"; };
 		C9E436775B8898198C011330 /* Pods_BellTestAssignment.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BellTestAssignment.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E82D7D1F1D43D00A1F598031 /* Pods-BellTestAssignmentUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BellTestAssignmentUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BellTestAssignmentUITests/Pods-BellTestAssignmentUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		FEE1D5E823555B4C00E74546 /* Premitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Premitives.swift; sourceTree = "<group>"; };
+		FEE1D5EC23555DE400E74546 /* TWTAPIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWTAPIWrapper.swift; sourceTree = "<group>"; };
+		FEE1D5F123556DE500E74546 /* TWTRTwitterExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWTRTwitterExtentions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,34 +293,6 @@
 			path = Coordinators;
 			sourceTree = "<group>";
 		};
-		93CE75B12351D0F400BDF877 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				93CE75B22351D0FF00BDF877 /* Constants.swift */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
-		93CE75B42351D6AE00BDF877 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				93CE75BC235203AF00BDF877 /* LocationManager.swift */,
-				93CE75BE235207D900BDF877 /* TweetSearchService.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
-		93CE75C023521D5100BDF877 /* Decodable */ = {
-			isa = PBXGroup;
-			children = (
-				93CE75C123521D6300BDF877 /* Place.swift */,
-				93CE75C323521F1400BDF877 /* Tweet.swift */,
-				9301B97C23546D5100E4FE93 /* SearchMetaData.swift */,
-				9301B97E23546DC600E4FE93 /* RadiusSearchResponse.swift */,
-			);
-			path = Decodable;
-			sourceTree = "<group>";
-		};
 		93CE75C52352265600BDF877 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -323,9 +317,9 @@
 		93EBDB7B2354746D00CDEE65 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				93CE75C62352266B00BDF877 /* MapView+Tweet.swift */,
-				93CE75D12352733700BDF877 /* UIImageView+URL.swift */,
-				9301B969235357D000E4FE93 /* UITableViewCell+ReuseId.swift */,
+				93CE75C62352266B00BDF877 /* MapViewExtentions.swift */,
+				93CE75D12352733700BDF877 /* UIImageViewExtentions.swift */,
+				9301B969235357D000E4FE93 /* UITableViewExtentions.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -333,10 +327,10 @@
 		93EBDB7C2354748600CDEE65 /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				9301B96B2353673B00E4FE93 /* String+Ext.swift */,
-				9301B97423546AD600E4FE93 /* NSObject+ClassName.swift */,
-				9301B97623546C6300E4FE93 /* Data+Parsing.swift */,
-				9301B97A23546D1F00E4FE93 /* NSError+CustomErrors.swift */,
+				9301B96B2353673B00E4FE93 /* StringExtentions.swift */,
+				9301B97423546AD600E4FE93 /* NSObjectExtentions.swift */,
+				9301B97623546C6300E4FE93 /* DataExtentions.swift */,
+				9301B97A23546D1F00E4FE93 /* NSErrorExtentions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -344,24 +338,16 @@
 		93EBDB7D2354749700CDEE65 /* TwitterKit */ = {
 			isa = PBXGroup;
 			children = (
-				9301B97823546CF400E4FE93 /* TWTRTweet+Parsing.swift */,
-				93EBDB7E235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift */,
+				9301B97823546CF400E4FE93 /* TWTRTweetExtentions.swift */,
+				93EBDB7E235474B700CDEE65 /* TWTRAPIClientExtentions.swift */,
+				FEE1D5F123556DE500E74546 /* TWTRTwitterExtentions.swift */,
 			);
 			path = TwitterKit;
-			sourceTree = "<group>";
-		};
-		93EBDB802354778300CDEE65 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				93EBDB812354779000CDEE65 /* Response.swift */,
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		93EBDB842354DE1700CDEE65 /* BaseClasses */ = {
 			isa = PBXGroup;
 			children = (
-				93EBDB952354E9CF00CDEE65 /* BaseCoordinator */,
 				93CE75AB2351C9EF00BDF877 /* BaseViewControllers */,
 			);
 			path = BaseClasses;
@@ -375,22 +361,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		93EBDB8E2354E94800CDEE65 /* Public Protocols */ = {
+		93EBDB8E2354E94800CDEE65 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				93EBDB8F2354E97A00CDEE65 /* PViewModel.swift */,
-				93EBDB922354E9AC00CDEE65 /* PAppCoordinator.swift */,
-				93EBDB992355118600CDEE65 /* PLoginCoordinator.swift */,
+				93EBDB8F2354E97A00CDEE65 /* ViewModelProtocol.swift */,
 			);
-			path = "Public Protocols";
-			sourceTree = "<group>";
-		};
-		93EBDB952354E9CF00CDEE65 /* BaseCoordinator */ = {
-			isa = PBXGroup;
-			children = (
-				93EBDB962354E9E400CDEE65 /* BaseCoordinator.swift */,
-			);
-			path = BaseCoordinator;
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		93FED17F2351B3AC0022D610 = {
@@ -419,18 +395,12 @@
 		93FED18A2351B3AC0022D610 /* BellTestAssignment */ = {
 			isa = PBXGroup;
 			children = (
-				93EBDB8E2354E94800CDEE65 /* Public Protocols */,
-				93EBDB802354778300CDEE65 /* Helpers */,
-				93CE75C023521D5100BDF877 /* Decodable */,
-				93CE75B42351D6AE00BDF877 /* Services */,
-				93CE75C52352265600BDF877 /* Extensions */,
-				93EBDB842354DE1700CDEE65 /* BaseClasses */,
-				93CE75AE2351CB8B00BDF877 /* Coordinators */,
+				93FED1BD2351BD900022D610 /* AppDelegate */,
+				FEE1D5E623555AE200E74546 /* Utils */,
+				FEE1D5E523555AD900E74546 /* Logic */,
 				93FED1BE2351BDA20022D610 /* UIModules */,
 				93FED1992351B3AE0022D610 /* Info.plist */,
 				93FED1BB2351BD520022D610 /* SupportFiles */,
-				93FED1BD2351BD900022D610 /* AppDelegate */,
-				93CE75B12351D0F400BDF877 /* Constants */,
 			);
 			path = BellTestAssignment;
 			sourceTree = "<group>";
@@ -491,6 +461,57 @@
 				93FED1C72351BF1F0022D610 /* MapModel.swift */,
 			);
 			path = Map;
+			sourceTree = "<group>";
+		};
+		FEE1D5E523555AD900E74546 /* Logic */ = {
+			isa = PBXGroup;
+			children = (
+				FEE1D5EE23555E1600E74546 /* TWTAPIWrapper */,
+				93CE75AE2351CB8B00BDF877 /* Coordinators */,
+				93EBDB842354DE1700CDEE65 /* BaseClasses */,
+				FEE1D5EB23555BCA00E74546 /* Managers */,
+				FEE1D5EA23555BB800E74546 /* Models */,
+				93EBDB8E2354E94800CDEE65 /* Protocols */,
+			);
+			path = Logic;
+			sourceTree = "<group>";
+		};
+		FEE1D5E623555AE200E74546 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				93CE75B22351D0FF00BDF877 /* Constants.swift */,
+				FEE1D5E823555B4C00E74546 /* Premitives.swift */,
+				93CE75C52352265600BDF877 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FEE1D5EA23555BB800E74546 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				93CE75C123521D6300BDF877 /* Place.swift */,
+				93CE75C323521F1400BDF877 /* Tweet.swift */,
+				9301B97C23546D5100E4FE93 /* SearchMetaData.swift */,
+				9301B97E23546DC600E4FE93 /* RadiusSearchResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		FEE1D5EB23555BCA00E74546 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				93CE75BC235203AF00BDF877 /* LocationManager.swift */,
+				93CE75BE235207D900BDF877 /* TweetSearchService.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FEE1D5EE23555E1600E74546 /* TWTAPIWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				FEE1D5EC23555DE400E74546 /* TWTAPIWrapper.swift */,
+			);
+			path = TWTAPIWrapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -680,26 +701,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
-				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7D0C22509D2FABB010298412 /* [CP] Check Pods Manifest.lock */ = {
@@ -730,20 +740,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-resources.sh",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -754,43 +759,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				9301B95E2353331D00E4FE93 /* SearchViewModel.swift in Sources */,
+				FEE1D5ED23555DE400E74546 /* TWTAPIWrapper.swift in Sources */,
 				9301B97F23546DC600E4FE93 /* RadiusSearchResponse.swift in Sources */,
-				9301B97523546AD600E4FE93 /* NSObject+ClassName.swift in Sources */,
-				9301B96A235357D000E4FE93 /* UITableViewCell+ReuseId.swift in Sources */,
-				93EBDB7F235474B700CDEE65 /* TWTRAPIClient+PTwitterClient.swift in Sources */,
-				93EBDB932354E9AC00CDEE65 /* PAppCoordinator.swift in Sources */,
+				9301B97523546AD600E4FE93 /* NSObjectExtentions.swift in Sources */,
+				9301B96A235357D000E4FE93 /* UITableViewExtentions.swift in Sources */,
+				93EBDB7F235474B700CDEE65 /* TWTRAPIClientExtentions.swift in Sources */,
 				93CE75D02352623C00BDF877 /* DetailModel.swift in Sources */,
 				93FED18C2351B3AC0022D610 /* AppDelegate.swift in Sources */,
-				93EBDB822354779000CDEE65 /* Response.swift in Sources */,
 				93CE75B02351CB9A00BDF877 /* AppCoordinator.swift in Sources */,
 				93FED1C82351BF1F0022D610 /* MapModel.swift in Sources */,
-				9301B96C2353673B00E4FE93 /* String+Ext.swift in Sources */,
-				93CE75D22352733700BDF877 /* UIImageView+URL.swift in Sources */,
+				9301B96C2353673B00E4FE93 /* StringExtentions.swift in Sources */,
+				FEE1D5E923555B4C00E74546 /* Premitives.swift in Sources */,
+				93CE75D22352733700BDF877 /* UIImageViewExtentions.swift in Sources */,
 				93CE75CB235260AC00BDF877 /* DetailViewController.swift in Sources */,
 				9301B97D23546D5100E4FE93 /* SearchMetaData.swift in Sources */,
 				9301B9722353994600E4FE93 /* LoginViewController.swift in Sources */,
 				93CE75CE235261E000BDF877 /* DetailViewModel.swift in Sources */,
 				9301B967235350F100E4FE93 /* TweetwCell.swift in Sources */,
 				93EBDB892354E44C00CDEE65 /* PMapModel.swift in Sources */,
-				9301B97723546C6300E4FE93 /* Data+Parsing.swift in Sources */,
-				93EBDB902354E97A00CDEE65 /* PViewModel.swift in Sources */,
+				9301B97723546C6300E4FE93 /* DataExtentions.swift in Sources */,
+				93EBDB902354E97A00CDEE65 /* ViewModelProtocol.swift in Sources */,
 				93CE75AD2351CA0B00BDF877 /* BaseViewController.swift in Sources */,
 				93CE75BD235203AF00BDF877 /* LocationManager.swift in Sources */,
-				9301B97B23546D1F00E4FE93 /* NSError+CustomErrors.swift in Sources */,
+				9301B97B23546D1F00E4FE93 /* NSErrorExtentions.swift in Sources */,
 				9301B96E235398C700E4FE93 /* LoginCoordinator.swift in Sources */,
 				9301B9602353338400E4FE93 /* SearchModel.swift in Sources */,
 				93CE75B32351D0FF00BDF877 /* Constants.swift in Sources */,
-				9301B97923546CF400E4FE93 /* TWTRTweet+Parsing.swift in Sources */,
+				9301B97923546CF400E4FE93 /* TWTRTweetExtentions.swift in Sources */,
 				93FED1C32351BDF30022D610 /* MapViewController.swift in Sources */,
-				93EBDB9A2355118600CDEE65 /* PLoginCoordinator.swift in Sources */,
-				93EBDB972354E9E400CDEE65 /* BaseCoordinator.swift in Sources */,
 				9301B96323534D7A00E4FE93 /* SearchTableDataSource.swift in Sources */,
 				93FED1C62351BF110022D610 /* MapViewModel.swift in Sources */,
 				93CE75C223521D6300BDF877 /* Place.swift in Sources */,
 				93CE75BF235207D900BDF877 /* TweetSearchService.swift in Sources */,
 				93CE75C423521F1400BDF877 /* Tweet.swift in Sources */,
 				9301B95B235329A400E4FE93 /* SearchViewController.swift in Sources */,
-				93CE75C72352266B00BDF877 /* MapView+Tweet.swift in Sources */,
+				FEE1D5F223556DE500E74546 /* TWTRTwitterExtentions.swift in Sources */,
+				93CE75C72352266B00BDF877 /* MapViewExtentions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -798,14 +802,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				937066FB23559BC900D7E69D /* DetailModel.swift in Sources */,
+				937066F823559B7600D7E69D /* SearchModel.swift in Sources */,
 				93EBDB8A2354E47300CDEE65 /* PMapModel.swift in Sources */,
-				93EBDB982354E9EE00CDEE65 /* BaseCoordinator.swift in Sources */,
-				93EBDB942354E9B700CDEE65 /* PAppCoordinator.swift in Sources */,
 				93EBDB862354E37500CDEE65 /* MapViewModelTests.swift in Sources */,
+				937066F52355998900D7E69D /* LocationManager.swift in Sources */,
+				9370670923559E4B00D7E69D /* TWTRTweetExtentions.swift in Sources */,
 				93EBDB8B2354E48B00CDEE65 /* Tweet.swift in Sources */,
 				93EBDB8C2354E49F00CDEE65 /* Place.swift in Sources */,
-				93EBDB912354E98000CDEE65 /* PViewModel.swift in Sources */,
+				937066FD23559CA100D7E69D /* TweetSearchService.swift in Sources */,
+				937066F42355998400D7E69D /* MapViewController.swift in Sources */,
+				937066F723559B6800D7E69D /* SearchViewController.swift in Sources */,
+				937066FA23559B8900D7E69D /* SearchTableDataSource.swift in Sources */,
+				937066F923559B7E00D7E69D /* SearchViewModel.swift in Sources */,
+				937066F62355999400D7E69D /* MapModel.swift in Sources */,
+				9370670523559E2000D7E69D /* DetailViewController.swift in Sources */,
+				9370670123559D2900D7E69D /* BaseViewController.swift in Sources */,
+				9370670723559E3300D7E69D /* Premitives.swift in Sources */,
+				93EBDB912354E98000CDEE65 /* ViewModelProtocol.swift in Sources */,
+				9370670A23559E8D00D7E69D /* SearchMetaData.swift in Sources */,
+				937066FC23559BFB00D7E69D /* LoginViewController.swift in Sources */,
+				9370670323559D8900D7E69D /* TWTAPIWrapper.swift in Sources */,
+				9370670423559E0800D7E69D /* LoginCoordinator.swift in Sources */,
 				93EBDB8D2354E91600CDEE65 /* MapViewModel.swift in Sources */,
+				9370670023559D1200D7E69D /* StringExtentions.swift in Sources */,
+				9370670223559D3600D7E69D /* MapViewExtentions.swift in Sources */,
+				937066F2235596DA00D7E69D /* AppCoordinator.swift in Sources */,
+				9370670B23559EA400D7E69D /* DataExtentions.swift in Sources */,
+				937066F3235597F600D7E69D /* DetailViewModel.swift in Sources */,
+				9370670823559E3B00D7E69D /* RadiusSearchResponse.swift in Sources */,
+				937066FF23559CF200D7E69D /* NSErrorExtentions.swift in Sources */,
+				937066FE23559CDE00D7E69D /* TWTRAPIClientExtentions.swift in Sources */,
+				9370670623559E2B00D7E69D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,7 +993,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K9U45N8FBN;
+				DEVELOPMENT_TEAM = 685A9976ZB;
 				INFOPLIST_FILE = BellTestAssignment/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (

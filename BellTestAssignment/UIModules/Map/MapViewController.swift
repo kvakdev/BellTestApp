@@ -12,28 +12,24 @@ import RxSwift
 import CoreLocation
 
 
-class MapViewController: BaseVC {
-    private var viewModel: PMapViewModel {
-        return self.vModel as! PMapViewModel
-    }
-    
-    @IBOutlet private weak var _mapView: MKMapView!
-    @IBOutlet private weak var _radiusSlider: UISlider!
+public class MapViewController: BaseViewController {
+    @IBOutlet private weak var mapView: MKMapView!
+    @IBOutlet private weak var radiusSlider: UISlider!
     
     private let identifier = "reuseId"
-    private var _radiusKm: Int = 5
-    
-    override func viewDidLoad() {
+    private var radiusKm: Int = 5
+
+    private var viewModel: MapViewModelProtocol {
+        return self.vModel as! MapViewModelProtocol
+    }
+
+    override public func viewDidLoad() {
         setupNavigationBar()
         setupMapView()
         setupSlider()
         setupCallbacks()
-        
+
         super.viewDidLoad()
-    }
-    
-    deinit {
-        print("deinit")
     }
     
     // MARK: - Private funcs
@@ -42,70 +38,52 @@ class MapViewController: BaseVC {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(handleSearchBtn))
         updateTitle()
     }
-    
-    private func makeLeftBarButton(_ isLoggedIn: Bool) {
-        let title = isLoggedIn ? "Logout" : "Login"
-        let selector: Selector = isLoggedIn ? #selector(handleLogoutBtn) : #selector(handleLoginBtn)
-        
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: title, style: .plain, target: self, action: selector)
-    }
-    
-    @objc private func handleLoginBtn() {
-        viewModel.didTapLogin()
-    }
-    
-    @objc private func handleLogoutBtn() {
-        viewModel.didTapLogout()
-    }
-    
-    @objc private func handleSearchBtn() {
-        viewModel.didTapSearch()
-    }
-    
-    @objc private func handleValueChanged(_ sender: UISlider) {
-        _radiusKm = Int(sender.value)
-        updateTitle()
-        viewModel.didChangeRadius(_radiusKm)
-    }
+
     private func updateTitle() {
-        navigationItem.title = "Radius search: \(_radiusKm) km"
+        navigationItem.title = "Radius search: \(radiusKm) km"
     }
     
     private func setupMapView() {
-        _mapView.showsScale = true
-        _mapView.delegate = self
-        _mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: identifier)
+        mapView.showsScale = true
+        mapView.delegate = self
+        mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: identifier)
     }
     
     private func setupSlider() {
-        _radiusSlider.addTarget(self, action: #selector(handleValueChanged(_:)), for: .valueChanged)
-        _radiusSlider.isContinuous = false
-        _radiusSlider.setValue(Float(_radiusKm), animated: false)
+        radiusSlider.isContinuous = false
+        radiusSlider.setValue(Float(radiusKm), animated: false)
     }
     
     private func setupCallbacks() {
         self.viewModel.tweets.subscribe(onNext: { [weak self] tweets in
             DispatchQueue.main.async {
-                self?._mapView.removeOldPins()
-                self?._mapView.makePins(for: tweets)
+                self?.mapView.removeOldPins()
+                self?.mapView.makePins(for: tweets)
             }
         }).disposed(by: self.disposeBag)
         
-        self.viewModel.location.subscribe(onNext: { location in
+        self.viewModel.location.subscribe(onNext: { [weak self] location in
             let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
             let coordinateRegion = MKCoordinateRegion(center: location.coordinate, span: span)
-            self._mapView.setRegion(coordinateRegion, animated: true)
+            self?.mapView.setRegion(coordinateRegion, animated: true)
         }).disposed(by: disposeBag)
-        
-        self.viewModel.isLoggedIn.subscribe(onNext: { isLoggedIn in
-            self.makeLeftBarButton(isLoggedIn)
-        }).disposed(by: disposeBag)
+    }
+
+    // MARK: Private actions
+    @objc private func handleSearchBtn() {
+        viewModel.didTapSearch()
+    }
+
+    @IBAction private func handleValueChanged(_ sender: UISlider) {
+        radiusKm = Int(sender.value)
+        updateTitle()
+        viewModel.didChangeRadius(radiusKm)
     }
 }
 
+// MARK: MKMapViewDelegate funcs
 extension MapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        
+    public func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let annotation = annotation as? TweetAnnotation else { return nil }
         
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
@@ -123,19 +101,14 @@ extension MapViewController: MKMapViewDelegate {
         return annotationView
     }
     
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        
-        if let note = view.annotation as? TweetAnnotation {
-            debugPrint("tapped \(note.tweet.author.screenName)")
-            
-        }
+    public func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        guard let note = view.annotation as? TweetAnnotation else { return }
+        debugPrint("tapped \(note.tweet.author.screenName)")
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        if let tweetAnnotation = view.annotation as? TweetAnnotation {
-            let tweet = tweetAnnotation.tweet
-            viewModel.didTapDetails(tweet: tweet)
-        }
+    public func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let tweetAnnotation = view.annotation as? TweetAnnotation else { return }
+        let tweet = tweetAnnotation.tweet
+        viewModel.didTapDetails(tweet: tweet)
     }
 }

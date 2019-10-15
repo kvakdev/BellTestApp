@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="BellTestAssignment" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="Bell_Test_App" customModuleProvider="target">
             <connections>
                 <outlet property="btnsContainer" destination="8F1-o6-mmO" id="CUD-iL-TjA"/>
                 <outlet property="likeButton" destination="zgh-V5-DFq" id="JDV-ZH-hxN"/>
@@ -29,12 +29,18 @@
                             <state key="normal" title="Like">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="like" destination="-1" eventType="touchUpInside" id="Akc-vb-aun"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hp6-Ju-gUS">
                             <rect key="frame" x="199" y="0.0" width="183" height="30"/>
                             <state key="normal" title="Retweet">
                                 <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="retweet" destination="-1" eventType="touchUpInside" id="j4b-2V-RPh"/>
+                            </connections>
                         </button>
                     </subviews>
                 </stackView>

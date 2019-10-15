@@ -9,28 +9,27 @@
 import Foundation
 import TwitterKit
 
-protocol PSearchModel {
+public protocol SearchModelProtocol {
     func search(query: String, completion: ((AsyncResult<[TWTRTweet]>) -> Void)?)
 }
 
-class SearchModel: PSearchModel {
-    private let _searchService: PTweetAPIService
-    private var _currentQuery: String = ""
+public class SearchModel: SearchModelProtocol {
+    private let searchService: TweetAPIProtocol
+    private var currentQuery: String = ""
     
-    init(_ searchService: PTweetAPIService) {
-        _searchService = searchService
+    init(_ searchService: TweetAPIProtocol) {
+        self.searchService = searchService
     }
     
-    func search(query: String, completion: ((AsyncResult<[TWTRTweet]>) -> Void)?) {
-        _currentQuery = query
+    public func search(query: String, completion: ((AsyncResult<[TWTRTweet]>) -> Void)?) {
+       currentQuery = query
         if query.trimmed.isEmpty {
             completion?(.success([]))
             return
         }
         
-        _searchService.querySearchTweets(query: query, count: 100, completion: { [weak self] result in
-            guard self?._currentQuery == query else { return }
-            
+       searchService.querySearchTweets(query: query, count: 100, completion: { [weak self] result in
+            guard self?.currentQuery == query else { return }
             completion?(result)
         })
     }

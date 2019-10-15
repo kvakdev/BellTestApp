@@ -11,7 +11,7 @@ This application was created for non-commercial use and its sole purspose is pro
 ## The app relies on two external dependencies managed by Cocoapods. They are TwitterKit and RxSwift. 
 
 ### TwitterKit is the main framework for the application it does most of the job in API communication and content rendering.
-### RxSwift is used for reactive MVVM+C architectural pattern.
+### RxSwift is used for reactive MVVM architectural pattern.
     
 ## There are test that cover bonus part of the task
     

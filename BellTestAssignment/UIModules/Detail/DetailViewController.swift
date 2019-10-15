@@ -9,27 +9,36 @@
 import UIKit
 import TwitterKit
 
-class DetailViewController: BaseVC {
-    private var viewModel: PDetailViewModel {
-        return self.vModel as! PDetailViewModel
-    }
-    
+public class DetailViewController: BaseViewController {
     @IBOutlet private weak var likeButton: UIButton!
     @IBOutlet private weak var retweetButton: UIButton!
     @IBOutlet private weak var btnsContainer: UIStackView!
+
     private let loader = UIActivityIndicatorView(style: .gray)
     private var tweetView: TWTRTweetView?
-    
-    override func viewDidLoad() {
+
+    private var viewModel: DetailViewModelProtocol {
+        return self.vModel as! DetailViewModelProtocol
+    }
+
+    override public func viewDidLoad() {
         self.navigationItem.title = "Details"
-        
+
+        setupButtons()
         setupLoader()
-        setupBtns()
         setupCallbacks()
-        
+
         super.viewDidLoad()
     }
-    
+
+    private func setupButtons() {
+        likeButton.layer.borderColor = UIColor.blue.cgColor
+        likeButton.layer.borderWidth = 1
+
+        retweetButton.layer.borderColor = UIColor.blue.cgColor
+        retweetButton.layer.borderWidth = 1
+    }
+
     private func setupCallbacks() {
         self.viewModel.tweet.subscribe(onNext: { [weak self] tweet in
             self?.addTweetView(tweet)
@@ -61,30 +70,24 @@ class DetailViewController: BaseVC {
         self.tweetView = tweetView
     }
     
-    private func setupBtns() {
-        [likeButton, retweetButton].forEach { $0?.addTarget(self, action: #selector(handleBtnAction(_:)), for: .touchUpInside) }
-    }
-    
     private func setupLoader() {
         view.addSubview(loader)
         loader.center = self.view.center
         loader.hidesWhenStopped = true
     }
-    
-    @objc func handleBtnAction(_ sender: UIButton) {
-        switch sender {
-        case retweetButton:
-            viewModel.retweetTapped()
-        case likeButton:
-            viewModel.likeTapped()
-        default:
-            assertionFailure()
-        }
+
+    @IBAction private func retweet() {
+        viewModel.retweetTapped()
+    }
+
+    @IBAction private func like() {
+        viewModel.likeTapped()
     }
 }
 
+// MARK: TWTRTweetViewDelegate funcs
 extension DetailViewController: TWTRTweetViewDelegate {
-    func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
+    public func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
         print("Tweet tapped doign nothing")
     }
 }

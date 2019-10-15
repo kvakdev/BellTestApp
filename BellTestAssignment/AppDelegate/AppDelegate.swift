@@ -13,26 +13,24 @@ import TwitterKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var mainCoordinator: BaseCoordinator?
+    var appCoordinator: AppCoordinator!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         TWTRTwitter.sharedInstance().start(withConsumerKey: Constants.apiKey, consumerSecret: Constants.apiSecret)
 
-            window = UIWindow(frame: UIScreen.main.bounds)
+        window = UIWindow(frame: UIScreen.main.bounds)
 
-        let nav = UINavigationController()
-        let coordinator = AppCoordinator(nav)
-        mainCoordinator = coordinator
+        let navController = UINavigationController()
+        let coordinator = AppCoordinator(navigationController: navController)
+        appCoordinator = coordinator
 
-        if !TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() {
-            let loginCoordinator = LoginCoordinator(parent: coordinator, navigationController: nav)
-            coordinator.addChild(loginCoordinator)
-            loginCoordinator.start()
+        if TWTRTwitter.sharedInstance().sessionStore.hasLoggedInUsers() {
+            appCoordinator.showInitialFlow()
         } else {
-            coordinator.start()
+            appCoordinator.startAuthFlow()
         }
 
-        window?.rootViewController = nav
+        window?.rootViewController = navController
         window?.makeKeyAndVisible()
 
         return true

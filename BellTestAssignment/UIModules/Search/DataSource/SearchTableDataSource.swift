@@ -10,34 +10,37 @@ import UIKit
 import RxSwift
 import TwitterKit
 
-protocol PSearchDataSource: UITableViewDataSource, UITableViewDelegate {
+public protocol SearchDataSourceProtocol: UITableViewDataSource, UITableViewDelegate {
+    var selectedTweet: PublishSubject<TWTRTweet> { get }
+
     func setup(tableView: UITableView)
     func set(tweets: [TWTRTweet])
 }
 
-class SearchDataSource: NSObject, PSearchDataSource {
-    var selectedTweet: PublishSubject<TWTRTweet> = .init()
-    
+public class SearchDataSource: NSObject, SearchDataSourceProtocol {
+    private weak var tableView: UITableView!
+
     private var tweets: [TWTRTweet] = []
-    private weak var _tableView: UITableView!
     private let reuseId = "reuseId"
-    
-    func setup(tableView: UITableView) {
+
+    public var selectedTweet: PublishSubject<TWTRTweet> = .init()
+
+    public func setup(tableView: UITableView) {
         tableView.tableFooterView = UIView()
         tableView.register(TWTRTweetTableViewCell.self, forCellReuseIdentifier: reuseId)
-        _tableView = tableView
+        self.tableView = tableView
     }
     
-    func set(tweets: [TWTRTweet]) {
+    public func set(tweets: [TWTRTweet]) {
         self.tweets = tweets
-        _tableView.reloadData()
+        tableView.reloadData()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
          return tweets.count
     }
      
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let tweet = self.tweets[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseId, for: indexPath) as! TWTRTweetTableViewCell
         
@@ -48,8 +51,9 @@ class SearchDataSource: NSObject, PSearchDataSource {
     }
 }
 
+// MARK: TWTRTweetViewDelegate funcs
 extension SearchDataSource: TWTRTweetViewDelegate {
-    func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
+    public func tweetView(_ tweetView: TWTRTweetView, didTap tweet: TWTRTweet) {
         self.selectedTweet.onNext(tweet)
     }
 }

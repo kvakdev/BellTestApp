@@ -1,5 +1,5 @@
 //
-//  PMapModel.swift
+//  MapModelProtocol.swift
 //  BellTestAssignment
 //
 //  Created by Andre Kvashuk on 10/14/19.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import CoreLocation
 
-public protocol PMapModel {
+protocol MapModelProtocol {
     var currentRadius: Int { get set }
     var tweets: PublishSubject<[Tweet]> { get }
     var accumulatableTweets: PublishSubject<[Tweet]> { get }

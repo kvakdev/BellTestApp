@@ -8,10 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="BellTestAssignment" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="Bell_Test_App" customModuleProvider="target">
             <connections>
                 <outlet property="loginButton" destination="Wwb-0C-Ui7" id="IKp-Mp-mqn"/>
-                <outlet property="skipButton" destination="rsV-GA-mFN" id="9Te-6w-0PB"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -20,13 +19,6 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsV-GA-mFN">
-                    <rect key="frame" x="54" y="794" width="306" height="35"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                    <state key="normal" title="Skip">
-                        <color key="titleColor" red="0.0" green="0.6705882352941176" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                </button>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="1024" translatesAutoresizingMaskIntoConstraints="NO" id="jYi-FY-aLt">
                     <rect key="frame" x="107" y="348" width="200" height="200"/>
                     <constraints>
@@ -50,21 +42,21 @@
                     <state key="normal" title="Login">
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <connections>
+                        <action selector="login" destination="-1" eventType="touchUpInside" id="azY-cR-eSa"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wwb-0C-Ui7" secondAttribute="trailing" constant="16" id="03C-xc-MGK"/>
                 <constraint firstItem="jYi-FY-aLt" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="4qi-gb-L66"/>
-                <constraint firstItem="rsV-GA-mFN" firstAttribute="top" secondItem="Wwb-0C-Ui7" secondAttribute="bottom" constant="16" id="5uv-3t-nag"/>
-                <constraint firstItem="rsV-GA-mFN" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="54" id="AQj-oZ-liD"/>
                 <constraint firstItem="LJQ-dM-XUm" firstAttribute="top" secondItem="jYi-FY-aLt" secondAttribute="bottom" constant="24" id="FuV-bl-gUt"/>
                 <constraint firstItem="Wwb-0C-Ui7" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="HjG-R9-Peq"/>
                 <constraint firstItem="Wwb-0C-Ui7" firstAttribute="top" relation="greaterThanOrEqual" secondItem="LJQ-dM-XUm" secondAttribute="bottom" constant="16" id="JYT-ZY-iXB"/>
                 <constraint firstItem="LJQ-dM-XUm" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="36" id="Ngx-aw-qCT"/>
                 <constraint firstItem="jYi-FY-aLt" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="fn8-4S-tYf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LJQ-dM-XUm" secondAttribute="trailing" constant="36" id="hbA-Hj-NXW"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rsV-GA-mFN" secondAttribute="trailing" constant="54" id="lph-5v-gFw"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Wwb-0C-Ui7" secondAttribute="bottom" constant="84" id="tsh-Hq-CWc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

@@ -10,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="Bell_Test_App" customModuleProvider="target">
             <connections>
-                <outlet property="_mapView" destination="6g8-fm-GOz" id="u1R-EV-WR7"/>
-                <outlet property="_radiusSlider" destination="uh4-oe-ref" id="Bae-Y4-Nod"/>
+                <outlet property="mapView" destination="6g8-fm-GOz" id="bVy-CI-Csp"/>
+                <outlet property="radiusSlider" destination="uh4-oe-ref" id="KUE-0D-wWv"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,6 +25,9 @@
                 </mapView>
                 <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="5" minValue="0.0" maxValue="20" translatesAutoresizingMaskIntoConstraints="NO" id="uh4-oe-ref">
                     <rect key="frame" x="22" y="812" width="370" height="31"/>
+                    <connections>
+                        <action selector="handleValueChanged:" destination="-1" eventType="valueChanged" id="hFJ-EL-S2Z"/>
+                    </connections>
                 </slider>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -10,27 +10,26 @@ import Foundation
 import RxSwift
 import TwitterKit
 
-protocol PDetailModel {
+public protocol DetailModelProtocol {
     var tweet: PublishSubject<TWTRTweet> { get }
     
     func loadDetails()
-    func isLoggedIn() -> Bool
     func retweet(completion: ((AsyncResult<Bool>) -> Void)?)
     func like(completion: ((AsyncResult<Bool>) -> Void)?)
 }
 
-class DetailModel: PDetailModel {
-    var tweet: PublishSubject<TWTRTweet> = .init()
+public class DetailModel: DetailModelProtocol {
+    public var tweet: PublishSubject<TWTRTweet> = .init()
     
     private let tweetId: String
-    private let service: PTweetAPIService
+    private let service: TweetAPIProtocol
     
-    init(tweetId: String, searchService: PTweetAPIService) {
+    init(tweetId: String, searchService: TweetAPIProtocol) {
         self.tweetId = tweetId
         self.service = searchService
     }
     
-    func loadDetails() {
+    public func loadDetails() {
         service.fetchTweet(id: tweetId) { [weak self] result in
             switch result {
             case .success(let tweet):
@@ -40,18 +39,14 @@ class DetailModel: PDetailModel {
             }
         }
     }
-    
-    func isLoggedIn() -> Bool {
-        return service.isLoggedIn()
-    }
-    
-    func retweet(completion: ((AsyncResult<Bool>) -> Void)?) {
+
+    public func retweet(completion: ((AsyncResult<Bool>) -> Void)?) {
         service.retweet(tweetNumId: tweetId) { result in
             completion?(result)
         }
     }
     
-    func like(completion: ((AsyncResult<Bool>) -> Void)?) {
+    public func like(completion: ((AsyncResult<Bool>) -> Void)?) {
         service.like(tweetId: tweetId) { result in
             completion?(result)
         }

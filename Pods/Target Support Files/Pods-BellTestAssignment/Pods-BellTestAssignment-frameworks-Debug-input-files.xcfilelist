@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-BellTestAssignment/Pods-BellTestAssignment-frameworks.sh
+${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework
+${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework
+${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework
+${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework

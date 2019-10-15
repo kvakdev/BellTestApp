@@ -4,33 +4,41 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Pods-BellTestAssignment.xcscheme</key>
+		<key>Pods-BellTestAssignment.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>1</integer>
 		</dict>
-		<key>Pods-BellTestAssignmentTests.xcscheme</key>
+		<key>Pods-BellTestAssignmentTests.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>2</integer>
 		</dict>
-		<key>Pods-BellTestAssignmentUITests.xcscheme</key>
+		<key>Pods-BellTestAssignmentUITests.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
-		<key>RxAtomic.xcscheme</key>
+		<key>RxAtomic.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
-		<key>RxSwift.xcscheme</key>
+		<key>RxSwift.xcscheme_^#shared#^_</key>
 		<dict>
-			<key>isShown</key>
-			<false/>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>TwitterCore.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>TwitterKit.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
 		</dict>
 	</dict>
-	<key>SuppressBuildableAutocreation</key>
-	<dict/>
 </dict>
 </plist>

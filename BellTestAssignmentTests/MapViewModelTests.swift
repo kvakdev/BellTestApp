@@ -82,7 +82,7 @@ class MapViewModelTests: XCTestCase {
             //then
             debugPrint("Click \(clicks) lastId = \(oldLastId) newFirst = \(newLastId)")
             XCTAssertTrue(oldLastId < newLastId)
-            if clicks >= 5 { exp.fulfill() }
+            if clicks >= 3 { exp.fulfill() }
         }).disposed(by: disposeBag)
         
         //when
@@ -93,14 +93,14 @@ class MapViewModelTests: XCTestCase {
     
     func makeSUT() -> (MapViewModel, MapModelSpy) {
         let model = MapModelSpy()
-        let sut = MapViewModel(model, coordinator: CoordinatorSpy())
+        let sut = MapViewModel(delegate: CoordinatorSpy(), model: model)
         
         return (sut, model)
     }
 }
 
 extension MapViewModelTests {
-    class MapModelSpy: PMapModel {
+    class MapModelSpy: MapModelProtocol {
         var currentRadius: Int = 5
         var tweets: PublishSubject<[Tweet]> = .init()
         var accumulatableTweets: PublishSubject<[Tweet]> = .init()
@@ -132,21 +132,11 @@ extension MapViewModelTests {
         }
     }
     
-    class CoordinatorSpy: PAppCoordinator {
-        var isLoggedIn: Bool = false
-
-        func didSelect(_ tweetId: String) {}
-        func didSelect(_ tweet: Tweet) {}
-        func didTapSearch() {}
-        func didTapLogout(completion: @escaping (Bool) -> Void) {}
-        func didTapLogin(completion: @escaping (Bool) -> Void) {}
-        func handleSuccess(message: String) {}
-        func handle(error: Error?) {}
-        func start() {}
-        func finish() {}
-        func coordinatorIsDone(_ child: BaseCoordinatorClass) {}
-        func addChild(_ child: BaseCoordinatorClass) {}
-        func didMoveSlider() {}
+    class CoordinatorSpy: MapViewModelDelegate {
+        func viewModel(_ viewModel: MapViewModel, didSelect tweet: Tweet) {}
+        func viewModel(_ viewModel: MapViewModel, handle error: Error) {}
+        func viewModelDidMoveSlider(_ viewModel: MapViewModel) {}
+        func viewModelDidTapSearch(_ viewModel: MapViewModel) {}
     }
 }
 

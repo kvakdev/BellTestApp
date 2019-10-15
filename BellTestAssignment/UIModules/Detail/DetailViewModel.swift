@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import TwitterKit
 
-protocol PDetailViewModel: PViewModel {
+public protocol DetailViewModelProtocol: ViewModelProtocol {
     var isLoaderVisible: PublishSubject<Bool> { get }
     var tweet: PublishSubject<TWTRTweet> { get }
     
@@ -18,91 +18,78 @@ protocol PDetailViewModel: PViewModel {
     func likeTapped()
 }
 
-class DetailViewModel: PDetailViewModel {
-    var isLoaderVisible: PublishSubject<Bool> = .init()
-    var tweet: PublishSubject<TWTRTweet> = .init()
+public protocol DetailViewModelDelegate: AnyObject {
+    func viewModel(_ viewModel: DetailViewModel, handle error: Error)
+    func viewModel(_ viewModel: DetailViewModel, handle success: String)
+}
+
+public class DetailViewModel: DetailViewModelProtocol {
+    public var isLoaderVisible: PublishSubject<Bool> = .init()
+    public var tweet: PublishSubject<TWTRTweet> = .init()
     
-    private let model: PDetailModel
-    private let coordinator: PAppCoordinator
+    private let model: DetailModelProtocol
     private let twitter: TWTRTwitter
     private let disposeBag = DisposeBag()
-    
+
+    private weak var delegate: DetailViewModelDelegate?
+
     private let formatter: DateFormatter = {
-        let f = DateFormatter()
-        f.dateStyle = .full
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .full
         
-        return f
+        return dateFormatter
     }()
     
-    init(_ model: PDetailModel, coordinator: PAppCoordinator, twitter: TWTRTwitter) {
+    public init(delegate: DetailViewModelDelegate, model: DetailModelProtocol, twitter: TWTRTwitter) {
         self.model = model
-        self.coordinator = coordinator
+        self.delegate = delegate
         self.twitter = twitter
     }
     
-    func viewDidLoad() {
+    public func viewDidLoad() {
         isLoaderVisible.onNext(true)
         
-        model.tweet.do(onNext: { _ in
+        model.tweet.do(onNext: { [weak self] _ in
+            guard let self = self else { return }
             self.isLoaderVisible.onNext(false)
-        }).subscribe(onNext: { [weak self] tweet in
-            guard let _self = self else { return }
-            
-            _self.tweet.onNext(tweet)
-        }, onError: { [weak self] error in
-            self?.coordinator.handle(error: error)
+        }).subscribe(
+            onNext: { [weak self] tweet in
+                guard let self = self else { return }
+                self.tweet.onNext(tweet)
+            },
+            onError: { [weak self] error in
+                guard let self = self else { return }
+                self.delegate?.viewModel(self, handle: error)
         }).disposed(by: disposeBag)
         
         model.loadDetails()
     }
     
-    func retweetTapped() {
-        ensureIsLoggedIn { [unowned self] in
-            
-            self.model.retweet { result in
-                switch result {
-                case .success:
-                    self.coordinator.handleSuccess(message: "Retweet successfull!")
-                case .failure(let error):
-                    self.coordinator.handle(error: error)
-                }
+    public func retweetTapped() {
+        self.model.retweet { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .success:
+                self.delegate?.viewModel(self, handle: "Retweet successfull!")
+            case .failure(let error):
+                guard let error = error else { return }
+                self.delegate?.viewModel(self, handle: error)
             }
         }
     }
     
-    func likeTapped() {
-        ensureIsLoggedIn { [unowned self] in
-            
-            self.model.like { result in
-                switch result {
-                case .success:
-                    self.coordinator.handleSuccess(message: "Like successfull!")
-                case .failure(let error):
-                    self.coordinator.handle(error: error)
-                }
+    public func likeTapped() {
+        self.model.like { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .success:
+                self.delegate?.viewModel(self, handle: "Like successfull!")
+            case .failure(let error):
+                guard let error = error else { return }
+                self.delegate?.viewModel(self, handle: error)
             }
-        }
-    }
-    
-    private func ensureIsLoggedIn(completion: @escaping () -> Void) {
-        if twitter.sessionStore.hasLoggedInUsers() {
-            completion()
-            return
-        } else {
-            coordinator.didTapLogin { loggedIn in
-                if loggedIn {
-                    completion()
-                }
-            }
-            
-//            twitter.logIn { [unowned self] (session, error) in
-//                if session != nil {
-//                    completion()
-//                }
-//                if let error = error {
-//                    self.coordinator.handle(error: error)
-//                }
-//            }
         }
     }
 }

@@ -10,52 +10,56 @@ import Foundation
 import RxSwift
 import TwitterKit
 
-protocol PSearchViewModel: PViewModel {
-    var dataSource: PSearchDataSource { get }
+public protocol SearchViewModelProtocol: ViewModelProtocol {
+    var dataSource: SearchDataSourceProtocol { get }
     var isLoaderVisible: PublishSubject<Bool> { get }
     
     func didChangeQuery(_ query: String)
 }
 
-class SearchViewModel: PSearchViewModel {
-    var isLoaderVisible: PublishSubject<Bool> = .init()
-    
-    private var _model: PSearchModel
-    private let _coordinator: PAppCoordinator
-    
-    private let _disposeBag = DisposeBag()
-    var dataSource: PSearchDataSource {
-        return _dataSource
-    }
-    private var _dataSource: SearchDataSource = SearchDataSource()
-    
-    init(_ model: PSearchModel, coordinator: PAppCoordinator) {
-        _model = model
-        _coordinator = coordinator
+public protocol SearchViewModelDelegate: AnyObject {
+    func viewModel(_ viewModel: SearchViewModel, didSelect tweet: TWTRTweet)
+    func viewModel(_ viewModel: SearchViewModel, handle error: Error)
+}
+
+public class SearchViewModel: SearchViewModelProtocol {
+    private weak var delegate: SearchViewModelDelegate?
+
+    private var model: SearchModelProtocol
+    private let disposeBag = DisposeBag()
+
+    public var dataSource: SearchDataSourceProtocol = SearchDataSource()
+    public var isLoaderVisible: PublishSubject<Bool> = .init()
+
+    init(delegate: SearchViewModelDelegate, model: SearchModelProtocol) {
+        self.delegate = delegate
+        self.model = model
     }
 
-    func viewDidLoad() {
-        _dataSource.selectedTweet.subscribe(onNext: { tweet in
-            self._coordinator.didSelect(tweet.tweetID)
-        }).disposed(by: _disposeBag)
+    public func viewDidLoad() {
+        dataSource.selectedTweet.subscribe(onNext: { [weak self] tweet in
+            guard let self = self else { return }
+            self.delegate?.viewModel(self, didSelect: tweet)
+        }).disposed(by:disposeBag)
     }
     
-    func didChangeQuery(_ query: String) {
+    public func didChangeQuery(_ query: String) {
         self.isLoaderVisible.onNext(true)
         
-        _model.search(query: query) { [weak self] result in
-            self?.isLoaderVisible.onNext(false)
+        model.search(query: query) { [weak self] result in
+            guard let self = self else { return }
+            self.isLoaderVisible.onNext(false)
             
             switch result {
             case .failure(let error):
-                self?._coordinator.handle(error: error ?? NSError.noData())
+                self.delegate?.viewModel(self, handle: error ?? NSError.noData())
             case .success(let tweets):
-                self?.setTweets(tweets)
+                self.setTweets(tweets)
             }
         }
     }
     
-    func setTweets(_ tweets: [TWTRTweet]) {
+    private func setTweets(_ tweets: [TWTRTweet]) {
         dataSource.set(tweets: tweets)
     }
 }

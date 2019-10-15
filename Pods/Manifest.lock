@@ -11,7 +11,7 @@ DEPENDENCIES:
   - TwitterKit
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - RxAtomic
     - RxSwift
     - TwitterCore
@@ -25,4 +25,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 00e89b8bd369336ef407b42258cf9048c2d15ca6
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.3

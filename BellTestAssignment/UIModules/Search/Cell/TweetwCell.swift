@@ -9,11 +9,11 @@
 import UIKit
 
 class TweetwCell: UITableViewCell {
-    @IBOutlet weak var _titleLabel: UILabel!
-    @IBOutlet weak var _textLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var detailsLabel: UILabel!
     
     func set(viewModel: Tweet) {
-        _titleLabel.text = viewModel.author.screenName
-        _textLabel.text = viewModel.text
+       titleLabel.text = viewModel.author.screenName
+       detailsLabel.text = viewModel.text
     }
 }

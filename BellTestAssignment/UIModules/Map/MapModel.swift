@@ -10,14 +10,14 @@ import Foundation
 import RxSwift
 import CoreLocation
 
-class MapModel: PMapModel {
+public class MapModel: MapModelProtocol {
     var tweets: PublishSubject<[Tweet]> = .init()
     var location: PublishSubject<CLLocation> = .init()
     var presentableError: PublishSubject<Error> = .init()
     var accumulatableTweets: PublishSubject<[Tweet]> = .init()
     
-    private let locationManager: PLocationManager
-    private let searchService: PTweetAPIService
+    private let locationManager: LocationManagerProtocol
+    private let searchService: TweetAPIProtocol
     
     private var lastLocation: CLLocation?
     private let disposeBag = DisposeBag()
@@ -30,7 +30,7 @@ class MapModel: PMapModel {
         }
     }
     
-    init(locationManager: PLocationManager, searchService: PTweetAPIService) {
+    init(locationManager: LocationManagerProtocol, searchService: TweetAPIProtocol) {
         self.locationManager = locationManager
         self.searchService = searchService
     }
@@ -54,7 +54,6 @@ class MapModel: PMapModel {
         self.searchService.searchTweets(query: query) { [weak self] result in
             switch result {
             case .success(let tweets):
-//                debugPrint("Timer got \(tweets.count) filteredTweets")
                 self?.accumulatableTweets.onNext(tweets)
             case .failure(let error):
                 if let error = error {
@@ -72,7 +71,6 @@ class MapModel: PMapModel {
         self.searchService.searchTweets(query: query) { [weak self] result in
             switch result {
             case .success(let tweets):
-//                debugPrint("got \(tweets.count) filteredTweets")
                 self?.tweets.onNext(tweets)
             case .failure(let error):
                 if let error = error {
