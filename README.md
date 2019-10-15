@@ -6,7 +6,8 @@ For reviewer info: there seems to be a simulator bug when activating a search te
 # Steps to run the app (Happy path):
 
 ## Clone or download the repo using green button in top right corner ## Open .workspace file in the Xcode. Try to run on a simulator or a device
- ##Steps to run the app (Sad path):
+
+# Steps to run the app (Sad path):
 
 ## Clone or download the repo using green button in top right corner ## Open .workspace file in the Xcode. Try to run on a simulator or a device
 ## Not working. Navigate to the project folder using Terminal command “cd <folder address>”
