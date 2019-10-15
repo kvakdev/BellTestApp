@@ -26,8 +26,8 @@
                         <constraint firstAttribute="height" constant="200" id="j6y-zV-HRW"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Certain features of this app require login. You may skip and login later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJQ-dM-XUm">
-                    <rect key="frame" x="36" y="572" width="342" height="38.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This app requires login." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LJQ-dM-XUm">
+                    <rect key="frame" x="36" y="572" width="342" height="19.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                     <nil key="highlightedColor"/>
