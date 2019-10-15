@@ -1,6 +1,24 @@
 #  Bell Test App
 
-This application was created for non-commercial use and its sole purspose is proof of skill for the Bell company.
+## This application was created for non-commercial use and its sole purspose is proof of skill for the Bell company. For reviewers' information there sometimes seems to be a bug in the simulator when activating a search textfield, so it's better to run it on a real device.
+
+# Steps to run the app (happy path)
+
+## clone or download the repo using the green button "Clone/Download"
+## Open project in XCode
+## Select simulator
+## Click Cmd+R
+
+# Steps to run the app (sad path)
+
+## clone or download the repo using the green button "Clone/Download"
+## Navigate to the progect folder using Terminal
+## Run "pod install" command
+## Try to run in Xcode
+## if not working in Terminal first run "pod update"
+## Try to run in Xcode
+## if not working in Terminal first run "pod deintegrate" and then "pod install"
+## if still not working please contact me for assistance
 
 ## The app has several features: 
 ### tweet search in a given customizable radius around users current location if the permission is provided, otherwise searchwon't work
