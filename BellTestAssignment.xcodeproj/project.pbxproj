@@ -159,7 +159,6 @@
 		93CE75CF2352623C00BDF877 /* DetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModel.swift; sourceTree = "<group>"; };
 		93CE75D12352733700BDF877 /* UIImageViewExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtentions.swift; sourceTree = "<group>"; };
 		93EBDB7E235474B700CDEE65 /* TWTRAPIClientExtentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWTRAPIClientExtentions.swift; sourceTree = "<group>"; };
-		93EBDB832354D7A900CDEE65 /* READ_ME.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = READ_ME.md; sourceTree = "<group>"; };
 		93EBDB852354E37500CDEE65 /* MapViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModelTests.swift; sourceTree = "<group>"; };
 		93EBDB882354E44C00CDEE65 /* PMapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PMapModel.swift; sourceTree = "<group>"; };
 		93EBDB8F2354E97A00CDEE65 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
@@ -372,7 +371,6 @@
 		93FED17F2351B3AC0022D610 = {
 			isa = PBXGroup;
 			children = (
-				93EBDB832354D7A900CDEE65 /* READ_ME.md */,
 				93FED18A2351B3AC0022D610 /* BellTestAssignment */,
 				93FED1A12351B3AE0022D610 /* BellTestAssignmentTests */,
 				93FED1AC2351B3AE0022D610 /* BellTestAssignmentUITests */,
